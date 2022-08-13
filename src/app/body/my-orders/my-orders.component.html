@@ -1,0 +1,26 @@
+<div class="pt-5 mt-5">
+    <h1 class="text-center">My Orders</h1>
+    <div *ngIf="dataReady">
+    <div *ngFor="let order of orders">
+        <div class="card col-6 p-2 m-2 mx-auto">
+            <div class="row">
+                <div class="col-6">Order Id</div>
+                <div class="col-6">{{order.OrderId}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Product Name</div>
+                <div class="col-6">{{order.ProductName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Price</div>
+                <div class="col-6">{{order.TotalPrice}}</div>
+            </div>
+            <div class="row">
+                <div class="col-6">Order Satatus</div>
+                <div class="col-6">{{order.OrderStatus}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</div>

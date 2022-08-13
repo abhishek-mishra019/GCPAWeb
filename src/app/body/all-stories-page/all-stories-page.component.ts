@@ -37,7 +37,6 @@ export class AllStoriesPageComponent implements OnInit {
   }
 
   getAllPosts(){
-    console.log("kokj")
     this.wpService.getAllPosts();
     this.wpService.allPostObservable.subscribe(data=>{
       this.allPosts = data;

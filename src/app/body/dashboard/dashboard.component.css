@@ -5,6 +5,29 @@ h1 {
     font-family: 'Amaranth', sans-serif!important;
 }
 
+.wrapper{
+	position: relative;
+}
+.sidebar{
+	position: fixed;
+	width: 250px;
+	height: 100%;
+	background: #4F94CF;
+	padding: 10px 0;
+	    
+}
+.wrapper .sidebar ul li{
+	padding: 15px;	
+    cursor: pointer;
+    border-radius: 5px;
+}
+.wrapper .sidebar ul li{
+	color: #fff;
+	display: block;
+}
+.wrapper .sidebar ul li:hover{
+	background: #EF388A !important;
+}
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -29,12 +52,6 @@ h1 {
     }
 }
 
-.back {
-    background-image: url("../../../assets/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
 
 .btn {
     color: #fff!important;

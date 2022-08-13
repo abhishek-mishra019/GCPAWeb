@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 
@@ -20,6 +20,7 @@ export class EcommercePaymentStatusComponent implements OnInit {
     public route: ActivatedRoute,
     public functions: AngularFireFunctions,
     private location: Location,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -50,6 +51,10 @@ export class EcommercePaymentStatusComponent implements OnInit {
 
   retry(){
     this.location.back()
+  }
+
+  backToHome(){
+      this.router.navigate(['']);
   }
 
 }

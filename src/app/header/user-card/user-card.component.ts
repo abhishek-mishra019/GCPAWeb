@@ -32,4 +32,8 @@ export class UserCardComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
+  myOrders(){
+    this.router.navigate(['/myOrders'])
+  }
+
 }

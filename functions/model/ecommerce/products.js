@@ -10,6 +10,7 @@ const { addOrder } = require("./tark/addOrder");
 const { getProducts } = require("./tark/getProducts");
 const { getProductById }= require("./tark/getproductById");
 const { getOrders }= require("./tark/getOrders");
+const { getOrdersByUid } = require("./tark/getOrderByUid");
 
 
 fastify.post("/addProduct", (req, res) => {
@@ -33,8 +34,12 @@ fastify.post("/addOrder", (req, res) => {
 });
 
 fastify.post("/getOrders", (req, res) => {
-    console.log("getting Orders");
     getOrders(req, res);
+});
+
+fastify.post("/getOrdersByUid", (req, res) => {
+    console.log("my Order get");
+    getOrdersByUid(req, res);
 });
 
 exports.ecommerce = functions.https.onRequest((req, res) => {

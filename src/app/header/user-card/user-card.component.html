@@ -16,6 +16,7 @@
         </div>
         <button class="dropdown-item " type="button" (click)="myRegistrations()">My Registrations</button>
         <button class="dropdown-item " type="button" (click)="ecommerce()">E-Commerce</button>
+        <button class="dropdown-item " type="button" (click)="myOrders()">My Orders</button>
         <button class="dropdown-item pt-2" id="logout-btn" type="button" (click)="onLogout()">Logout</button>
         <a class="nav-item nav-link " *ngIf="authService.loggedInUser.Admin">
             <button type="button" class="dropdown-item pt-2" (click)="loadDashboardPage()">Dashboard</button>

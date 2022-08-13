@@ -1,3 +1,4 @@
+import { FixedSizeVirtualScrollStrategy } from '@angular/cdk/scrolling';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RawData } from 'src/app/Interfaces/RawData';
@@ -32,6 +33,7 @@ newsroomDataComponent=false;
 testimonialsDataComponent=false;
 galleryDataComponent=false;
 ecommerceDataComponent=false;
+ordersDataComponent = false;
 
   ngOnInit(): void {
     if (this.authService.user) {
@@ -71,6 +73,7 @@ ecommerceDataComponent=false;
   this.testimonialsDataComponent=false;
   this.galleryDataComponent=false;
   this.ecommerceDataComponent=false;
+  this.ordersDataComponent = false;
    
   }
   displayRegistrationData(){
@@ -81,6 +84,7 @@ ecommerceDataComponent=false;
   this.newsroomDataComponent=false;
   this.testimonialsDataComponent=false;
   this.galleryDataComponent=false;
+  this.ordersDataComponent = false;
   this.ecommerceDataComponent=false;
   }
 
@@ -92,6 +96,7 @@ ecommerceDataComponent=false;
   this.newsroomDataComponent=false;
   this.testimonialsDataComponent=false;
   this.galleryDataComponent=false;
+  this.ordersDataComponent = false;
   this.ecommerceDataComponent=false;
   }
   testimonials(){
@@ -102,6 +107,7 @@ ecommerceDataComponent=false;
   this.newsroomDataComponent=false;
   this.testimonialsDataComponent=true;
   this.galleryDataComponent=false;
+  this.ordersDataComponent = false;
   this.ecommerceDataComponent=false;
   }
   newsroom(){
@@ -112,6 +118,7 @@ ecommerceDataComponent=false;
   this.newsroomDataComponent=true;
   this.testimonialsDataComponent=false;
   this.galleryDataComponent=false;
+  this.ordersDataComponent = false;
   this.ecommerceDataComponent=false;
   }
   gallery(){
@@ -121,6 +128,7 @@ ecommerceDataComponent=false;
   this.partnersDataComponent=false;
   this.newsroomDataComponent=false;
   this.testimonialsDataComponent=false;
+  this.ordersDataComponent = false;
   this.galleryDataComponent=true;
   this.ecommerceDataComponent=false;
   }
@@ -131,8 +139,20 @@ ecommerceDataComponent=false;
   this.partnersDataComponent=false;
   this.newsroomDataComponent=false;
   this.testimonialsDataComponent=false;
+  this.ordersDataComponent = false;
   this.galleryDataComponent=false;
   this.ecommerceDataComponent=true;
+  }
+
+  orders(){
+    this.userDataComponent=false;
+  this.registrationDataComponent=false;
+  this.partnersDataComponent=false;
+  this.newsroomDataComponent=false;
+  this.testimonialsDataComponent=false;
+  this.ordersDataComponent = true;
+  this.galleryDataComponent=false;
+  this.ecommerceDataComponent=false;
   }
 }
 

@@ -1,45 +1,52 @@
-<head>
-    <script src="https://kit.fontawesome.com/02860b733b.js" crossorigin="anonymous"></script>
-</head>
-
 <app-support-popup></app-support-popup>
 
 <div class="back mt-5 pt-5 pb-5" style="min-height: 85%;">
-    <h1 class="text-center pt-3">Admin Dashboard</h1>
-    <div class="text-center mx-5">
-        <div class="row text-center pt-3 px-5 mx-5" style="min-width:fit-content;">
-            <!-- <div class="col-4">
-                <button class="btn btn-outline-dar" (click)="displayrawData()">Raw Data</button>
-            </div> -->
-            <div class="col text-center" >
-                <button class="btn btn-outline-dar" (click)="displayUserData()">Users</button>
-            </div>
-            <div class=" col text-center " >
-                <button class="btn btn-outline-dar " (click)="displayRegistrationData()">Registrations</button>
-            </div>
-            <div class=" col text-center " >
-                <button class="btn btn-outline-dar " (click)="partnersSponsors()">Partners And Sponsers</button>
-            </div>
-            <div class=" col text-center " >
-                <button class="btn btn-outline-dar " (click)="testimonials()">Testimonials</button>
-            </div>
-            <div class=" col text-center " >
-                <button class="btn btn-outline-dar " (click)="newsroom()">Media Coverage</button>
-            </div>
-            <div class=" col text-center " >
-                <button class="btn btn-outline-dar " (click)="gallery()">Gallery</button>
-            </div>
-            <div class=" col text-center" >
-                <button class="btn btn-outline-dar " (click)="ecommerce()">E-commerce</button>
+
+       <div class="row">
+        <div class="col-md-2">
+            <div class="wrapper d-flex">
+                <div class="sidebar">
+                    <ul class="pr-2">
+                        <li (click)="displayUserData()" [ngStyle]="{'background': userDataComponent ? '#ef3789' : '#4F94CF' }">
+                            <a class="" >Users</a>
+                        </li>
+                        <li (click)="displayRegistrationData()" [ngStyle]="{'background': registrationDataComponent ? '#ef3789' : '#4F94CF' }">
+                            <a class="" >Registrations</a>
+                        </li>
+                        <li (click)="partnersSponsors()" [ngStyle]="{'background': partnersDataComponent ? '#ef3789' : '#4F94CF' }">
+                            <a class="" >Partners And Sponsers</a>
+                        </li>
+                        <li (click)="testimonials()" [ngStyle]="{'background': testimonialsDataComponent ? '#ef3789' : '#4F94CF' }">
+                            <a class="" >Testimonials</a>
+                        </li>
+                        <li (click)="newsroom()" [ngStyle]="{'background': newsroomDataComponent ? '#ef3789' : '#4F94CF' }">
+                            <a class="" >Media Coverage</a>
+                        </li>
+                        <li (click)="gallery()" [ngStyle]="{'background': galleryDataComponent ? '#ef3789' : '#4F94CF' }">
+                            <a class="" >Gallery</a>
+                        </li>
+                        <li (click)="ecommerce()" [ngStyle]="{'background': ecommerceDataComponent ? '#ef3789' : '#4F94CF' }">
+                            <a class="" >E-commerce</a>
+                        </li>
+                        <li (click)="orders()" [ngStyle]="{'background': ordersDataComponent ? '#ef3789' : '#4F94CF' }">
+                            <a class="" >Orders</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <hr>
+        <div class="col-md-10">
+    <h1 class="text-center pt-3">Admin Dashboard</h1>
+
+            <app-users-dashboard *ngIf="userDataComponent"></app-users-dashboard>
+            <app-registration-dashboard *ngIf="registrationDataComponent"></app-registration-dashboard>
+            <app-sponsors-partners *ngIf="partnersDataComponent"></app-sponsors-partners>
+            <app-newsroom-dashboard *ngIf="newsroomDataComponent"></app-newsroom-dashboard>
+            <app-ecommerce-dashboard *ngIf="ecommerceDataComponent"></app-ecommerce-dashboard>
+            <app-gallery-dashboard *ngIf="galleryDataComponent"></app-gallery-dashboard>
+            <app-testimonials-dashboard *ngIf="testimonialsDataComponent"></app-testimonials-dashboard>
+            <app-orders *ngIf="ordersDataComponent"></app-orders>
+        </div>
     </div>
-    <app-users-dashboard *ngIf="userDataComponent"></app-users-dashboard>
-    <app-registration-dashboard *ngIf="registrationDataComponent"></app-registration-dashboard>
-    <app-sponsors-partners *ngIf="partnersDataComponent"></app-sponsors-partners>
-    <app-newsroom-dashboard *ngIf="newsroomDataComponent"></app-newsroom-dashboard>
-    <app-ecommerce-dashboard *ngIf="ecommerceDataComponent"></app-ecommerce-dashboard>
-    <app-gallery-dashboard *ngIf="galleryDataComponent"></app-gallery-dashboard>
-    <app-testimonials-dashboard *ngIf="testimonialsDataComponent"></app-testimonials-dashboard>
+
 </div>

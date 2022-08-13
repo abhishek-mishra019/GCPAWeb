@@ -3,6 +3,10 @@
 <div class="row text-center" style="padding-top:100px;">
     <div *ngIf="paymentStatus == 'Complete'">
         <h1>Payment Success</h1>
+        <p>Your Payment Has been recieved and Will notify you about the shipping status through E-Mail</p>
+        <h2 class="text-center">{{registrationId}}</h2>
+        <p>The above is your registration Id Please make a note of it for future references.</p>
+        <button (click)="backToHome()" class="btn btn-primary">Back to Home</button>
     </div>
     <div *ngIf="paymentStatus == 'Failed'" class="p-5">
         <h1 >Payment Failed</h1>

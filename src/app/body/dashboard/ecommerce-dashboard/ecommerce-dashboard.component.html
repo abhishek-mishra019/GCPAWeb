@@ -3,13 +3,13 @@
 
     <div class="container pt-5">
         <ng-container *ngIf="showProducts">
-            <app-product-data-table [dataForTable]="productData " [displayColoumns]="displayColoumnsProduct " [pageSize]=" '5' "> </app-product-data-table>
+            <app-product-data-table [dataForTable]="productData" [displayColoumns]="displayColoumnsProduct " [pageSize]=" '5' "> </app-product-data-table>
         </ng-container>
     </div>
     <div class="container pt-5">
         <div class="text-center">
             <button class="btn btn-outline-dar" (click)="showNewProduct()">Add new Product</button>
-            <app-new-product *ngIf="newProduct"></app-new-product>
+            <app-new-product (addProductCompleted)="getProductsData()" *ngIf="newProduct"></app-new-product>
         </div>
     </div>
 </div>

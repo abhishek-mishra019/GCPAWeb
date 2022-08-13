@@ -36,19 +36,18 @@ constructor(public functions: AngularFireFunctions, public updateRegistration: U
   
   getorders(){
     const callable = this.functions.httpsCallable("ecommerce/getOrders");
-  callable({ }).pipe(map(res=>{
+  return callable({ }).pipe(map(res=>{
     const data = res.data as Order[];
     return data;
-  })).subscribe({
-    next: (data) => {
-      this.orders = data;
-    },
-    error: (error) => {
-      console.error(error);
-    },
-    complete: () => {
-      console.info('Getting Order successful')
-    }
-  });
+  }));
+}
+
+getOrdersByUid(uid:string){
+  const callable = this.functions.httpsCallable("ecommerce/getOrdersByUid");
+  return callable({Uid:uid}).pipe(map(res=>{
+    const data = res.data as Order[];
+    console.log(data);
+    return data;
+  }));
 }
 }

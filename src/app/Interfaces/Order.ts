@@ -12,4 +12,6 @@ export interface Order {
     ProductId:string;
     ProductName:string;
     TotalPrice:number;
+    OrderStatus:string;
+    Email:string;
  }

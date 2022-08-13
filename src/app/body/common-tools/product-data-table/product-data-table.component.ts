@@ -4,8 +4,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Ecommerce } from 'src/app/Interfaces/Ecommerce';
-import { Register } from 'src/app/Interfaces/RegistrationInterface';
-import { RegistrationDataTableDataSource } from '../registration-data-table/registration-data-table-datasource';
 import { ProductDataTableDataSource } from './product-data-table-datasource';
 
 @Component({

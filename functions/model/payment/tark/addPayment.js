@@ -19,8 +19,8 @@ exports.addPayment = function(request, response) {
             if (doc != undefined) {
                 // Test Credentials
                 const razorpay = new RazorPay({
-                    key_id: "rzp_test_jWOofTDBbQGPFa",
-                    key_secret: "N9fWEfNEVnIrmubuMyDhxP4i",
+                    key_id: "rzp_test_nfhDfN6X5cgp42",
+                    key_secret: "EjWL1pPedHeT4Z1C4laM3u1b",
                 });
 
                 // Production Credentials
@@ -51,7 +51,7 @@ exports.addPayment = function(request, response) {
 
                     setRazorDetails(Uid, order);
                     // Test credentials
-                    order.key = "rzp_test_jWOofTDBbQGPFa";
+                    order.key = "rzp_test_nfhDfN6X5cgp42";
 
                     // Production Credentials
                     // order.key = "rzp_live_xoOwFekmzVS4do";

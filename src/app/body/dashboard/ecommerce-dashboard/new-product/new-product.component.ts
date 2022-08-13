@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ecommerce } from 'src/app/Interfaces/Ecommerce';
 import { FileUpload } from 'src/app/Interfaces/FileInterface';
@@ -14,7 +14,7 @@ import { NewsServiceService } from 'src/app/services/newsroom/news-service.servi
   styleUrls: ['./new-product.component.css']
 })
 export class NewProductComponent implements OnInit {
-   
+  @Output() addProductCompleted = new EventEmitter<boolean>()
   newImage=false;
   numberNewImage:number[]=[];
     constructor(private router: Router,public authService:AuthServiceService, public uploadService:FileUploadService, public ecommerceService:EcommerceDashboardService) { }
@@ -39,6 +39,15 @@ export class NewProductComponent implements OnInit {
    this.product.Status=true;
    this.product.NumberOfImages=this.product.Images.length; 
    this.ecommerceService.addProduct(this.product);
+
+   this.ecommerceService.productDataStateObservable.subscribe((data)=>{
+    if(data){
+      alert("Product Added Successfully");
+      this.addProductCompleted.emit(true);
+      this.product = {ProductName:"",Disc:"",Status:false,Images:[],NumberOfImages:0, ProductId:"", Price:0};
+     
+    }
+  })
   }
   
   showNewImage(){

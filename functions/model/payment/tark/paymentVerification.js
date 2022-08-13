@@ -19,7 +19,7 @@ exports.paymentVerification = function(request, response) {
         const type = request.body.data.PaymentType;
 
         // Test Credentials
-        const keySecret = "N9fWEfNEVnIrmubuMyDhxP4i";
+        const keySecret = "EjWL1pPedHeT4Z1C4laM3u1b";
 
         // Production Credentials
         // const keySecret = "UnY8Vp9ty5c9wL1TWNUlBsci";

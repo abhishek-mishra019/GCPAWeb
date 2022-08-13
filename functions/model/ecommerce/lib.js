@@ -69,7 +69,8 @@ exports.addOrder = function(orderId, quantity, address, city, country, mobileNum
         State: state,
         TotalPrice: totalPrice,
         UserUid: userUid,
-
+        OrderId: orderId,
+        OrderStatus: "Placed",
     });
     return Promise.resolve(galleryData);
 };
@@ -89,6 +90,25 @@ exports.getOrders = function() {
 
     return Promise.resolve(promise);
 };
+
+
+exports.getOrdersByUid = function(uid) {
+    const query = db.collection("Orders").where("UserUid", "==", uid);
+    const promise = query.get().then((doc) => {
+        const data = [];
+        doc.forEach((element) => {
+            if (element.exists) {
+                data.push(element.data());
+            }
+        });
+        console.log(data);
+        console.log(uid);
+        return data;
+    });
+
+    return Promise.resolve(promise);
+};
+
 
 exports.gerOrderData = function(Id) {
     const promise = db.collection("Orders").doc(Id).get().then((doc)=>{

@@ -39,6 +39,7 @@ import { ProdigyHistoryComponent } from './body/blog-home/prodigy-history/prodig
 import { ProdigyHistoryPageComponent } from './body/prodigy-history-page/prodigy-history-page.component';
 import { PopularPageComponent } from './body/popular-page/popular-page.component';
 import { AllStoriesPageComponent } from './body/all-stories-page/all-stories-page.component';
+import { MyOrdersComponent } from './body/my-orders/my-orders.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -77,6 +78,7 @@ const routes: Routes = [
   {path:'blog/popular', component:PopularPageComponent},
   {path:'blog/all-stories', component:AllStoriesPageComponent},
   {path:'blog/:slug', component:BlogComponent},
+  {path:'myOrders', component:MyOrdersComponent},
 
 
 

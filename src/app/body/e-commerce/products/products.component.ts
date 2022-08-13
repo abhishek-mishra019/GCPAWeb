@@ -78,7 +78,9 @@ export class ProductsComponent implements OnInit {
     UserUid:"",
     ProductId:"",
     ProductName:"",
-    TotalPrice:0
+    TotalPrice:0,
+    OrderStatus:"NotCreated",
+    Email: ""
   }
 
   constructor(public route:ActivatedRoute,private winRef: NativeWindowsService,  private functions: AngularFireFunctions, public ecommerceService:EcommerceDashboardService, public authService:AuthServiceService, public orderService:OrderServiceService, private zone: NgZone,private router: Router) { }
