@@ -5,18 +5,6 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyArJwOw-uXdCnEA-kvJpV1tmcPQU9mSB6g",
-
-  authDomain: "gcpaweb.firebaseapp.com",
-
-  projectId: "gcpaweb",
-
-  storageBucket: "gcpaweb.appspot.com",
-
-  messagingSenderId: "899563581116",
-
-  appId: "1:899563581116:web:cd9e50532c2a142e772ab9"
-
   },
   useEmulators: true,
   recaptcha: {

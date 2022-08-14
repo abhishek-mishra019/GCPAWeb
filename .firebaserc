@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "gcpaweb-f1689"
+    "default": "gcpaweb"
   },
   "targets": {
     "gcpaweb": {
@@ -12,3 +12,4 @@
     }
   }
 }
+

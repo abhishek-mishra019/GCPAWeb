@@ -97,5 +97,6 @@ export class AuthServiceService {
   async logout() {
     this.cookieService.deleteAll();
     await this.afauth.signOut();
+    window.location.reload();
   }
 }

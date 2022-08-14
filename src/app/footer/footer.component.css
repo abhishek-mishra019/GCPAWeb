@@ -4,8 +4,6 @@ footer {
     background-color: #fff;
     border-top: 1px solid #8a8686d9;
     width: 100%;
-    position: fixed;
-    bottom: 0;
 }
 .footer-padding {
     margin-top: 50px;
