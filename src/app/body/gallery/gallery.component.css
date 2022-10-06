@@ -12,6 +12,11 @@ h1 {
     font-weight: 600!important;
 }
 
+.modal-dialog {
+    width: 1000px;
+    height:700px;
+}
+
 @media (min-width: 576px){
 
     .container {
