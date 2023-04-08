@@ -1,11 +1,24 @@
 .back{
-    background:rgba(0, 0, 0, 0.8)  url('../../../../assets/our-conference-bg.jpg');
-    background-attachment: fixed;
+    background:rgba(0, 0, 0, 0.8)  url('../../../../assets/applyDark.jpeg');
+    background-attachment:scroll;
     background-position: 0 0;
     background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    background-blend-mode: darken;
+    width: 100vw !important;
+}
+
+.applyBack{
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%; 
+}
+
+@media (max-width: 979px) {
+  .applyBack{
+    padding-top: 0px;
+    width: 100%;
+  }
 }
 
 
@@ -17,7 +30,7 @@
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
-    font-family: Arial;
+    font-family: 'Nunito Sans',sans-serif;
     font-size: 20px;
     padding: 5px 10px;
     text-align: center;
@@ -51,11 +64,16 @@
     100% { background-color: #1976D2; -webkit-box-shadow: 0 0 3px #1976D2; }
   }
 @media (min-width: 576px){
+  .back{
+    min-height: 70vh !important;
+  }
 
     .container {
         max-width: 540px;
     }
 }
+
+
 @media (min-width: 768px){
 
     .container {
@@ -65,6 +83,9 @@
 
 @media (min-width: 992px){
 
+  .back{
+    min-height: 70vh !important;
+  }
     .container {
         max-width: 960px;
     }
@@ -72,6 +93,9 @@
 
 @media (min-width: 1200px){
 
+  .back{
+    min-height: 90vh !important;
+  }
     .container {
         max-width: 1140px;
     }
