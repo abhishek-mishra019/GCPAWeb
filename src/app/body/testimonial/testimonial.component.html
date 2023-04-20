@@ -1,4 +1,4 @@
-<div class="container-fluid back my-0" style="min-height: 85vh;">
+<div class="container-fluid back my-0" style="min-height: 90vh;">
     <div class="container mt-5 pt-3 px-1 text-center">
         <h1 class="mt-5">Testimonials</h1>
         <a>
@@ -6,19 +6,19 @@
         </a>
         <div class="row mt-5 pt-3" *ngIf="!testimonialService.loader; else loader">
             <ng-container *ngFor="let testimonial of testimonialService.testimonials">
-                <div class="col-md-4 pb-5 mb-5 ">
+                <div class="col-md-4 mb-8" style="padding-bottom: 75px;">
                     <div class="position-relative testimonial_info_m mx-3 bg-white pt-1 ">
                         <div class="testimonial_head ">
                             <div class="testimonial_img position-absolute top-0 start-50 translate-middle ">
                                 <a target="_blank"> <img [src]="testimonial.ImageUrl" width="100" height="100" alt="{{testimonial.Name}}"></a>
                             </div>
-                            <div class="">
+                            <div class="pt-4">
                                 <h6 class="text-center mt-4 pt-3" [innerText]="testimonial.Name">
                                 </h6>
                                 <span class="testheadp" [innerText]="testimonial.Achievement"></span>
                             </div>
                         </div>
-                        <p class="testp px-3 pt-2" [innerText]="testimonial.Testimonial"></p>
+                        <p class="testp px-3 p-2" [innerText]="testimonial.Testimonial"></p>
                     </div>
                 </div>
             </ng-container>

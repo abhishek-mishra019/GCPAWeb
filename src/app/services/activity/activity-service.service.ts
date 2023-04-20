@@ -18,6 +18,7 @@ export class ActivityServiceService {
     callable({ date:activity.Date, time:activity.Time, message:activity.Message, sendor:activity.Sendor, ticketId:activity.TicketId}).subscribe({
       next: (data) => {
         console.log("Activity added");
+        this.activities.push(activity)
       },
       error: (error) => {
         console.error("Error", error);

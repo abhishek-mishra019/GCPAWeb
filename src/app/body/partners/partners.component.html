@@ -1,16 +1,17 @@
-<div class="back" style="min-height: 85vh;">
+<div class="back pb-4" style="min-height: 85vh;">
     <div class="container-fluid px-0 mt-5 pt-3">
         <img src="../../../assets/partner.png" class="img-fluid" alt="">
     </div>
     <div class="container mt-3 py-3 px-2">
         <div class="row text-center" *ngIf="!partnerService.loader; else loader">
             <ng-container *ngFor="let partner of partnerService.partners">
-                <div class="col-md-3 px-3 py-3 my-auto">
-                    <img [src]="partner.ImageUrl" class="img-fluid rounded" alt="">
+                <div class="col-md-3 px-3 py-3 my-auto" id="imgBackground">
+                    <div class="bg-white d-flex align-items-center" style="height: 180px;">
+                        <img width="180" height="200" [src]="partner.ImageUrl" class="img-fluid rounded bg-white mx-auto" alt="" >
+                    </div>
                 </div>
             </ng-container>
         </div>
-
     </div>
 
     <ng-template #loader>

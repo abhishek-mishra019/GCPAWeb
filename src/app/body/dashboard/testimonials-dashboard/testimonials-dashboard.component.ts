@@ -21,6 +21,7 @@ export class TestimonialsDashboardComponent implements OnInit {
   percentage: number = 0;
   fileName: string;
   progressPhoto:number;
+  showClose=false;
 
   constructor(public uploadService:FileUploadService, public testimonialService:TestimonialsServiceService,private functions: AngularFireFunctions,private router: Router,public authService:AuthServiceService) { }
 
@@ -75,6 +76,9 @@ submit(){
   if(this.uploadService.testimonialUrl){
  this.testimonial.ImageUrl=this.uploadService.testimonialUrl;
  this.testimonialService.addTestimonial(this.testimonial);
+ if(this.testimonialService.uploadStateObservable){
+  this.showClose = true;
+    }
   }
   else{
     alert("No file Uploaded")
@@ -112,5 +116,8 @@ editTestimonial(Uid: any, Achievement: any , ImageUrl:any , Name:any , Testimoni
         complete: () => { 
           console.info('Successful deleted testimonial')}
       });
+  }
+  close(){
+    this.showClose = false;
   }
 }

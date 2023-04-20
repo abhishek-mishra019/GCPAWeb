@@ -3,7 +3,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { addOrder } = require("../lib");
+const { setOrder } = require("../lib");
 const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 
@@ -27,7 +27,7 @@ exports.addOrder = function(request, response) {
     getRawData().then((doc) => {
         const orderId = "O" + (doc[0].NumberOfOrders + 1);
 
-        addOrder(orderId, quantity, address, city, country, mobileNum, name, pincode, productId, productName, state, totalPrice, userUid).then(() => {
+        setOrder(orderId, quantity, address, city, country, mobileNum, name, pincode, productId, productName, state, totalPrice, userUid).then(() => {
             const result = { data: orderId };
             console.log("Order Addded Successfully");
             updateData("order").then(() => console.log("Order Raw Data Updated"));

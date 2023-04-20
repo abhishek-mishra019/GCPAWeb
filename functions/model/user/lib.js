@@ -15,6 +15,17 @@ exports.setUser = function(uid, photoURL, displayName, email, phoneNumber, provi
         ProviderId: providerId,
         NumberOfRegistrations: numberOfRegistrations,
         Admin: false,
+        Permissions: {
+            Users: false,
+            Registrations: false,
+            Partners: false,
+            Testimonials: false,
+            Media: false,
+            Gallery: false,
+            Ecommerce: false,
+            Orders: false,
+            Support: false,
+        },
     });
     return Promise.resolve(userData);
 };

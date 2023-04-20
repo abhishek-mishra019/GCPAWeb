@@ -1,86 +1,47 @@
-<app-support-popup></app-support-popup>
-
 <div class="back mt-5 pt-5 pb-5">
     <h1 class="text-center pt-3">Support</h1>
 
-    <div class="text-center pt-5">
-        <button type="submit" class="btn btn-outline-dark " (click)="showNewSupport()">Raise New Issue</button>
+    <div class="text-center pt-5 mb-3">
+        <button type="submit" class="btn btn-outline-dark" (click)="showNewSupport()">Raise New Ticket</button>
     </div>
+        <div *ngIf="supportService.supports.length" class="row">
+            <div class="col table table-responsive table-hover">
+                <div *ngIf="supportData.length else loader">
+                    <app-support-data-table [dataForTable]="supportData " [displayColoumns]="displayColoumnsSupport "
+                        [pageSize]=" '5' "> </app-support-data-table>
+                </div>
 
-    <!-- <ng-container *ngIf="showSupport">
-        <div class="row pt-5 container text-center mx-auto">
-            <div class="col-4"></div>
-            <div class="col-4 text-center">
-                <form class="content-padding text-center">
-                    <div class="form-group mb-5 text-center">
-                        <input type="text" name="name" class="form-control bg-light" placeholder="Name" required [ngModelOptions]="{standalone: true}" [(ngModel)]="name">
-                    </div>
-                    <div class="form-group mb-5">
-                        <input type="email" name="email" class="form-control bg-light" placeholder="Email Id" required [ngModelOptions]="{standalone: true}" [(ngModel)]="contactEmail">
-                    </div>
-                    <div class="form-group mb-5">
-                        <textarea style="min-height: 100px;" name="message" class="form-control bg-light" placeholder="Your Message" required [ngModelOptions]="{standalone: true}" [(ngModel)]="message"></textarea>
-                    </div>
-                    <div class="form-group mb-5">
-                        <select class="form-select  form-control-sm mt-2 bg-light" [(ngModel)]="supportType" id="supportType" required [ngModelOptions]="{standalone: true}">
-                            <option selected>Support Type</option>
-                            <option value="Registration">Registration</option>
-                            <option value="Website">Website</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary" name="send" type="submit" (click)="submit()">Send Message</button>
-                    </div>
-                </form>
+                <ng-template #loader>
+                    <app-loader></app-loader>
+                </ng-template>
             </div>
-            <div class="col-4"></div>
         </div>
-    </ng-container> -->
-
-    <ng-container *ngIf="supportService.supports.length>0">
-        <ng-container *ngFor="let support of supportService.supports;let indexOfelement=index;">
+        <!-- <ng-container *ngFor="let support of supportService.supports;let indexOfelement=index;">
             <div class="container">
                 <div class="row pt-3">
                     <div class="col-2"></div>
-                    <div class="col-8 row">
-                        <div class="list-group">
-                            <a class="list-group-item list-group-item-action" (click)="loadSupportDetails(support)">
-                                <div class="row ">
-                                    <div class="col-4 fs-6">
-                                        <b>Support Type</b>: {{support.SupportType}}
-                                    </div>
-                                    <div class="col-1"></div>
-                                    <div class="col-7 fs-6 text-truncate">
-                                        <b>Description</b>: {{support.Message}}
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-                <div class="row pt-3">
-                    <div class="col-2"></div>
-                    <div class="col-8 row">
+                    <div class="col-8">
                         <ng-container *ngIf="activityService.activities.length>0 && support.Show">
                             <ng-container *ngFor="let activity of activityService.activities">
-
-                                <div class="col-2"></div>
-                                <div [ngClass]="{'border rounded col-8': true,'text-end sent':activity.Sendor==='user','text-start recieved':activity.Sendor==='admin'}">{{activity.Message}}</div>
-                                <div class="col-2"></div>
+                                <div class="row">
+                                    <div class="col"></div>
+                                    <div [ngClass]="{'border rounded col-8': true,'text-end sent':activity.Sendor==='user','text-start recieved':activity.Sendor==='admin'}">{{activity.Message}}</div>
+                                    <div class="col"></div>
+                                </div>
                             </ng-container>
-
                             <div class="input-group mt-3">
                                 <input type="text" class="form-control" placeholder="Type Your Message Here" aria-describedby="button-addon2" [ngModelOptions]="{standalone: true}" [(ngModel)]="messageSent">
                                 <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="sendMessage(support.TicketId)">Send Message</button>
                             </div>
-
                         </ng-container>
                     </div>
                     <div class="col-2"></div>
                 </div>
             </div>
-        </ng-container>
+        </ng-container> -->
+    <app-login-page></app-login-page>
+    <ng-container *ngIf="userReady">
+        <app-support-popup [contactEmail]="authService.user.email"
+            [name]="authService.user.displayName"></app-support-popup>
     </ng-container>
-
 </div>

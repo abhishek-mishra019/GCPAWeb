@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'firebase/auth';
 import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 
 @Component({
@@ -9,7 +8,6 @@ import { AuthServiceService } from 'src/app/services/auth-service/auth-service.s
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent implements OnInit {
-  user: User;
   constructor(public authService: AuthServiceService, public router: Router) { }
 
   ngOnInit(): void {
@@ -22,7 +20,7 @@ export class UserCardComponent implements OnInit {
   }
 
   myRegistrations(){
-    this.router.navigate(['/yourRegistrations']);
+    this.router.navigate(['/MyRegistrations']);
   }
   ecommerce(){
     this.router.navigate(['/ecommerce']);

@@ -8,9 +8,9 @@
     <div class="row text-center container-fluid mx-0">
         <owl-carousel-o class="col col-md-11 container-fluid text-centre " [options]="customOptions" (translated)="getPassedData($event)">
 
-            <ng-container class="col col-md-3" *ngFor="let slide of dynamicSlides">
-              <ng-template carouselSlide [id]="slide.id">
-                <img class="px-4 container-fluid" [src]="slide.src" [alt]="slide.alt" [title]="slide.title">
+            <ng-container class="col col-md-3" *ngFor="let news of newsService.newsroom; let ind=index">
+              <ng-template carouselSlide [id]="ind+''">
+                <img class="px-4 container-fluid" [src]="news.ImageUrl" [title]="news.Name">
               </ng-template>
             </ng-container>
           </owl-carousel-o>

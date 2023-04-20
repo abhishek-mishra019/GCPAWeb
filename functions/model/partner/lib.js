@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
 
-exports.addPartner = function(uid, name, type, imageurl) {
+exports.addNewPartner = function(uid, name, type, imageurl) {
     const partnerData = db.collection("Partners").doc(uid).set({
         Uid: uid,
         Name: name,
@@ -16,8 +16,8 @@ exports.addPartner = function(uid, name, type, imageurl) {
     return Promise.resolve(partnerData);
 };
 
-exports.getPartners = function() {
-    const query = db.collection("Partners");
+exports.getAllPartners = function() {
+    const query = db.collection("Partners").orderBy("Uid");
 
     const promise = query.get().then((doc) => {
         const data = [];
@@ -30,4 +30,19 @@ exports.getPartners = function() {
     });
 
     return Promise.resolve(promise);
+};
+
+exports.editPartners = function(uid, imageUrl, name, type) {
+    const query = db.collection("Partners").doc(uid).update({
+        ImageUrl: imageUrl,
+        Name: name,
+        Type: type,
+});
+    return Promise.resolve(query);
+};
+
+exports.deletePartners = function(uid) {
+    const query = db.collection("Partners").doc(uid).delete();
+
+    return Promise.resolve(query);
 };

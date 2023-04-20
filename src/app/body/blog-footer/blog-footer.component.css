@@ -21,11 +21,12 @@
 @media (min-width: 1200px){
 
     .container {
-        max-width: 1140px;
+        max-width: 1320px;
     }
 }
 
 .footer {
+    /* position: absolute; */
     border-top: 1px solid rgba(0,0,0,.05) !important;
     padding-top: 15px;
     padding-bottom: 12px;
@@ -37,14 +38,14 @@
   }
 
   p {
+    font-family: 'Nunito Sans',sans-serif;
     margin-top: 0;
     margin-bottom: 1rem;
     font-size: 10px;
-padding-top: 10px;
-color: #4e4e4e;
-font-family: 'AbeeZee';
-font-weight: 400;
-line-height: 1.5;
+    padding-top: 10px;
+    color: #4e4e4e;
+    font-weight: 400;
+    text-align: justify;
   }
 
   .pull-left {
@@ -60,7 +61,7 @@ line-height: 1.5;
   .ul {
     box-sizing: border-box;
     margin-top: 0;
-margin-bottom: 1rem;
+    margin-bottom: 1rem;
   }
 
   .list-unstyled {

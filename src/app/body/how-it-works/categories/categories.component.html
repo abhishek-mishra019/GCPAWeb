@@ -1,26 +1,18 @@
-<div class="container mt-5">
+<div class=" mt-5 pb-5">
 
-    <div class="col-md-12 text-center section-padding">
+    <div class="text-center">
         <h1>Categories</h1>
         <p class="mainp">Are you an expert? Which category describes you the best?</p>
-       
-        <div class="row content-padding">
-            <ng-container *ngFor="let con of content" >
-                <div [ngClass]="{'col-md-3 my-5 mx-auto':true}" (mouseenter)="con.hovering=true" (mouseleave)="con.hovering=false">
-                    <div [ngClass]="{'content text-center py-3 shadow':true,'bg-dark':con.hovering}">
-                        
-                        <div [ngClass]="{'show':!con.hovering, 'notshow':con.hovering,'initial container-fluid':true}" >
-                            <img [src]="con.src" alt="acting" width="200">
-                            <p class="catp" [innerText]="con.head"></p>
-                        </div>
-                        
-                        <div [ngClass]="{'show':con.hovering, 'notshow':!con.hovering,'bg-dark mt-3 mb-1 text-light container-fluid':true}">
-                            <span class="text-center" [innerText]="con.head"></span>
-                            <p class="cat" [innerText]="con.para"></p>
-                        </div>
-                        
+
+        <div class="row content-padding mx-auto" style="width: 80%;">
+            <ng-container *ngFor="let con of content">
+                <div class="col-md-2  col-sm-6 py-2">
+                    <div class="card text-center my-auto" style="height: 170px !important;">
+                        <img class="mx-auto" [src]="con.src" alt="acting" width="100">
+                        <p class="" [innerText]="con.head"></p>
                     </div>
                 </div>
             </ng-container>
         </div>
-            
+    </div>
+</div>

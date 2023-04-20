@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   rawData:RawData[]=[]
   displayColoumns:string[];
-  userData:UserFetched[]=[]
+  userData:UserFetched;
   displayColoumnsUser:string[];
   registrationData:Register[];
   displayColoumnsRegistration:string[];
@@ -34,9 +34,12 @@ testimonialsDataComponent=false;
 galleryDataComponent=false;
 ecommerceDataComponent=false;
 ordersDataComponent = false;
+supportComponent=false;
 
   ngOnInit(): void {
     if (this.authService.user) {
+      this.userData = this.authService.loggedInUser;
+      
       if (this.authService.loggedInUser.Admin===false) {
         this.router.navigate([''])
       }
@@ -74,7 +77,7 @@ ordersDataComponent = false;
   this.galleryDataComponent=false;
   this.ecommerceDataComponent=false;
   this.ordersDataComponent = false;
-   
+  this.supportComponent=false; 
   }
   displayRegistrationData(){
     // this.router.navigate(['registrationDashboard'])
@@ -86,6 +89,7 @@ ordersDataComponent = false;
   this.galleryDataComponent=false;
   this.ordersDataComponent = false;
   this.ecommerceDataComponent=false;
+  this.supportComponent=false;
   }
 
   partnersSponsors(){
@@ -98,7 +102,8 @@ ordersDataComponent = false;
   this.galleryDataComponent=false;
   this.ordersDataComponent = false;
   this.ecommerceDataComponent=false;
-  }
+  this.supportComponent=false;
+}
   testimonials(){
     // this.router.navigate(['testimonialsDashboard']);
     this.userDataComponent=false;
@@ -109,6 +114,7 @@ ordersDataComponent = false;
   this.galleryDataComponent=false;
   this.ordersDataComponent = false;
   this.ecommerceDataComponent=false;
+  this.supportComponent=false;
   }
   newsroom(){
     // this.router.navigate(['newsroomDashboard']);
@@ -120,6 +126,7 @@ ordersDataComponent = false;
   this.galleryDataComponent=false;
   this.ordersDataComponent = false;
   this.ecommerceDataComponent=false;
+  this.supportComponent=false;
   }
   gallery(){
     // this.router.navigate(['galleryDashboard']);
@@ -131,6 +138,7 @@ ordersDataComponent = false;
   this.ordersDataComponent = false;
   this.galleryDataComponent=true;
   this.ecommerceDataComponent=false;
+  this.supportComponent=false;
   }
   ecommerce(){
     // this.router.navigate(['ecommerceDashboard']);
@@ -141,6 +149,7 @@ ordersDataComponent = false;
   this.testimonialsDataComponent=false;
   this.ordersDataComponent = false;
   this.galleryDataComponent=false;
+  this.supportComponent=false;
   this.ecommerceDataComponent=true;
   }
 
@@ -153,6 +162,20 @@ ordersDataComponent = false;
   this.ordersDataComponent = true;
   this.galleryDataComponent=false;
   this.ecommerceDataComponent=false;
+  this.supportComponent=false;
+
+  }
+
+  support(){
+    this.userDataComponent=false;
+  this.registrationDataComponent=false;
+  this.partnersDataComponent=false;
+  this.newsroomDataComponent=false;
+  this.testimonialsDataComponent=false;
+  this.ordersDataComponent = false;
+  this.galleryDataComponent=false;
+  this.ecommerceDataComponent=false;
+  this.supportComponent=true;
   }
 }
 

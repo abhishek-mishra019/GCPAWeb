@@ -11,6 +11,10 @@ p {
     color: #555555!important;
 }
 
+img{
+  border-radius: 2.5%;
+}
+
 .blog_img{
   width:400px;
   max-width:100%;

@@ -4,7 +4,7 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
-const { addNews } = require("../lib");
+const { addNewNews } = require("../lib");
 const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 
@@ -19,7 +19,7 @@ exports.addNews = function(request, response) {
 
     getRawData().then((doc) => {
         const uid = "N" + (doc[0].NumberOfNews + 1);
-        addNews(uid, name, link, imageUrl).then(() => {
+        addNewNews(uid, name, link, imageUrl).then(() => {
            const result = { data: "News Addded Successfully" };
             console.log("News Addded Successfully");
             updateData("newsroom").then(() => console.log("News Raw Data Updated"));

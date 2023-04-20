@@ -3,7 +3,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { addPhoto } = require("../lib");
+const { addNewPhoto } = require("../lib");
 const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 
@@ -17,7 +17,7 @@ exports.addPhoto = function(request, response) {
 
     getRawData().then((doc) => {
         const uid = "G" + (doc[0].NumberOfGalleryPics + 1);
-        addPhoto(uid, date, imageUrl).then(() => {
+        addNewPhoto(uid, date, imageUrl).then(() => {
             const result = { data: "Photo Addded Successfully" };
             console.log("Photo Addded Successfully");
             updateData("gallery").then(() => console.log("Photo Raw Data Updated"));

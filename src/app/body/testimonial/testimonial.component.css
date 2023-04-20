@@ -3,6 +3,11 @@ h6 {
     color: #555555!important;
     font-family: 'Amaranth', sans-serif!important;
 }
+
+.position-relative{
+    border-radius: 7%;
+}
+
 .testheadp {
     font-weight: 500;
     font-size: 13px;

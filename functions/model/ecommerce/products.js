@@ -11,11 +11,23 @@ const { getProducts } = require("./tark/getProducts");
 const { getProductById }= require("./tark/getproductById");
 const { getOrders }= require("./tark/getOrders");
 const { getOrdersByUid } = require("./tark/getOrderByUid");
+const { editProduct } = require("./tark/editProduct");
+const { deleteProduct } = require("./tark/deleteProduct");
 
 
 fastify.post("/addProduct", (req, res) => {
     console.log("Adding Product");
     addProduct(req, res);
+});
+
+fastify.post("/deleteProduct", (req, res) => {
+    console.log("Deleting Product");
+    deleteProduct(req, res);
+});
+
+fastify.post("/editProduct", (req, res) => {
+    console.log("Product is edited");
+    editProduct(req, res);
 });
 
 fastify.post("/getProducts", (req, res) => {

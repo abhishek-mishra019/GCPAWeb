@@ -3,14 +3,14 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { getPhotoes } = require("../lib");
+const { getAllPhotoes } = require("../lib");
 
 exports.getPhotoes = function(request, response) {
     const start = request.body.data.Start;
     const end = request.body.data.End;
     let status = 200;
 
-    getPhotoes(start, end).then((newsData) => {
+    getAllPhotoes(start, end).then((newsData) => {
         if (newsData) {
             const result = { data: { status: "OK", data: newsData } };
             return response.status(status).send(result);

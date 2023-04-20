@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { Router } from '@angular/router';
 import { FileUpload } from 'src/app/Interfaces/FileInterface';
 import { Newsroom } from 'src/app/Interfaces/Newsroom';
@@ -20,8 +21,9 @@ export class NewsroomDashboardComponent implements OnInit {
   percentage: number = 0;
   fileName: string;
   progressPhoto:number;
+  showClose=false;
 
-  constructor(public uploadService:FileUploadService, public newsService:NewsServiceService,private router: Router,public authService:AuthServiceService) { }
+  constructor(public uploadService:FileUploadService, public newsService:NewsServiceService,private router: Router,public authService:AuthServiceService,  private functions: AngularFireFunctions) { }
   news:Newsroom={Uid:"",Name:"",Status:"",ImageUrl:"",Link:""}
 
   ngOnInit(): void {
@@ -68,14 +70,53 @@ export class NewsroomDashboardComponent implements OnInit {
           }
         );
     }
+
+    editNews(Uid: any, Name: any , ImageUrl:any , Link:any){
+      if(this.uploadService.newsUrl){
+        this.news.ImageUrl=this.uploadService.newsUrl;
+         }
+         else{
+           this.news.ImageUrl = this.news.ImageUrl
+         }
+      const callable = this.functions.httpsCallable('newsroom/editNews');
+        callable({Uid:Uid, Name:Name, ImageUrl: this.news.ImageUrl,Link : Link }).subscribe({
+          next: (data) => {
+            alert("News edited successfully");
+          },
+          error: (error) => {
+            console.error(error);
+          },
+          complete: () => console.info('Successful')
+        });
+    }
+    
+      deletenews(Uid: any){
+        const callable = this.functions.httpsCallable('newsroom/deleteNews');
+          callable({Uid:Uid}).subscribe({
+            next: (data) => {
+              alert("News deleted successfully");
+            },
+            error: (error) => {
+              console.error(error);
+            },
+            complete: () => { 
+              console.info('Successful deleted News')}
+          });
+      }
   
   submit(){
     if(this.uploadService.newsUrl){
    this.news.ImageUrl=this.uploadService.newsUrl;
    this.newsService.addNews(this.news);
+   if(this.newsService.uploadStateObservable){
+    this.showClose = true;
+      }
     }
     else{
       alert("No file Uploaded")
     }
+  }
+  close(){
+    this.showClose = false;
   }
 }

@@ -3,12 +3,12 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { getProducts } = require("../lib");
+const { getAllProducts } = require("../lib");
 
 exports.getProducts = function(request, response) {
     let status = 200;
 
-    getProducts().then((productsData) => {
+    getAllProducts().then((productsData) => {
         if (productsData) {
             const result = { data: { status: "OK", data: productsData } };
             return response.status(status).send(result);

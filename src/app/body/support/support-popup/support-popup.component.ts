@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Support } from 'src/app/Interfaces/SupportInterfaces';
 import { SupportServiceService } from 'src/app/services/support/support-service.service';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
+import { PopupHandlerService } from 'src/app/services/popup-handler-service/popup-handler.service';
 import { ToolsService } from 'src/app/services/tool/tools.service';
 
 @Component({
@@ -10,19 +12,34 @@ import { ToolsService } from 'src/app/services/tool/tools.service';
 })
 export class SupportPopupComponent implements OnInit {
 
-showSupportPopup=false;
-  name=''
-  contactEmail=''
-  supportType='Support Type'
-  message=''
-  support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false}
+  showSupportPopup: boolean =false;
+  dataReady: boolean = false;
+  @Input('name') name: string;
+  @Input('contactEmail') contactEmail: string;
+  supportType:string ='Select Request Type from below'
+  message:string;
+  support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false, State:"", AssignedTo:""}
   
-  constructor(public dateService:ToolsService, public supportService:SupportServiceService) { }
+  constructor(public dateService:ToolsService, public supportService:SupportServiceService, public authService:AuthServiceService,public popupService:PopupHandlerService) { }
 
   ngOnInit(): void {
-    
+    console.log("ngoninit check");
+    this.dataReady = true 
   }
+
+  isFormEmpty(Name:string, contactEmail:string, message:string, supportType:string){
+    if(Name == "" || contactEmail == "" || message == ""){
+      alert("Kindly fill all the fields !!")
+      return false;
+    }else{
+      return true;
+    }
+}
   submit(){
+    if (!this.authService.user) {
+      this.popupService.loginPopup=true;
+    }
+    else if(this.isFormEmpty(this.name, this.contactEmail, this.message, this.supportType)){
     this.showSupportPopup=false;
     this.support.ContactEmail=this.contactEmail
     this.support.Message=this.message
@@ -31,9 +48,12 @@ showSupportPopup=false;
     this.support.UserUid='';
     this.support.Date=this.dateService.date();
     this.support.Time=this.dateService.time();
+    this.support.State = 'New';
+    this.support.AssignedTo = '';
     this.supportService.createNewSupport(this.support);
-    
+    location.reload();
   }
+}
   closePopup(){
     this.showSupportPopup=false;
   }

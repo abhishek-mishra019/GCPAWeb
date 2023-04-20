@@ -4,7 +4,7 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
-const { mailer } = require("../Mailer/lib");
+const { mailer } = require("../mailer/lib");
 
 const base62 = {
     charset: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -42,6 +42,17 @@ exports.setRazorDetails = function(Uid, order) {
    return Promise.resolve(p1);
 };
 
+//  /**
+//   * Description
+//   * @param {any} Uid
+//   * @param {any} order
+//   * @return {any}
+//   */
+//  exports.getRazorDetails = function(Uid, order) {
+//     const p1 = db.collection("Registrations").doc(Uid).get().then((doc));
+//    return Promise.resolve(p1);
+// };
+
  /**
   * Description
   * @param {any} Id
@@ -55,7 +66,7 @@ exports.setRazorDetails = function(Uid, order) {
    return Promise.resolve(p1);
 };
 
-exports.setPaymentStatus = function(orderId, id) {
+exports.setPaymentStatus = function(id) {
     let data;
 
     const p1 = db.collection("Registrations").doc(id).get().then((doc)=>{
@@ -70,6 +81,7 @@ exports.setPaymentStatus = function(orderId, id) {
             RazorPayOrderDetails: data.RazorPayOrderDetails,
         });
         mailer(data.UserUid, "Payment_Complete", id);
+        mailer(data.UserUid, "Registration_Complete", id);
         return Promise.resolve(promise);
     });
 };
@@ -88,7 +100,7 @@ exports.setEcommercePaymentStatus = function(id) {
             PaymentStatus: "Complete",
             RazorPayOrderDetails: data.RazorPayOrderDetails,
         });
-        mailer(data.UserUid, "Payment_Complete", id);
+        // mailer(data.UserUid, "Payment_Complete", id);
         return Promise.resolve(promise);
     });
 };

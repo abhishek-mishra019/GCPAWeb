@@ -100,6 +100,7 @@ import { ECommerceComponent } from './body/e-commerce/e-commerce.component';
 import { ProductsComponent } from './body/e-commerce/products/products.component';
 import { BlogComponent } from './body/blog/blog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 import * as $ from 'jquery';
 import { EcommercePaymentStatusComponent } from './body/ecommerce-payment-status/ecommerce-payment-status.component';
 import { BlogHomeComponent } from './body/blog-home/blog-home.component';
@@ -123,7 +124,20 @@ import { MyOrdersComponent } from './body/my-orders/my-orders.component';
 import { CategoryComponentComponent } from './body/category-component/category-component.component';
 import { AmpRedirectComponent } from './body/amp-redirect/amp-redirect.component';
 import { TagComponent } from './body/tag/tag.component';
-
+import { ImgPopupComponent } from './body/gallery/img-popup/img-popup.component';
+import { CarouselComponent } from './body/gallery/carousel/carousel.component';
+import { PrivacyPolicyComponent } from './body/privacy-policy/privacy-policy.component';
+import { FaqComponent } from './body/faq/faq.component';
+import { SupportAdminComponent } from './body/dashboard/support-admin/support-admin.component';
+import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/support-details-admin/support-details-admin.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { SupportDataTableComponent } from './body/common-tools/support-data-table/support-data-table.component';
+import { StatesComponent } from './body/registration/address-contact/states/states.component';
+import { Section5Component } from './body/home/testimonials/section5/section5.component';
+import { Section6Component } from './body/home/testimonials/section6/section6.component';
+import { GCPA2022Component } from './body/gcpa2022/gcpa2022.component';
+import { GCPA2020Component } from './body/gcpa2020/gcpa2020.component';
+import { BetaV1Component } from './body/Registration/beta-v1/beta-v1.component';
 
 @NgModule({
   declarations: [
@@ -199,8 +213,9 @@ import { TagComponent } from './body/tag/tag.component';
     ProductDataTableComponent,
     ECommerceComponent,
     ProductsComponent,
-    BlogComponent,  
-    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent,
+    BlogComponent,
+    EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent, PrivacyPolicyComponent, FaqComponent, SupportAdminComponent, SupportDetailsAdminComponent, 
+    SupportDataTableComponent, StatesComponent, Section5Component, Section6Component, GCPA2022Component, GCPA2020Component, BetaV1Component,
   ],
   imports: [
     NgSelectModule,
@@ -208,6 +223,7 @@ import { TagComponent } from './body/tag/tag.component';
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
@@ -224,6 +240,7 @@ import { TagComponent } from './body/tag/tag.component';
     ReactiveFormsModule,
     NgxCaptchaModule,
     HttpClientModule,
+    MatIconModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

@@ -1,4 +1,10 @@
-<table mat-table class="full-width-table" matSort aria-label="Elements">
+<div class="search-container">
+    <mat-form-field appearance="fill">
+        <input matInput placeholder="search" (keyup)="filterData($event)">
+    </mat-form-field>
+</div>
+
+<table mat-table matSort class="full-width-table" matSort aria-label="Elements">
     <!-- uid Column -->
     <ng-container matColumnDef="Uid">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Uid</th>

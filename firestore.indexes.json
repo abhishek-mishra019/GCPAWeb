@@ -1,4 +1,20 @@
 {
-  "indexes": [],
-  "fieldOverrides": []
+  "indexes": [
+    { 
+      "collectionGroup": "Gallery",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "Status", "order": "ASCENDING" },
+        { "fieldPath": "Uid", "order": "ASCENDING" }
+      ]
+    },
+    { 
+      "collectionGroup": "Partners",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "Status", "order": "ASCENDING" },
+        { "fieldPath": "Uid", "order": "ASCENDING" }
+      ]
+    }
+  ]
 }

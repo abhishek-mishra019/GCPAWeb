@@ -6,8 +6,9 @@ h1 {
     font-family: 'Amaranth', sans-serif!important;
 }
 h2 {
-    color: #5095cf!important;
+    color: #000093!important;
     font-weight: 700!important;
+    text-align: left;
     font-family: 'Amaranth', sans-serif!important;
 }
 .mainp {
@@ -16,7 +17,9 @@ h2 {
     margin-top: 6px;
     font-weight: 600!important;
 }
-
+#paragraph{
+    font-family: 'Nunito Sans',sans-serif;
+}
 
 @media (min-width: 576px){
 

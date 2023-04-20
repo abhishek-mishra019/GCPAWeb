@@ -3,12 +3,12 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { getTestimonials } = require("../lib");
+const { getAllTestimonials } = require("../lib");
 
 exports.getTestimonials = function(request, response) {
     let status = 200;
 
-    getTestimonials().then((partnerData) => {
+    getAllTestimonials().then((partnerData) => {
         if (partnerData) {
             const result = { data: { status: "OK", data: partnerData } };
             return response.status(status).send(result);

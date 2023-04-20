@@ -25,6 +25,10 @@
     }
 }
 
+#box{
+    block-size: 150px;
+}
+
 .catp {
     font-size: 18px;
     font-weight: 700;

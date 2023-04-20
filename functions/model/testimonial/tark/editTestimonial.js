@@ -4,7 +4,6 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
-const { data } = require("jquery");
 const { editTestimonial } = require("../lib");
 
 exports.editTestimonial = function(request, response) {
@@ -17,7 +16,6 @@ exports.editTestimonial = function(request, response) {
     let result;
     editTestimonial(uid, achievement, imageUrl, name, testimonial).then(() => {
         result = { data: "Testimonial Updated successfully" };
-        console.log(data);
         return response.status(200).send(result);
     }).catch((error) => {
         result = { data: error };

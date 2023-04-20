@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
+import { map, Subject } from 'rxjs';
 import { FileData } from 'src/app/Interfaces/FileInterface';
 import { AuthServiceService } from '../auth-service/auth-service.service';
 import { UpdateRegistrationService } from '../update-registration/update-registration.service';
@@ -11,10 +11,13 @@ import { UpdateRegistrationService } from '../update-registration/update-registr
 })
 export class ExtraFilesServiceService {
   extraFiles:FileData[]
+  private uploadState: Subject<boolean> = new Subject<boolean>();
+  public uploadStateObservable = this.uploadState.asObservable();
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService, public router: Router) { }
 
   addFile( uid:string, file:FileData)  {
+    this.uploadState.next(false);
     let registrationId: any;
         const callable = this.functions.httpsCallable('registrations/addExtraFile');
             console.log("adding file");
@@ -28,7 +31,7 @@ export class ExtraFilesServiceService {
               },
             complete: (() =>{ 
               console.info('Successful')
-              alert("file addition Success");
+              this.uploadState.next(true);
              
           })
         });

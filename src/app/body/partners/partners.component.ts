@@ -49,8 +49,6 @@ export class PartnersComponent implements OnInit {
   constructor(public partnerService:PartnerServiceService) { }
 
   ngOnInit(): void {
-    this.partnerService.getPartners()
-    this.partnerService.partners
   }
 
 }

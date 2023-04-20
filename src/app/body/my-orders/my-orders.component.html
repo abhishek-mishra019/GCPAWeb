@@ -1,6 +1,6 @@
-<div class="pt-5 mt-5">
+<div class="myOrder p-5 mt-5">
     <h1 class="text-center">My Orders</h1>
-    <div *ngIf="dataReady">
+    <div *ngIf="dataReady;">
     <div *ngFor="let order of orders">
         <div class="card col-6 p-2 m-2 mx-auto">
             <div class="row">
@@ -22,5 +22,10 @@
         </div>
     </div>
 </div>
+<ng-container *ngIf="noOrders;">
+    <div class="text-center pt-5">
+       <p>You have no Order to Display. Please Check out the e-commerce section.</p> 
+    </div>
+</ng-container>
     
 </div>

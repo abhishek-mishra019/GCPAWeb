@@ -1,15 +1,15 @@
 <table mat-table class="full-width-table" matSort aria-label="Elements">
     <!-- Uid Column -->
     <ng-container matColumnDef="Uid">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header >Registration Id</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header >Application Id</th>
         <td mat-cell *matCellDef="let row">
             {{row.Uid}}
         </td>
     </ng-container>
-
+    
     <!-- FirstName Column -->
     <ng-container matColumnDef="FirstName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header >FirstName</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header >Name</th>
         <td mat-cell *matCellDef="let row">
             {{row.FirstName}}
         </td>
@@ -17,9 +17,9 @@
 
     <!-- LastName Column -->
     <ng-container matColumnDef="LastName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header >LastName</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header >Category</th>
         <td mat-cell *matCellDef="let row">
-            {{row.LastName}}
+            {{row.Category}}
         </td>
     </ng-container>
 
@@ -33,10 +33,10 @@
 
     <!-- PAYMENT Column -->
     <ng-container matColumnDef="Payment">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header >Payment</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header >Payment Status</th>
         <td mat-cell *matCellDef="let row">
             <div *ngIf="row.PaymentStatus != 'Complete'" >
-            <button class="btn btn-success" (click)="pay(row.Uid)">Pay</button></div>
+            <button class="btn btn-success" (click)="pay(row.Uid)">Pay Now</button></div>
             <div *ngIf="row.PaymentStatus == 'Complete'"> <h5 class="text-success"> Paid</h5></div>
         </td>
     </ng-container>

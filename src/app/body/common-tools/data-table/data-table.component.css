@@ -1,8 +1,11 @@
 .full-width-table {
     width: 100%;
-    background-color: transparent;
+    min-height: fit-content;
+    border-radius: 10px;
+    background-color: #f0f4f4;
     color: var(--text);
     font-family: var(--font);
+    margin-top: 8%;
 }
 
 mat-paginator,

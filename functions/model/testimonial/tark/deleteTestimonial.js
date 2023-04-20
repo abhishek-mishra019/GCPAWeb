@@ -4,7 +4,6 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
-const { data } = require("jquery");
 const { deleteTestimonial } = require("../lib");
 
 exports.deleteTestimonial = function(request, response) {
@@ -12,7 +11,6 @@ exports.deleteTestimonial = function(request, response) {
     let result;
     deleteTestimonial(uid).then(() => {
         result = { data: "Testimonial Deleted successfully" };
-        console.log(data);
         return response.status(200).send(result);
     }).catch((error) => {
         result = { data: error };

@@ -1,6 +1,6 @@
 <div class="text-center mt-4 ">
        
-    <owl-carousel-o class="text-centre"  [options]="customOptions" (translated)="getPassedData($event)">
+    <owl-carousel-o class="text-center"  [options]="customOptions" (translated)="getPassedData($event)">
     <ng-template carouselSlide  style="max-width: fit-content;">
         <div class="slide mx-auto" style="max-width: fit-content;">
             <app-sections></app-sections>
@@ -20,7 +20,18 @@
             <div class="slide mx-auto" style="max-width: fit-content;">
                 <app-section4></app-section4>
             </div>
-     </ng-template>
+    </ng-template>
+    <ng-template carouselSlide  style="max-width: fit-content;">
+        <div class="slide mx-auto" style="max-width: fit-content;">
+            <app-section5></app-section5>
+        </div>
+    </ng-template>
+    <ng-template carouselSlide  style="max-width: fit-content;">
+        <div class="slide mx-auto" style="max-width: fit-content;">
+            <app-section6></app-section6>
+        </div>
+    </ng-template>
+
     </owl-carousel-o>
 
 </div>

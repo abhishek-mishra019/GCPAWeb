@@ -4,9 +4,9 @@
     /* Reseting */
     
     
-    h2 ,.gcpatext, .gcborder{
+    h2 ,.gcpatext{
         color: #ef3789;
-    }
+    } 
     
     .modal{
        display: block;
@@ -16,12 +16,27 @@
         float: right;
     }
 
-    .gcpabutton{
+    /* .gcpabutton{
         background-color: #5095cf!important;
-    }
+    } */
 
     .back{
         background-color: rgba(0, 0, 0, 0.274) 
            }
 
-   
+.card, .modal-content{
+    border-radius: 20px !important;
+    }
+    .colouredButton{
+        background-color: #000093;
+    }
+
+    .borderr{
+        border: 1px solid #000093;
+    }
+
+#recaptcha{
+    text-align: center;
+    justify-content: center;
+    margin-left: 15%;
+}

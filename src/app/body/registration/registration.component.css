@@ -5,6 +5,17 @@ h1 {
     font-family: 'Amaranth', sans-serif!important;
 }
 
+ol{
+    padding-left: 1rem !important;
+}
+
+.hide {
+    display: none;
+  }
+      
+  .myDiv:hover + .hide {
+    display: block;
+  }
 @media (min-width: 576px) {
     .container {
         max-width: 570px;

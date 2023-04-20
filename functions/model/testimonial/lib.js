@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
 
-exports.addTestimonial = function(uid, name, testimonial, imageurl, achievement) {
+exports.addNewTestimonial = function(uid, name, testimonial, imageurl, achievement) {
     const testimonialData = db.collection("Testimonials").doc(uid).set({
         Uid: uid,
         Name: name,
@@ -18,7 +18,8 @@ exports.addTestimonial = function(uid, name, testimonial, imageurl, achievement)
     return Promise.resolve(testimonialData);
 };
 
-exports.getTestimonials = function() {
+
+exports.getAllTestimonials = function() {
     let query = db.collection("Testimonials");
     query = query.where("Status", "==", "Ok");
 
@@ -47,9 +48,7 @@ exports.editTestimonial = function(uid, achievement, imageUrl, name, testimonial
 };
 
 exports.deleteTestimonial = function(uid) {
-    const query = db.collection("Testimonials").doc(uid).update({
-        Status: "Deleted",
-    });
+    const query = db.collection("Testimonials").doc(uid).delete();
 
     return Promise.resolve(query);
 };

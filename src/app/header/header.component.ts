@@ -5,6 +5,7 @@ import { User } from '../Interfaces/UserInterface';
 import { AuthServiceService } from '../services/auth-service/auth-service.service';
 import { PopupHandlerService } from '../services/popup-handler-service/popup-handler.service';
 import { environment } from '../../environments/environment'
+import { StartSericeService } from '../services/start-serice.service';
 
 @Component({
   selector: 'app-header',
@@ -16,15 +17,16 @@ export class HeaderComponent implements OnInit {
   admin:boolean=false;
   useEmulator=false;
   
-  constructor(private router: Router, public authService:AuthServiceService, private popup:PopupHandlerService, public functions: AngularFireFunctions) { }
+  constructor(private router: Router, public authService:AuthServiceService, private popup:PopupHandlerService, public functions: AngularFireFunctions, public startService: StartSericeService) { }
   
   ngOnInit(): void {
     this.useEmulator=environment.useEmulators;
+    this.startService.StartApplication();
     this.authService.afauth.user.subscribe({
       next:(user:any)=>{
         this.authService.setCurrentUser(user as User);
         if (user) {
-          this.authService.getUser(user.uid)
+          this.authService.getUser(user.uid);
           this.loggedIn=true;
         }
         // this.popup.popupEnable()
@@ -33,6 +35,7 @@ export class HeaderComponent implements OnInit {
         console.error(error);
       },
       complete:()=>{
+        
         console.log('User fetched');
       }
     })
@@ -48,7 +51,7 @@ export class HeaderComponent implements OnInit {
   }
 
   loadyourRegistrations(){
-    this.router.navigate(['/yourRegistrations']);
+    this.router.navigate(['/MyRegistrations']);
   }
 
   loadDashboardPage(){

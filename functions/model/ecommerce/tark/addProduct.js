@@ -3,7 +3,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { addProduct } = require("../lib");
+const { addNewProduct } = require("../lib");
 const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 
@@ -20,7 +20,7 @@ exports.addProduct = function(request, response) {
 
     getRawData().then((doc) => {
         const productId = "PR" + (doc[0].NumberOfProducts + 1);
-        addProduct(productId, productName, disc, numberOfImages, images, productStatus, price).then(() => {
+        addNewProduct(productId, productName, disc, numberOfImages, images, productStatus, price).then(() => {
             const result = { data: "Product Addded Successfully" };
             console.log("Product Addded Successfully");
             updateData("product").then(() => console.log("Product Raw Data Updated"));

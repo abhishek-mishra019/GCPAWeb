@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
 
-exports.addPhoto = function(uid, date, imageurl) {
+exports.addNewPhoto = function(uid, date, imageurl) {
     const galleryData = db.collection("Gallery").doc(uid).set({
         Uid: uid,
         Date: date,
@@ -17,8 +17,8 @@ exports.addPhoto = function(uid, date, imageurl) {
     return Promise.resolve(galleryData);
 };
 
-exports.getPhotoes = function(start, end) {
-    let query = db.collection("Gallery");
+exports.getAllPhotoes = function(start, end) {
+    let query = db.collection("Gallery").orderBy("Uid");
     query = query.where("Status", "==", "Ok");
 
     const promise = query.get().then((doc) => {
@@ -37,7 +37,7 @@ exports.getPhotoes = function(start, end) {
 
     return Promise.resolve(promise);
 };
-exports.deletePhoto = function(uid) {
+exports.deletePhotoByUid = function(uid) {
     const query = db.collection("Gallery").doc(uid).update({
         Status: "Deleted",
     });

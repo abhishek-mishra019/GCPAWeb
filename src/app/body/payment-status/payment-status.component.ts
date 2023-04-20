@@ -55,7 +55,7 @@ export class PaymentStatusComponent implements OnInit {
   }
 
   openRegistrationDetail(){
-    this.router.navigate(['/registrationDetail',this.registrationId])
+    this.router.navigate(['/registrationDetail/',this.registrationId])
   }
 
 }

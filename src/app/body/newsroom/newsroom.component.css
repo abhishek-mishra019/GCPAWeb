@@ -4,6 +4,10 @@ h1 {
     font-weight: 700!important;
     font-family: 'Amaranth', sans-serif!important;
 }
+.bg-white{
+    border-radius: 10%;
+}
+
 
 @media (min-width: 576px){
 

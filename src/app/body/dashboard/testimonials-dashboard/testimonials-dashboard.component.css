@@ -93,3 +93,8 @@ img {
         max-width: 1140px;
     }
 }
+#SuccessIcon{
+    color: green;
+    font-size: 48px;
+    text-align: left !important;
+}

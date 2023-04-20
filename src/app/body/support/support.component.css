@@ -5,6 +5,17 @@ h1 {
     font-family: 'Amaranth', sans-serif!important;
 }
 
+.list-group{
+    border-radius: 1.5rem;
+}
+
+.back {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+    height: 100vh;
+}
+
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -14,6 +25,9 @@ h1 {
 @media (min-width: 768px) {
     .container {
         max-width: 720px;
+    }
+    .table{
+        margin: 2% 20% 5% 20%;
     }
 }
 
@@ -29,18 +43,11 @@ h1 {
     }
 }
 
-.back {
-    background-image: url("../../../assets/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
 .btn {
     color: #fff!important;
-    background-color: #5095cf!important;
+    background-color: #000093!important;
     background-image: none;
-    border-color: #5095cf!important;
+    border-color: #000093!important;
     display: inline-block;
     font-weight: 400;
     user-select: none;
@@ -57,3 +64,6 @@ h1 {
     background-color: rgba(170, 170, 170, 0.391);
     height: auto;
 }
+
+
+

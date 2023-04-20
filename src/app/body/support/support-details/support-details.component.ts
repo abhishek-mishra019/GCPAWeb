@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Activity } from 'src/app/Interfaces/ActivityInterface';
 import { Support } from 'src/app/Interfaces/SupportInterfaces';
 import { ActivityServiceService } from 'src/app/services/activity/activity-service.service';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { SupportServiceService } from 'src/app/services/support/support-service.service';
 import { ToolsService } from 'src/app/services/tool/tools.service';
 
@@ -13,7 +14,7 @@ import { ToolsService } from 'src/app/services/tool/tools.service';
 })
 export class SupportDetailsComponent implements OnInit {
 
-  constructor(public supportService:SupportServiceService,public activityService:ActivityServiceService, public dateService:ToolsService,private route: ActivatedRoute) { }
+  constructor(public supportService:SupportServiceService,public authService:AuthServiceService ,public activityService:ActivityServiceService, public dateService:ToolsService,private route: ActivatedRoute) { }
   activities:Activity[]=[];
   
   activity:Activity={Message:"",TicketId:"",Date:"",Time:"",Sendor:"",ActId:""}

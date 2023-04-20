@@ -44,6 +44,12 @@ import { CategoriesComponent } from './body/how-it-works/categories/categories.c
 import { CategoryComponentComponent } from './body/category-component/category-component.component';
 import { AmpRedirectComponent } from './body/amp-redirect/amp-redirect.component';
 import { TagComponent } from './body/tag/tag.component';
+import { PrivacyPolicyComponent } from './body/privacy-policy/privacy-policy.component';
+import { FaqComponent } from './body/faq/faq.component';
+import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/support-details-admin/support-details-admin.component';
+import { GCPA2022Component } from './body/gcpa2022/gcpa2022.component';
+import { GCPA2020Component } from './body/gcpa2020/gcpa2020.component';
+import { BetaV1Component } from './body/Registration/beta-v1/beta-v1.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -52,18 +58,21 @@ const routes: Routes = [
   {path:'partners',component:PartnersComponent},
   {path:'gallery',component:GalleryComponent},
   {path:'newsroom',component:NewsroomComponent},
-  {path:'terms_condi',component:TermsCondiComponent},
+  {path:'terms-conditions',component:TermsCondiComponent},
   {path:'testimonial',component:TestimonialComponent},
   {path:'contact',component:ContactComponent},
   // {path:'LoginPage', component: LoginPageComponent},
   {path:'Registration', component: RegistrationComponent},
-  {path:'yourRegistrations', component: NumberOfRegistrationsComponent},
+  {path:'Registration/BetaV1', component: BetaV1Component},
+  {path:'Registration/BetaV1/:accessId', component: RegistrationComponent},
+  {path:'MyRegistrations', component: NumberOfRegistrationsComponent},
   {path:'payment/:registrationId', component: PaymentComponent},
   {path:'paymentStatus/:orderId/:paymentId/:signature/:id', component: PaymentStatusComponent},
   {path:'OrderStatus/:orderId/:paymentId/:signature/:id', component: EcommercePaymentStatusComponent},
   {path:'supportPage', component: SupportComponent},
   {path:'supportDetails/:ticketId', component: SupportDetailsComponent,canActivate: [AngularFireAuthGuard]},
   {path:'dashboard', component:DashboardComponent},
+  {path:'dashboard/supportAdmin/:ticketId', component:SupportDetailsAdminComponent,canActivate: [AngularFireAuthGuard]},
   {path:'registrationDetail/:uid', component:RegistrationDetailComponent, canActivate: [AngularFireAuthGuard]},
   {path:'registrationDetailAdmin/:uid', component:RegistrationDetailsAdminComponent, canActivate: [AngularFireAuthGuard]},
   {path:'editRegistration/:uid', component:EditRegistrationComponent, canActivate: [AngularFireAuthGuard]},
@@ -75,6 +84,8 @@ const routes: Routes = [
   {path:'usersDashboard', component:UsersDashboardComponent},
   {path:'ecommerceDashboard', component:EcommerceDashboardComponent },
   {path:'ecommerce', component:ECommerceComponent },
+  {path:'gcpa2022', component:GCPA2022Component},
+  {path:'gcpa2020', component:GCPA2020Component},
   {path:'products/:productId/:productName', component:ProductsComponent, canActivate: [AngularFireAuthGuard] },
   {path:'blog', component:BlogHomeComponent},
   {path:'blog/parenting', component:ParentingPageComponent},
@@ -100,10 +111,8 @@ const routes: Routes = [
   {path:'blog/:slug/feed', component:AmpRedirectComponent},
   {path:'blog/:slug', component:BlogComponent},
   {path:'myOrders', component:MyOrdersComponent},
-
-
-
-
+  {path:'privacy-policy', component:PrivacyPolicyComponent},
+  {path:'faq', component:FaqComponent},
 ];
 
 @NgModule({

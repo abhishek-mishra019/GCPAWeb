@@ -1,47 +1,78 @@
 <app-login-page></app-login-page>
+ <!-- *ngIf="authService.loggedInUser.Admin || openForm" -->
 <div class="back mt-5 pt-5 pb-3">
-    <h1 class="text-center mb-5">Registration Form</h1>
-    <div class="row container mx-auto">
-        <div class="container col-md-6 px-5">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h1 class="text-left mb-3">APPLICATION FORM
+                <!-- <mat-icon  style="color: black !important;"aria-hidden="false" id="info">info</mat-icon>  -->
+            </h1>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+    <div class="row container mx-auto pt-2">
+        <div class="container col-md-7 px-5">
             <form #form="ngForm">
                 <app-personal-details></app-personal-details>
                 <app-address-contact></app-address-contact>
                 <app-category-upload></app-category-upload>
-
-                <div class="my-5">
-
-                    <input type="checkbox" required (change)="accepted()"> <span> I agree to the <a routerLink="/terms_condi">Terms & Conditions</a> of Global Child Prodigy Awards.<span class="text-danger">*</span></span>
+                <div class="pb-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="">How did you hear about the Global Child Prodigy Awards ?</h5>
+                            <select [(ngModel)]="howHeard" class="form-select">
+                                <option value="Social Media">Social Media</option>
+                                <option value="Friends/Relatives">Friends/Relatives</option>
+                                <option value="Google Search">Google Search</option>
+                                <option value="School/Academy">School / Academy</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-5">
-                    <input type="checkbox" required (change)="emailUpdates()"> <span> Recieve regular updates and notifications via email.</span>
-
+                <div class="my-3">
+                    <input type="checkbox" required (change)="accepted()"> <span> &nbsp;I am at least 13 years old and I
+                        agree
+                        to the <a routerLink="/terms-conditions">Terms & Conditions</a> and <a
+                            routerLink="/privacy-policy">Privacy Policy</a> of Global Child Prodigy Awards.<span
+                            class="text-danger">*</span></span>
                 </div>
-                <!--  -->
-                <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+                <div class="mb-4">
+                    <input type="checkbox" required (change)="emailUpdates()"> <span> &nbsp;I would like to Recieve
+                        regular
+                        updates and notifications via email.</span>
+                </div>
+                <app-loader *ngIf="registerService.showLoader"></app-loader>
+                <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required
+                    [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)">
+                </re-captcha>
                 <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
                     <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
                 </div>
-                <!--  -->
-                <button type="submit" class="btn btn-primary mt-3 " [disabled]="registerService.disableSubmit" (click)="send(form,$event)">Submit</button>
+                <button type="submit" class="btn btn-primary mt-3 "
+                    [disabled]="registerService.disableSubmit || emailupdate == false || termsAndCond == false"
+                    (click)="send(form,$event)">Proceed to Apply
+                </button>
             </form>
-            <small  class="text-danger" *ngIf="registerService.fillAll">
+            <small class="text-danger" *ngIf="registerService.fillAll">
                 Please fill all required fields
-            </small> 
-
+            </small>
             <div class="pt-5">
                 <p>
-                    If you are facing any issue while registration please email us at info@gcpawards.com
+                    If you are facing any issue while registration please raise a <a routerLink="/supportPage">support
+                        ticket</a>
                 </p>
             </div>
         </div>
-        <div class="col-md-6 container-fluid">
+        <div class="col-md-5">
             <img class="img-fluid" src="../../../assets/happy.png " alt=" ">
         </div>
 
     </div>
 </div>
 
-<div class="text-center p-5 mt-5">
-    <h1>Currently we are not accepting the profiles. 
+<!-- <div class="text-center p-5 mt-5" *ngIf="!openForm">
+    <h1>Currently we are not accepting the profiles.
         For any queries please reach out to info@gcpawards.com</h1>
-</div>
+</div> -->

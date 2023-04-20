@@ -1,52 +1,75 @@
 <div class="mb-5">
-    <h5><span><div class="badge bg-primary text-wrap"> 1</div></span> Personal Details</h5>
+    <h5 class="fw-bold"><span><div class="badge bg-primary text-wrap"> 1</div></span> Participant's Details</h5>
     <div class="pb-4">
-        <h5 class="fw-bold">Child's Name <span class="text-danger">*</span></h5>
+        <h5 class="">Child's Name <span class="text-danger">*</span></h5>
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-4 ">
+                    <!-- <div class="col-md-4 ">
                         <select class="form-select" aria-label="Default select example" [(ngModel)]="prefix">
                             <option selected>Prefix</option>
                             <option value="Mr.">Mr.</option>
                             <option value="Miss">Miss</option>
                         </select>
+                    </div> -->
+                    <div class="col-md-6">
+                    <input type="text" class="form-control " placeholder="First Name" [(ngModel)]="firstName" required>
                     </div>
-                    <div class="col-md-4">
-                    <input type="text" class="form-control bg-light" placeholder="First Name" [(ngModel)]="firstName" required>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control bg-light" placeholder="Last Name" [(ngModel)]="lastName" required>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control " placeholder="Last Name" [(ngModel)]="lastName" required>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="pb-4">
-        <h5 class="fw-bold">Guardian's Name </h5>
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-
                     <div class="col-md-6">
-                        <input type="text" class="form-control bg-light" placeholder="First Name" [(ngModel)]="gaurdFirst">
+                        <h5 class="">Date of Birth <span class="text-danger">*</span></h5>
+                        <input type="date" class=" form-control " [(ngModel)]="dob">
                     </div>
-                    <div class="col-md-6">
-                        <input type="text" class="form-control bg-light" placeholder="Last Name" [(ngModel)]="gaurdLast">
+                    <div class=" col-md-6 ">
+                        <h5 class="">Gender <span class="text-danger ">*</span></h5>
+                        <select class="form-select" aria-label="Default select example" [(ngModel)]="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Preferred Not to Answer">Prefer Not to Say</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div>
-        <h5 class="fw-bold">Date of Birth<span class="text-danger">*</span></h5>
+    <div class="pb-4">
+        <h5 class="">Guardian's Name<span class="text-danger">*</span> </h5>
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-4 ">
-                        <input type="date" class=" form-control bg-light" [(ngModel)]="dob">
+
+                    <div class="col-md-6">
+                        <input type="text" class="form-control " placeholder="First Name" [(ngModel)]="gaurdFirst">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control " placeholder="Last Name" [(ngModel)]="gaurdLast">
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+        <h5 class="">Guardian’s Relation with Participant</h5>
+        <div class="row">
+            <div class="col-md-12">
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="relationship">
+                    <option value="Father">Father</option>
+                    <option value="Mother">Mother</option>
+                    <option value="Mentor/Teacher">Mentor / Teacher</option>
+                    <option value="Family Relative">Family Relative</option>
+                    <option value="Others">Others</option>
+                </select>
             </div>
         </div>
     </div>

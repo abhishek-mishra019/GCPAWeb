@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
@@ -13,27 +14,27 @@ import { RegistrationDataTableDataSource } from '../registration-data-table/regi
 })
 export class RegistrationDataTableComponent implements OnInit,AfterViewInit {
 
-  @Input('dataForTable') dataForTable: Register[];
+  @Input('dataForTable') dataForTable: Register[];  
   @Input('displayColoumns') displayColoumns: string[];
   @Input('pageSize') pageSize: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Register>;
-  dataSource: RegistrationDataTableDataSource;
+  dataSource!:MatTableDataSource<any>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns:string[] = [];
   
 
-  constructor(private router: Router) {
-    this.dataSource = new RegistrationDataTableDataSource();
-  }
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     if(this.dataForTable != undefined) {
+      this.dataSource = new MatTableDataSource(this.dataForTable);
+      this.dataSource.sort = this.sort;
       this.dataSource.data = this.dataForTable;
-      this.displayedColumns = this.displayColoumns;
+      this.displayedColumns = this.displayColoumns;   
     }
   }
 
@@ -41,6 +42,10 @@ export class RegistrationDataTableComponent implements OnInit,AfterViewInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  filterData($event:any){
+    this.dataSource.filter = $event.target.value;
   }
 
   openRegistrationDetail(Uid:string){

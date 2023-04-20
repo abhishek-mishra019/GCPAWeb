@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import { map } from 'rxjs';
+import { map, Subject } from 'rxjs';
 import { FileData } from 'src/app/Interfaces/FileInterface';
 import { Partners } from 'src/app/Interfaces/Partners';
 import { AuthServiceService } from '../auth-service/auth-service.service';
@@ -13,9 +13,12 @@ export class PartnerServiceService {
 
   partners:Partners[]=[]
   loader=true;
+  private uploadState: Subject<boolean> = new Subject<boolean>();
+  public uploadStateObservable = this.uploadState.asObservable();
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService , public authService:AuthServiceService) { }
   addPartner(partner:Partners)  {
+    this.uploadState.next(false);
     const callable = this.functions.httpsCallable('partners/addPartner');
         console.log("add partner");
         callable({ uid:partner.Uid, type:partner.Type, name:partner.Name, imageUrl:partner.ImageUrl }).subscribe({
@@ -28,7 +31,7 @@ export class PartnerServiceService {
           },
           complete: (() =>{ 
             console.info('Successful')
-            alert("file addition Success");
+            this.uploadState.next(true);
            
         })
     });
@@ -36,22 +39,20 @@ export class PartnerServiceService {
   
   getPartners(){
     const callable = this.functions.httpsCallable("partners/getPartners");
-  callable({ }).pipe(map(res=>{
-    const data = res.data as Partners[];
-    return data;
-  })).subscribe({
-    next: (data) => {
-      this.partners = data;
-    },
-    error: (error) => {
-      console.error(error);
-    },
-    complete: () => {
-      console.info('Getting Partners successful')
-      this.loader=false;
-    }
-  });
-}
-
-
+    callable({ }).pipe(map(res=>{
+      const data = res.data as Partners[];
+      return data;
+    })).subscribe({
+      next: (data) => {
+        this.partners = data;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        console.info('Getting Partners successful')
+        this.loader=false;
+      }
+    });
+  }
 }

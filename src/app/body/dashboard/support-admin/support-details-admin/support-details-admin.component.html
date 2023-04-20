@@ -1,0 +1,82 @@
+<div class="back mt-5 pt-5 pb-5">
+    <h1 class="text-center pt-3">Support Details</h1>
+    <div class="container" *ngIf="supportService.support">
+        <div class="row pt-5 text-center">
+            <div class="col-md-2"></div>
+            <div class="col-md-4 fs-5">
+                <b>Name:</b> {{supportService.support.Name}}
+            </div>
+            <div class="col-md-4 fs-5">
+                <b>Type:</b> {{supportService.support.SupportType}} </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row pt-5 text-center">
+            <div class="col-md-2"></div>
+            <div class="col-md-4 fs-5">
+                <b>Support Date:</b> {{supportService.support.Date}}
+            </div>
+            <div class="col-md-4 fs-5">
+                <b>Support Time:</b> {{supportService.support.Time}} </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row pt-5 text-center">
+            <div class="col-md-2"></div>
+            <div class="col-md-4 fs-5">
+                <b>Description:</b> {{supportService.support.Message}}
+            </div>
+            <div class="col-md-4 fs-5">
+                <b>Ticket Id:</b> {{supportService.support.TicketId}}
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row pt-5 text-center">
+            <div class="col-md-2"></div>
+            <div class="col-md-4 fs-5">
+                <label for="Status">Status</label>
+                <select class="form-select  form-control-sm mt-2 bg-light" [(ngModel)]="supportService.support.State" id="Status" required [ngModelOptions]="{standalone: true}">
+                    <option value = "New">New</option>
+                    <option value="InProgress">InProgress</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+            </div>
+            <div class="col-md-4 fs-5">
+                <label for="AssignedTo">AssignedTo</label>
+                <select class="form-select  form-control-sm mt-2 bg-light" [(ngModel)]="supportService.support.AssignedTo" id="AssignedTo" required [ngModelOptions]="{standalone: true}">
+                    <option value="GCP L1"> GCP L1 </option>
+                    <option value="GCP L2"> GCP L2 </option>
+                    <option value="GCP L3"> GCP L3 </option>
+                </select>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button class="btn btn-outline-secondary m-2" (click)="updateSupportTicket(supportService.support.TicketId,supportService.support.State,supportService.support.AssignedTo)" type="button">Update support Ticket</button>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row pt-5 mt-4 text-center">
+            <div class="col-md-2"></div>
+            <div class="card col-md-8 border-3" style="border-color: #ef3789;">
+                <div class="card-title fs-6 pt-1">
+                    Support Chat
+                </div>
+                <div class="card-body">
+                    <ng-container *ngFor="let activity of activityService.activities">
+
+                        <div [ngClass]="{'border rounded mt-1': true,'text-end sent':activity.Sendor==='admin','text-start recieved':activity.Sendor==='user'}">{{activity.Message}}</div>
+
+                    </ng-container>
+
+                    <div class="input-group mt-3">
+                        <input type="text" class="form-control" placeholder="Type Your Message Here" aria-describedby="button-addon2" [ngModelOptions]="{standalone: true}" [(ngModel)]="messageSent">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="sendMessage(supportService.support.TicketId)">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"> </div>
+        </div>
+        <div class="text-center pt-2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="sendMail()">Send Remainder mail</button>
+        </div>
+    </div>
+</div>

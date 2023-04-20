@@ -36,7 +36,7 @@ export class BlogComponent implements OnInit {
   }
 
   getAllPosts(){
-    this.wpService.getAllPosts();
+    // this.wpService.getAllPosts();
     this.wpService.allPostObservable.subscribe(data=>{
       this.allPosts = data;
     })

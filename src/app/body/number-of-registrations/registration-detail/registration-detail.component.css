@@ -9,6 +9,12 @@ h4 {
     font-family: 'Amaranth', sans-serif!important;
 }
 
+#SuccessIcon{
+    color: green;
+    font-size: 48px;
+    text-align: left !important;
+}
+
 @media (min-width: 576px) {
     .container {
         max-width: 570px;

@@ -12,32 +12,32 @@
     </div>
 
    <div class="row pt-4">
-    <div class="col-lg-4 col-md-4 col-sm-4" [id]="allPosts[0]">
+    <div class="col-lg-4 col-md-4 col-sm-4" [id]="wpService.popularPosts[0]">
     
-        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', allPosts[0].slug]"[ngStyle]="{'background-image': 'url(' + allPosts[0].yoast_head_json.og_image[0].url + ')'}"></a>
+        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', wpService.popularPosts[0].slug]"[ngStyle]="{'background-image': 'url(' + wpService.popularPosts[0].yoast_head_json.og_image[0].url + ')'}"></a>
         <div class="card-block">
-        <h2 class="card-title text"><a [routerLink]="['/blog', allPosts[0].slug]">{{allPosts[0].yoast_head_json.title}}</a></h2>
-        <span class="card-text d-block text" [innerHtml]="allPosts[0].excerpt.rendered"></span>
+        <h2 class="card-title text"><a [routerLink]="['/blog', wpService.popularPosts[0].slug]">{{wpService.popularPosts[0].yoast_head_json.title}}</a></h2>
+        <span class="card-text d-block text" [innerHtml]="wpService.popularPosts[0].excerpt.rendered"></span>
       
         </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4" [id]="allPosts[1]">
+    <div class="col-lg-4 col-md-4 col-sm-4" [id]="wpService.popularPosts[1]">
     
-        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', allPosts[1].slug]"[ngStyle]="{'background-image': 'url(' + allPosts[1].yoast_head_json.og_image[0].url + ')'}"></a>
+        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', wpService.popularPosts[1].slug]"[ngStyle]="{'background-image': 'url(' + wpService.popularPosts[1].yoast_head_json.og_image[0].url + ')'}"></a>
         <div class="card-block">
-        <h2 class="card-title text"><a [routerLink]="['/blog', allPosts[1].slug]">{{allPosts[1].yoast_head_json.title}}</a></h2>
-        <span class="card-text d-block text" [innerHtml]="allPosts[1].excerpt.rendered"></span>
+        <h2 class="card-title text"><a [routerLink]="['/blog', wpService.popularPosts[1].slug]">{{wpService.popularPosts[1].yoast_head_json.title}}</a></h2>
+        <span class="card-text d-block text" [innerHtml]="wpService.popularPosts[1].excerpt.rendered"></span>
       
         </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4" [id]="allPosts[2]">
+    <div class="col-lg-4 col-md-4 col-sm-4" [id]="wpService.popularPosts[2]">
     
-        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', allPosts[2].slug]"[ngStyle]="{'background-image': 'url(' + allPosts[2].yoast_head_json.og_image[0].url + ')'}"></a>
+        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', wpService.popularPosts[2].slug]"[ngStyle]="{'background-image': 'url(' + wpService.popularPosts[2].yoast_head_json.og_image[0].url + ')'}"></a>
         <div class="card-block">
-        <h2 class="card-title text"><a [routerLink]="['/blog', allPosts[2].slug]">{{allPosts[2].yoast_head_json.title}}</a></h2>
-        <span class="card-text d-block text" [innerHtml]="allPosts[2].excerpt.rendered"></span>
+        <h2 class="card-title text"><a [routerLink]="['/blog', wpService.popularPosts[2].slug]">{{wpService.popularPosts[2].yoast_head_json.title}}</a></h2>
+        <span class="card-text d-block text" [innerHtml]="wpService.popularPosts[2].excerpt.rendered"></span>
       
         </div>
         </div>

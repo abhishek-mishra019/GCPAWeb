@@ -1,194 +1,243 @@
-<div class="back mt-5 pt-5 pb-5" style="min-height: 52rem;" >
-<h1 class="text-center py-3">Registration Details</h1>
-<div class="container" >
-	<div class="main-body">
-		<div class="row">
-			<div class="col-lg-4">
-				<div class="card">
-					<div class="card-body">
-						<div class="d-flex flex-column align-items-center text-center">
-							<img onerror="this.src='../../../../assets/defaultavatar.jpg'" [src]="registerService.registration.Photo" class="rounded-circle p-1" style="background-color: #5095cf;" width="110">
-							<div class="mt-3">
-								<h4>{{registerService.registration.FirstName}} {{registerService.registration.LastName}}</h4>
-								<p class="text-secondary mb-1">Category: <b>{{registerService.registration.Category}}</b></p>
-								<p class="text-muted font-size-sm">{{registerService.registration.Country}}</p>
-							</div>
-						</div>
-						<hr class="my-4" style="border: 1px solid #5095cf;"/>
-						<div class="text-center">
-							<h4>Achievement</h4>
-							<p class="text-muted font-size-sm">{{registerService.registration.Achievement}}</p>
-						</div>
+<div class="back mt-5 pt-5 pb-5" style="min-height: 52rem;">
+	<h1 class="text-center py-3">Application Details</h1>
+	<app-loader *ngIf="registerService.showLoader"></app-loader>
+	<div class="container pb-4" *ngIf="!registerService.showLoader">
+		<div class="main-body">
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex flex-column align-items-center text-center">
+								<a [href]="registerService.registration.Photo"><img
+										onerror="this.src='../../../../assets/defaultavatar.jpg'"
+										[src]="registerService.registration.Photo" class="rounded-circle p-1"
+										style="background-color: #5095cf;" width="110"></a>
+								<div class="mt-3">
+									<h4>{{registerService.registration.FirstName}}
+										{{registerService.registration.LastName}}</h4>
 
-					</div>
-				</div>
-				<div class="card radius-10 mt-3 ">
-
-					<div class="row text-center card-body text-center">
-					<h4 class="pb-3">Upload Files</h4>
-					<div class="col-4">
-						<button type="button" class="btn btn-primary gcpabutton" data-bs-toggle="modal" data-bs-target="#exampleModal">Image</button>
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<form class="text center">
-											<input class="form-control bg-light" type="file" accept="image/*" multiple (change)="photoUpload($event)">
-											<ng-container *ngIf="uploadService.fileUploadStatus && photoStatus">
-												<div class="progress" style="height: 10px; margin-top: 10px;">
-													<div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': progressPhoto + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-												</div>
-												Uploading {{fileName}} ...
-											</ng-container>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary gcpabutton" (click)="uploadFilePhoto()">Save changes</button>
-									</div>
-								</div>
-							</div>
-						</div>	
-					</div>
-					<div class="col-4">
-						<button type="button" class="btn btn-primary gcpabutton" data-bs-toggle="modal" data-bs-target="#exampleModalVideo">Video</button>
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModalVideo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Upload Video</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-										<form class="text center">
-											<input class="form-control bg-light" type="file" accept="video/*" multiple (change)="videoUpload($event)">
-											<ng-container *ngIf="uploadService.fileUploadStatus && videoStatus">
-												<div class="progress" style="height: 10px; margin-top: 10px;">
-													<div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': progressVideo + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-												</div>
-												Uploading {{fileName}} ...
-											</ng-container>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary gcpabutton" (click)="uploadFileVideo()">Save changes</button>
-									</div>
+									<p class="text-secondary mb-1"><b>ID:</b>
+										{{registerService.registration.Uid}}</p>
+									<p class="text-secondary mb-1"><b>Category:</b>
+										{{registerService.registration.Category}}</p>
+									<p class="text-muted font-size-sm"><b>{{registerService.registration.Country}}</b>
+									</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-4">
-						<button type="button" class="btn btn-primary gcpabutton" data-bs-toggle="modal" data-bs-target="#exampleModalDoc">PDF</button>
-						<!-- Modal -->
-						<div class="modal fade" id="exampleModalDoc" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Upload PDF/Doc</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					<div class="card radius-10 mt-3 ">
+						<div class="row text-center card-body text-center">
+							<h4 class="pb-3">Upload Files</h4>
+							<div class="col-4">
+								<button type="button" class="btn btn-primary gcpabutton" data-bs-toggle="modal"
+									data-bs-target="#exampleModal">Image</button>
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModal" tabindex="-1"
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal"
+													(click)="close()" aria-label="Close"></button>
+											</div>
+											<div class="modal-body" *ngIf="!showClose">
+												<form class="text center">
+													<input class="form-control bg-light" type="file" accept="image/*"
+														multiple (change)="photoUpload($event)">
+													<ng-container *ngIf="uploadService.fileUploadStatus && photoStatus">
+														<div class="progress" style="height: 10px; margin-top: 10px;">
+															<div class="progress-bar bg-success" role="progressbar"
+																[ngStyle]="{'width': progressPhoto + '%'}"
+																aria-valuenow="75" aria-valuemin="0"
+																aria-valuemax="100"></div>
+														</div>
+														Uploading {{fileName}} ...
+													</ng-container>
+												</form>
+											</div>
+											<div class="modal-footer" *ngIf="!showClose">
+												<button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary gcpabutton"
+													(click)="uploadFilePhoto()">Save changes</button>
+											</div>
+
+											<div class="container-fluid modal-body px-4" *ngIf="showClose">
+												<ng-container>
+													<div class="row mx-5">
+														<div class="col-md-4"></div>
+														<div class="col-md-4 mr-2">
+															<mat-icon aria-hidden="false"
+																id="SuccessIcon">check_circle_outline</mat-icon>
+														</div>
+														<div class="col-md-4"></div>
+													</div>
+													<div class="row">
+														<div class="col-md-3"></div>
+														<div class="col-md-6">
+															<div class="row text-center" style="font-size: medium;">
+																Image uploaded Successfully !</div>
+														</div>
+														<div class="col-md-3"></div>
+													</div>
+													<div class="row pt-2">
+														<div class="col-md-4"></div>
+														<div class="col-md-4 pt-2 px-4">
+															<button class="btn btn-success" type="button"
+																data-bs-dismiss="modal" (click)="close()"
+																style="margin-left: 10px;">Close</button>
+														</div>
+														<div class="col-md-4"></div>
+													</div>
+												</ng-container>
+											</div>
+										</div>
 									</div>
-									<div class="modal-body">
-										<form class="text center">
-											<input class="form-control bg-light" type="file" accept=".doc,.pdf" multiple (change)="docUpload($event)">
-											<ng-container *ngIf="uploadService.fileUploadStatus && docStatus">
-												<div class="progress" style="height: 10px; margin-top: 10px;">
-													<div class="progress-bar bg-success" role="progressbar" [ngStyle]="{'width': progressDoc + '%'}" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-												</div>
-												Uploading {{fileName}} ...
-											</ng-container>
-										</form>
+								</div>
+							</div>
+							<div class="col-4">
+								<button type="button" class="btn btn-primary gcpabutton" data-bs-toggle="modal"
+									data-bs-target="#exampleModalVideo">Video</button>
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModalVideo" tabindex="-1"
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Upload Video</h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal"
+													aria-label="Close"></button>
+											</div>
+											<div class="modal-body" *ngIf="!showClose">
+												<input class="form-control bg-light" type="text" [(ngModel)]="videoUrl"
+													placeholder="Paste your Video Link here!" name="videoURL">
+											</div>
+											<div class="modal-footer" *ngIf="!showClose">
+												<button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary gcpabutton"
+													(click)="uploadFileVideo()">Save changes</button>
+											</div>
+											<div class="container-fluid modal-body px-4" *ngIf="showClose">
+												<ng-container>
+													<div class="row mx-5">
+														<div class="col-md-4"></div>
+														<div class="col-md-4 mr-2">
+															<mat-icon aria-hidden="false"
+																id="SuccessIcon">check_circle_outline</mat-icon>
+														</div>
+														<div class="col-md-4"></div>
+													</div>
+													<div class="row">
+														<div class="col-md-3"></div>
+														<div class="col-md-6">
+															<div class="row text-center" style="font-size: medium;">
+																Video uploaded Successfully !</div>
+														</div>
+														<div class="col-md-3"></div>
+													</div>
+													<div class="row pt-2">
+														<div class="col-md-4"></div>
+														<div class="col-md-4 pt-2 px-4">
+															<button class="btn btn-success" type="button"
+																data-bs-dismiss="modal" (click)="close()"
+																style="margin-left: 10px;">Close</button>
+														</div>
+														<div class="col-md-4"></div>
+													</div>
+												</ng-container>
+											</div>
+										</div>
 									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary gcpabutton" (click)="uploadFileDoc()">Save changes</button>
+								</div>
+							</div>
+							<div class="col-4">
+								<button type="button" class="btn btn-primary gcpabutton" data-bs-toggle="modal"
+									data-bs-target="#exampleModalDoc">PDF</button>
+								<!-- Modal -->
+								<div class="modal fade" id="exampleModalDoc" tabindex="-1"
+									aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title" id="exampleModalLabel">Upload PDF/Doc</h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal"
+													aria-label="Close"></button>
+											</div>
+											<div class="modal-body" *ngIf="!showClose">
+												<form class="text center">
+													<input class="form-control bg-light" type="file" accept=".doc,.pdf"
+														multiple (change)="docUpload($event)">
+													<ng-container *ngIf="uploadService.fileUploadStatus && docStatus">
+														<div class="progress" style="height: 10px; margin-top: 10px;">
+															<div class="progress-bar bg-success" role="progressbar"
+																[ngStyle]="{'width': progressDoc + '%'}"
+																aria-valuenow="75" aria-valuemin="0"
+																aria-valuemax="100"></div>
+														</div>
+														Uploading {{fileName}} ...
+													</ng-container>
+												</form>
+											</div>
+											<div class="modal-footer" *ngIf="!showClose">
+												<button type="button" class="btn btn-secondary"
+													data-bs-dismiss="modal">Close</button>
+												<button type="button" class="btn btn-primary gcpabutton"
+													(click)="uploadFileDoc()">Save changes</button>
+											</div>
+											<div class="container-fluid modal-body px-4" *ngIf="showClose">
+												<ng-container>
+													<div class="row mx-5">
+														<div class="col-md-4"></div>
+														<div class="col-md-4 mr-2">
+															<mat-icon aria-hidden="false"
+																id="SuccessIcon">check_circle_outline</mat-icon>
+														</div>
+														<div class="col-md-4"></div>
+													</div>
+													<div class="row">
+														<div class="col-md-3"></div>
+														<div class="col-md-6">
+															<div class="row text-center" style="font-size: medium;">File
+																uploaded Successfully !</div>
+														</div>
+														<div class="col-md-3"></div>
+													</div>
+													<div class="row pt-2">
+														<div class="col-md-4"></div>
+														<div class="col-md-4 pt-2 px-4">
+															<button class="btn btn-success" type="button"
+																data-bs-dismiss="modal" (click)="close()"
+																style="margin-left: 10px;">Close</button>
+														</div>
+														<div class="col-md-4"></div>
+													</div>
+												</ng-container>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
-
-			</div>
-			</div>
-			<div class="col-lg-8">
-				<div class="card">
-					<div class="card-body">
-						<div class="row mb-3">
-							<div class="col-sm-3">
-								<h6 class="mb-0 pt-2">Gaurdian's Name</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-								<input type="text" class="form-control" [(ngModel)]="this.registerService.registration.GaurdFirst + ' '+this.registerService.registration.GaurdLast" disabled/>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<div class="col-sm-3">
-								<h6 class="mb-0 pt-2">Date of Birth</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-								<input type="text" class="form-control" [(ngModel)]="this.registerService.registration.Dob" disabled/>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<div class="col-sm-3">
-								<h6 class="mb-0 pt-2">Address</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-								<input type="text" class="form-control" [(ngModel)]="this.registerService.registration.Address" disabled/>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<div class="col-sm-3">
-								<h6 class="mb-0 pt-2">Postal/Zip Code</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-								<input type="text" class="form-control" [(ngModel)]="this.registerService.registration.Zip" disabled/>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<div class="col-sm-3">
-								<h6 class="mb-0 pt-2">Phone Number</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-								<input type="text" class="form-control" [(ngModel)]="this.registerService.registration.Number" disabled/>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<div class="col-sm-3">
-								<h6 class="mb-0 pt-2">Email</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-								<input type="text" class="form-control" [(ngModel)]="this.registerService.registration.Email" disabled/>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<div class="col-sm-3">
-								<h6 class="mb-0 pt-2">School/Academy</h6>
-							</div>
-							<div class="col-sm-9 text-secondary">
-								<input type="text" class="form-control" [(ngModel)]="this.registerService.registration.School" disabled/>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row mt-3">
-					<div class="col-sm-12">
+					<div class="col-sm-12 pt-3">
 						<div class="card">
 							<div class="card-body text-center">
-								<h4 >Uploaded Files</h4>
+								<h4>Uploaded Files</h4>
 								<div class="row">
 									<ng-container *ngFor="let file of this.extraFilesService.extraFiles">
-										<p *ngIf="file.File=='ExtraDoc'"> <a [href]="file.FileUrl">Document/PDF </a> uploaded on {{file.Date}}</p>
-										<p *ngIf="file.File=='ExtraPhoto'"><a [href]="file.FileUrl">Image </a> uploaded on {{file.Date}}</p>
-										<p *ngIf="file.File=='ExtraVideo'"><a [href]="file.FileUrl">Video </a> uploaded on {{file.Date}}</p>
+										<p *ngIf="file.File=='Profile'"> <a [href]="file.FileUrl" target="_blank"
+												[download]="file.File">Document/PDF </a> uploaded on {{file.Date}}
+										</p>
+										<p *ngIf="file.File=='ExtraDoc'"> <a download [href]="file.FileUrl">Document/PDF
+											</a> uploaded on {{file.Date}}
+										</p>
+										<p *ngIf="file.File=='ExtraPhoto'"><a [href]="file.FileUrl" target="_blank"
+												[download]="file.File">Image </a> uploaded on {{file.Date}}</p>
+										<p *ngIf="file.File=='ExtraVideo'"><a [href]="file.FileUrl"
+												target="_blank">Video Link</a> uploaded on {{file.Date}}</p>
 
 									</ng-container>
 
@@ -197,8 +246,228 @@
 						</div>
 					</div>
 				</div>
+				<div class="col-lg-8">
+					<div class="card">
+						<div class="card-body">
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Gaurdian's Name</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.GaurdFirst + ' '+this.registerService.registration.GaurdLast"
+										disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Gaurdian's Occupation / Designation</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.GaurdianDesignation"
+										[disabled]="registerService.disableGaurdianFields" />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Organization</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.GaurdianOrganization"
+										[disabled]="registerService.disableGaurdianFields" />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Organization Type</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<select [disabled]="registerService.disableGaurdianFields" class="form-select"
+										aria-label="Default select example"
+										[(ngModel)]="registerService.registration.GaurdianOrganizationType">
+										<option value="Government">Government</option>
+										<option value="Private">Private</option>
+										<option value="NGO">NGO</option>
+										<option value="Others">Others</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="text-center" *ngIf="!registerService.disableGaurdianFields">
+							<button type="button" style="width: 100px;" class="btn btn-primary mb-2"
+								(click)="save()">Update</button>
+						</div>
+					</div>
+					<div class="card mt-2">
+						<div class="card-body">
+
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Date of Birth</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Dob" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Gaurdian's Relationship</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Relationship" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Gender</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Gender" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">State</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.State" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Address</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Address" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Postal/Zip Code</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Zip" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Phone Number</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Number" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Email</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Email" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">School/Academy</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.School" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Achievement</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<textarea type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Achievement" rows="4"
+										disabled></textarea>
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0 pt-2">Social Media</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<textarea type="text" class="form-control"
+										[(ngModel)]="this.registerService.registration.Social" rows="4"
+										disabled></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					*For any updates in your profile, please raise a <a routerLink="/supportPage"> support ticket</a>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
+	<!-- <button class="btn" data-bs-toggle="modal" data-bs-target="#Modal"> -->
+	<!-- add -->
+	<!-- <mat-icon fontSet="material-icons-outlined" class="align-middle">
+			post_add
+		</mat-icon> -->
+	<!-- </button> -->
+	<ng-container id="exampleModalLabel">
+
+		<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-body pb-0">
+						<div class="row">
+							<div class="col-md-10 col-10">
+								<h4>Log Work</h4>
+							</div>
+							<div class="col-md-2 col-2 text-right ">
+								<span class="btn">
+									<mat-icon data-bs-dismiss="modal" class="align-middle" title="Close">
+										close
+									</mat-icon>
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="container-fluid modal-body px-4" id="logWorkPage">
+
+						<ng-container>
+							<div class="row mx-5">
+								<div class="col-md-4"></div>
+								<div class="col-md-4">
+									<mat-icon aria-hidden="false" id="SuccessIcon">check_circle_outline</mat-icon>
+								</div>
+								<div class="col-md-4"></div>
+							</div>
+							<div class="row">
+								<div class="col-md-3"></div>
+								<div class="col-md-6">
+									<div class="row" style="font-size: medium;flex-wrap: wrap;">Logged work Successfully
+										!</div>
+								</div>
+								<div class="col-md-3"></div>
+							</div>
+							<div class="row pt-2">
+								<div class="col-md-4"></div>
+								<div class="col-md-4 pt-2 px-4">
+									<button class="btn btn-success" id="logWorkSubmit" type="button"
+										data-bs-dismiss="modal" style="margin-left: 10px;">Close</button>
+								</div>
+								<div class="col-md-4"></div>
+							</div>
+						</ng-container>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</ng-container>
 </div>

@@ -11,39 +11,14 @@ import { WpServiceService } from 'src/app/services/wp-service/wp-service.service
 export class ParentingComponent implements OnInit {
 
   slug: String;
-  post:any;
+  post: any;
   allPosts: any;
-  content:any;
+  content: any;
   postReady: boolean;
-  constructor(private route: ActivatedRoute, public functions: AngularFireFunctions, public wpService: WpServiceService, public router:Router) { }
+  constructor(private route: ActivatedRoute, public functions: AngularFireFunctions, public wpService: WpServiceService, public router: Router) { }
 
   ngOnInit(): void {
     this.postReady = false;
-  this.slug = this.route.snapshot.params['slug'];
-  // this.getPost();
-  this.getAllPosts();
+    this.slug = this.route.snapshot.params['slug'];
   }
-
-  getPost(){
-    this.wpService.getPost(this.slug);
-    this.wpService.postObservable.subscribe(data=>{
-    this.post = data;
-    this.post = this.post[0];
-    this.postReady = true;
-    
-    })
-    
-  }
-
-  getAllPosts(){
-    this.wpService.getPostsByCategory(708);
-    this.wpService.categoryPostsObservable.subscribe(data=>{
-      this.allPosts = data;
-      // this.allPosts=this.allPosts.filter((obj:any)=>{
-      //   return obj.categories.includes(708)
-      // })
-    })
-  }
-
-
 }

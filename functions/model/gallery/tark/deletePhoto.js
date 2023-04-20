@@ -4,15 +4,13 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
-const { data } = require("jquery");
-const { deletePhoto } = require("../lib");
+const { deletePhotoByUid } = require("../lib");
 
 exports.deletePhoto = function(request, response) {
         const uid = request.body.data.Uid;
         let result;
-        deletePhoto(uid).then(() => {
+        deletePhotoByUid(uid).then(() => {
             result = { data: "Image Deleted successfully" };
-            console.log(data);
             return response.status(200).send(result);
         }).catch((error) => {
             result = { data: error };

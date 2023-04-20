@@ -5,6 +5,10 @@
     font-family: var(--font);
 }
 
+matInput{
+    border: 1px black;
+}
+
 mat-paginator,
 td {
     background-color: transparent;

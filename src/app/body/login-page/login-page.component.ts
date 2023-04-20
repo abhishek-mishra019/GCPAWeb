@@ -16,9 +16,10 @@ passwordSignup="";
 passwordsDoNotMatch=false;
 passwordInValid=false;
 invalidEmail=false;
+token: string|undefined;
 
 confirm="";
-  constructor(public authService: AuthServiceService, public popupService:PopupHandlerService) { }
+  constructor(public authService: AuthServiceService, public popupService:PopupHandlerService) { this.token = undefined; }
 
   ngOnInit(): void {
   }

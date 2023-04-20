@@ -4,12 +4,12 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 
-const { getNews } = require("../lib");
+const { getAllNews } = require("../lib");
 
 exports.getNews = function(request, response) {
     let status = 200;
 
-    getNews().then((newsData) => {
+    getAllNews().then((newsData) => {
         if (newsData) {
             const result = { data: { status: "OK", data: newsData } };
             return response.status(status).send(result);

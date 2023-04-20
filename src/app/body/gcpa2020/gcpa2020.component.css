@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
+h1 {
+    color: #ef3789!important;
+    font-size: 44px!important;
+    font-weight: 700!important;
+    font-family: 'Amaranth', sans-serif!important;
+}
+h2 {
+    color: #000093!important;
+    font-weight: 700!important;
+    text-align: left;
+    font-family: 'Amaranth', sans-serif!important;
+}
+.mainp {
+    color: #222222;
+    text-decoration: underline;
+    margin-top: 6px;
+    font-weight: 600!important;
+}
+#paragraph{
+    font-family: 'Nunito Sans',sans-serif;
+}
+
+@media (min-width: 576px){
+
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px){
+
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px){
+
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px){
+
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 576px){
+
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px){
+
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px){
+
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px){
+
+    .container {
+        max-width: 1140px;
+    }
+}
+h2 {
+    color: #000093!important;
+    font-weight: 700!important;
+    font-size:250%;
+    font-family: 'Amaranth', sans-serif!important;
+}
+
+h6 {
+    font-size: 18px!important;
+    color: black!important;
+    text-align: justify!important;
+    font-family: 'Amaranth', sans-serif!important;
+}
+
+img{
+    max-height: 200px !important;
+}
+
+.apply {
+    background-color: #004A7F;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Arial;
+    font-size: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-animation: glowing 1500ms infinite;
+    -moz-animation: glowing 1500ms infinite;
+    -o-animation: glowing 1500ms infinite;
+    animation: glowing 1500ms infinite;
+  }
+  @-webkit-keyframes glowing {
+    0% { background-color: #1976D2; -webkit-box-shadow: 0 0 3px #1976D2; }
+    50% { background-color: #1976D2; -webkit-box-shadow: 0 0 40px #1976D2; }
+    100% { background-color: #1976D2; -webkit-box-shadow: 0 0 3px #1976D2; }
+  }
+  
+  @-moz-keyframes glowing {
+    0% { background-color: #1976D2; -webkit-box-shadow: 0 0 3px #1976D2; }
+    50% { background-color: #1976D2; -webkit-box-shadow: 0 0 40px #1976D2; }
+    100% { background-color: #1976D2; -webkit-box-shadow: 0 0 3px #1976D2; }
+  }
+  
+  @-o-keyframes glowing {
+    0% { background-color: #1976D2; -webkit-box-shadow: 0 0 3px #1976D2; }
+    50% { background-color: #1976D2; -webkit-box-shadow: 0 0 40px #1976D2; }
+    100% { background-color: #1976D2; -webkit-box-shadow: 0 0 3px #1976D2; }
+  }
+  
+  @keyframes glowing {
+    0% { background-color: #1976D2; -webkit-box-shadow: 0 0 3px #1976D2; }
+    50% { background-color: #1976D2; -webkit-box-shadow: 0 0 40px #1976D2; }
+    100% { background-color: #1976D2; -webkit-box-shadow: 0 0 3px #1976D2; }
+  }
+.vertical_list {
+    position: relative;
+    padding-left: 80px;
+    margin: 0 auto 40px;
+}
+
+.testheadp {
+    font-weight: 500;
+    font-size: 13px;
+    color: #969393 !important;
+}
+.list_icon {
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgb(0 0 0 / 20%);
+    height: 65px;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 2px;
+    width: 65px;
+}
+p{
+    font-family: 'Nunito Sans',sans-serif;
+}
+
+
+.mainp {
+    color: #222222;
+    text-decoration: underline;
+    margin-top: 6px;
+    font-weight: 600!important;
+}
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  #myImg:hover {opacity: 0.7;}
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 300px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  }
+  
+  /* Modal Content (Image) */
+  .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+  }
+  
+  /* Caption of Modal Image (Image Text) - Same Width as the Image */
+  #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+  }
+  
+  /* Add Animation - Zoom in the Modal */
+  .modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+  }
+  
+  @keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* 100% Image Width on Smaller Screens */
+  @media only screen and (max-width: 700px){
+    .modal-content {
+      width: 100%;
+    }
+  }
+
+@media (min-width: 576px){
+
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px){
+
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px){
+
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px){
+
+    .container {
+        max-width: 1140px;
+    }
+}
+
+.darken {
+    filter: brightness(50%);
+  }
+
+img{
+    max-height: 260px;
+}

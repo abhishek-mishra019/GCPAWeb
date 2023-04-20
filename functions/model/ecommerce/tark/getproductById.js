@@ -3,7 +3,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { getProductById } = require("../lib");
+const { getProductByProductId } = require("../lib");
 
 exports.getProductById = function(request, response) {
     const product = request.body.data;
@@ -11,7 +11,7 @@ exports.getProductById = function(request, response) {
    const productId=product.productId;
     let status = 200;
 
-    getProductById(productId).then((productData) => {
+    getProductByProductId(productId).then((productData) => {
         if (productData) {
             const result = { data: { status: "OK", data: productData } };
             return response.status(status).send(result);

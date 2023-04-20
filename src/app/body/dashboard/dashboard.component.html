@@ -1,42 +1,43 @@
-<app-support-popup></app-support-popup>
-
-<div class="back mt-5 pt-5 pb-5" style="min-height: 85%;">
-
-       <div class="row">
+<app-support-popup [contactEmail]="authService.user.email" [name]="authService.user.displayName"></app-support-popup>
+<div class="back mt-5 pt-5 pb-5" style="min-height: 100vh;">
+    <div class="row">
         <div class="col-md-2">
             <div class="wrapper d-flex">
                 <div class="sidebar">
                     <ul class="pr-2">
-                        <li (click)="displayUserData()" [ngStyle]="{'background': userDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="displayUserData()" [ngStyle]="{'background': userDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Users">
                             <a class="" >Users</a>
                         </li>
-                        <li (click)="displayRegistrationData()" [ngStyle]="{'background': registrationDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="displayRegistrationData()" [ngStyle]="{'background': registrationDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Registrations">
                             <a class="" >Registrations</a>
                         </li>
-                        <li (click)="partnersSponsors()" [ngStyle]="{'background': partnersDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="partnersSponsors()" [ngStyle]="{'background': partnersDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Partners">
                             <a class="" >Partners And Sponsers</a>
                         </li>
-                        <li (click)="testimonials()" [ngStyle]="{'background': testimonialsDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="testimonials()" [ngStyle]="{'background': testimonialsDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Testimonials">
                             <a class="" >Testimonials</a>
                         </li>
-                        <li (click)="newsroom()" [ngStyle]="{'background': newsroomDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="newsroom()" [ngStyle]="{'background': newsroomDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Media">
                             <a class="" >Media Coverage</a>
                         </li>
-                        <li (click)="gallery()" [ngStyle]="{'background': galleryDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="gallery()" [ngStyle]="{'background': galleryDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Gallery">
                             <a class="" >Gallery</a>
                         </li>
-                        <li (click)="ecommerce()" [ngStyle]="{'background': ecommerceDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="ecommerce()" [ngStyle]="{'background': ecommerceDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Ecommerce">
                             <a class="" >E-commerce</a>
                         </li>
-                        <li (click)="orders()" [ngStyle]="{'background': ordersDataComponent ? '#ef3789' : '#4F94CF' }">
+                        <li (click)="orders()" [ngStyle]="{'background': ordersDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Orders">
                             <a class="" >Orders</a>
+                        </li>
+                        <li (click)="support()" [ngStyle]="{'background': supportComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Support">
+                            <a class="" >Support</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="col-md-10">
-    <h1 class="text-center pt-3">Admin Dashboard</h1>
+            <h1 class="text-center pt-3">Admin Dashboard</h1>
 
             <app-users-dashboard *ngIf="userDataComponent"></app-users-dashboard>
             <app-registration-dashboard *ngIf="registrationDataComponent"></app-registration-dashboard>
@@ -46,6 +47,7 @@
             <app-gallery-dashboard *ngIf="galleryDataComponent"></app-gallery-dashboard>
             <app-testimonials-dashboard *ngIf="testimonialsDataComponent"></app-testimonials-dashboard>
             <app-orders *ngIf="ordersDataComponent"></app-orders>
+            <app-support-admin *ngIf="supportComponent"></app-support-admin>
         </div>
     </div>
 

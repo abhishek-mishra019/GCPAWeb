@@ -51,9 +51,9 @@ exports.updateData = function(updateType) {
                 };
                 updateRawData(inputJson);
             } else if (updateType == "support") {
-                const numberOfRegistrations = doc[0].NumberOfRegistrations + 1;
+                const numberOfSupport = doc[0].NumberOfSupport + 1;
                 const inputJson = {
-                    NumberOfRegistrations: numberOfRegistrations,
+                    NumberOfSupport: numberOfSupport,
                 };
                 updateRawData(inputJson);
             } else if (updateType == "product") {

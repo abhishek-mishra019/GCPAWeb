@@ -25,6 +25,9 @@ exports.updateRegistrationById = function(request, response) {
     const country = user.country;
     const category = user.category;
     const achievement = user.achievement;
+    const Designation = user.Designation;
+    const OrgType = user.OrgType;
+    const Organization = user.Organization;
 
     const social = user.social;
 
@@ -47,6 +50,9 @@ exports.updateRegistrationById = function(request, response) {
         Category: category,
         Achievement: achievement,
         Social: social,
+        GaurdianDesignation: Designation,
+        GaurdianOrganizationType: OrgType,
+        GaurdianOrganization: Organization,
 
     };
 

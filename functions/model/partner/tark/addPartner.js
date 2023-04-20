@@ -3,7 +3,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { addPartner } = require("../lib");
+const { addNewPartner } = require("../lib");
 const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 
@@ -17,7 +17,7 @@ exports.addPartner = function(request, response) {
 
     getRawData().then((doc) => {
         const uid = "P" + (doc[0].NumberOfPartners + 1);
-        addPartner(uid, name, type, imageUrl).then(() => {
+        addNewPartner(uid, name, type, imageUrl).then(() => {
             const result = { data: "Partner Addded Successfully" };
             console.log("Partner Addded Successfully");
 

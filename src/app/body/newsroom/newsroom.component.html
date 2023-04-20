@@ -1,10 +1,14 @@
-<div class="back" style="min-height: 85vh;">
+<div class="back" style="min-height: 90vh;">
     <div class="container mt-5 pt-3 px-1 text-center">
         <h1 class="mt-5">Media Coverage</h1>
         <div class="row text-center" *ngIf="!newsService.loader; else loader">
             <ng-container *ngFor="let news of newsService.newsroom">
                 <div class="col-md-3 px-3 py-3 my-auto">
-                    <a [href]="news.Link"><img [src]="news.ImageUrl" class="img-fluid rounded bg-white" alt=""></a>
+                    <a [href]="news.Link" target="_blank">
+                        <div class="bg-white d-flex align-items-center" style="height: 150px;">
+                            <img [src]="news.ImageUrl" class="img-fluid rounded bg-white mx-auto" alt="" >
+                        </div>
+                    </a>
                 </div>
             </ng-container>
         </div>

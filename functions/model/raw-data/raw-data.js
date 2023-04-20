@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const { updateData } = require("./tark/updateRawData");
 const { createRawData } = require("./tark/createRawData");
-const { getRawData } = require("./tark/getRawData");
+const { getRawDatas } = require("./tark/getRawData");
 const { fastify, functions, cors, requestHandler } = require("../application/lib");
 
 fastify.post("/createRawData", (req, res) => {
@@ -17,7 +17,7 @@ fastify.post("/updateRawData", (req, res) => {
 
 fastify.post("/getRawData", (req, res) => {
     console.log("getting raw data");
-    getRawData(req, res);
+    getRawDatas(req, res);
 });
 exports.rawDatas = functions.https.onRequest((req, res) => {
     cors(req, res, () => {

@@ -9,4 +9,6 @@ export interface Support {
   Date:string;
   Time:string;
   Show:boolean;
+  State:string;
+  AssignedTo:string;
 }

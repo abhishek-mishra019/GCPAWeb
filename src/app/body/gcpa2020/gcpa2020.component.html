@@ -1,0 +1,112 @@
+<div class="container mt-5 pt-3 px-1">
+    <div class="col-md-12 text-center  ">
+
+        <div class="row">
+            <div class="col">
+                <h1 class="mt-5">GLOBAL CHILD PRODIGY AWARDS 2020</h1>
+                <div class="row mt-5" id="paragraph">
+                    <div class="col-md-6 ">
+                        <p style="text-align: justify;
+                    color: #555555;
+                    font-size: 16px;
+                    line-height: 32px;">
+                            The <b>Global Child Prodigy Awards 2020</b> were <b>presented by Nobel Peace Laureate Shri
+                                Kailash
+                                Satyarthi and Dr. Kiran Bedi, Honorable Lt. Governor of Puducherry</b>. The recognition
+                            that was
+                            sprawled across thirty different categories included dance, palaeontology, biking,
+                            choreography, fitness, martial arts, art, mathematicians, science, singing, music,
+                            enterprise, and many more. It is the worlds first initiative to honour <b>100 children from
+                                around 45 countries</b> around the globe, which was concluded at the Asoka Hotel in
+                            <b>New Delhi,
+                                India on January 3rd, 2020.</b> The ceremony was graced by eminent personalities like
+                            <b>Noble
+                                Laureate Kailash Satyarthi, Shri Achyuta Samantha,</b> MP-Lok Sabha and Founder of KIIT
+                            and
+                            KISS,<b> Shri T H Vinayakaram, Grammy Awardee, Prof Anil D Sahasrabudhe, Chairman-AICTE, and
+                                Dr.Kiran Bedi,</b> Honorable Lt. Governor of Puducherry. The guest list further includes
+                            some
+                            Padma Awardees, former ministers, and members of parliament.
+
+                        </p>
+                    </div>
+
+                    <div class="col-md-6 px-3 py-1">
+                        <iframe class="rounded " style="height:100%; width:100%;;"
+                            src="https://www.youtube.com/embed/jML1SsBPf8o?autoplay=1" title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <h2 class="mt-5">Words from leaders at GCPA 2020</h2>
+        <div class="row">
+            <div class="col">
+                <div class="row mt-5">
+                    <ng-container *ngFor="let con of content">
+                        <div class="col-md-6  ">
+                            <div class="vertical_list">
+                                <div class="list_icon">
+                                    <!-- <i [ngClass]=[con.icon] class="opacity-50 fs-2 text-center mt-2 pt-2 "  aria-hidden="true"></i> -->
+                                    <img src="../../../assets/gcp2020/{{con.img}}" class="list_icon" />
+                                </div>
+                                <h6 [innerText]=[con.name]></h6>
+                                <h6 class="testheadp" [innerText]=[con.heading]></h6>
+                                <p class="contentp" [innerText]=[con.para] style="text-align: justify;
+                                color: #555555;
+                                font-size: 16px;
+                                line-height: 32px;"></p>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="contentp" style="text-align: justify;
+            color: #555555;
+            font-size: 16px;
+            line-height: 32px;">
+                When a Talented Kid gets Recognized at the right age and the right time in front of the world, it leads
+                to making the child as Changemaker and a Global Influencer. The extraordinary talents of children speak
+                volumes of not just their passion but their vision. Global Child Prodigy Awards that saw the influx of
+                children and influencers aline pave a path of optimism for the generation to come.
+            </p>
+        </div>
+        <div class="row mb-3">
+            <h4 class="mt-2 text-start">About GCP Awards:</h4>
+            <p class="contentp" style="text-align: justify;
+            color: #555555;
+            font-size: 16px;
+            line-height: 32px;">
+                GCP Awards is the first platform of its kind with the objective of recognizing child prodigies in
+                different categories such as arts, music, dance, writing, modeling, acting, science, sports and many
+                others. This initiative aims at giving young talents the global exposure that they deserve and provide
+                them with the right opportunities at the right time to ensure that they create a major impact on
+                society. Apply Today for Global Child Prodigy Awards 2023.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col pb-5">
+                <button type="submit" class="btn apply" (click)="loadRegistration()">APPLY NOW FOR GCP AWARDS</button>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col">
+                <div class="row text-center">
+                    <ng-container *ngFor="let photo of gallery">
+                        <div [ngClass]="{'col-md-3 px-3 py-3 my-auto':true}">
+                            <img src="../../../assets/gcp2020/{{photo}}.jpg" (click)="open(photo)" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" [ngClass]="{'img-fluid rounded':true}"
+                                style="cursor: pointer" alt="">
+                        </div>
+                    </ng-container>
+                    <app-img-popup [ImageUrl]="modalImg"></app-img-popup>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

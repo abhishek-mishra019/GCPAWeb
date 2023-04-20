@@ -5,11 +5,9 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 // eslint-disable-next-line linebreak-style
-const functions = require("firebase-functions");
-const cors = require("cors")({ origin: true });
 const { setPaymentStatus, setEcommercePaymentStatus } = require("../lib");
 const crypto = require("crypto");
-const { mailer } = require("../../Mailer/lib");
+const { razorpayKeys } = require("../../application/razorpayKeys");
 
 exports.paymentVerification = function(request, response) {
     const orderId = request.body.data.OrderId;
@@ -19,10 +17,14 @@ exports.paymentVerification = function(request, response) {
         const type = request.body.data.PaymentType;
 
         // Test Credentials
-        const keySecret = "EjWL1pPedHeT4Z1C4laM3u1b";
+        let keySecret = "";
+        if (type == "Ecommerce") {
+            // Cred For Ecommerce;
+            keySecret = razorpayKeys.key_secret;
+        } else {
+            keySecret = razorpayKeys.key_secret;
+        }
 
-        // Production Credentials
-        // const keySecret = "UnY8Vp9ty5c9wL1TWNUlBsci";
         let generatedSignature = "";
 
         generatedSignature = crypto.createHmac("sha256", keySecret).update((orderId + "|" + paymentId).toString()).digest("hex");
@@ -33,7 +35,7 @@ exports.paymentVerification = function(request, response) {
             if (type == "Ecommerce") {
                 setEcommercePaymentStatus(id);
             } else {
-                setPaymentStatus(orderId, id);
+                setPaymentStatus(id);
             }
             return response.status(200).send(result);
         } else {

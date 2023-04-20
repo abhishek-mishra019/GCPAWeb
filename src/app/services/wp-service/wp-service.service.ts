@@ -12,44 +12,77 @@ export class WpServiceService {
   public allPostObservable: Observable<Array<Object>>;
   public categoryPostsObservable: Observable<Array<Object>>;
   public tagPostsObservable: Observable<Array<Object>>;
-  endpoint:string;
-  constructor(private http: HttpClient) { 
-    this.endpoint=environment.endpoint;
+  endpoint: string;
+  popularPosts: any;
+  parentingPosts: any;
+  historyPosts:any;
+  constructor(private http: HttpClient) {
+    this.endpoint = environment.endpoint;
   }
-  
 
-getPost(slug: String){
-  this.postObservable = this.http.get(this.endpoint + "/posts"+ '?slug=' + slug).pipe(map(res=>{
-    const data = res as Array<Object>;
-    return data;
-  }));
-  return this.postObservable;
-}
 
-getAllPosts(){
-  //Please limit the per page number to how many you need for
-  this.allPostObservable = this.http.get(this.endpoint + "/posts" + '?per_page=100').pipe(map(res=>{
-    const data = res as Array<Object>;
-    console.log(data);
-    return data;
-  }));
-  return this.allPostObservable;
-}
+  getPost(slug: String) {
+    this.postObservable = this.http.get(this.endpoint + "/posts" + '?slug=' + slug).pipe(map(res => {
+      const data = res as Array<Object>;
+      return data;
+    }));
+    return this.postObservable;
+  }
 
-// not working
-getPostsByCategory(category: number){
-  this.categoryPostsObservable = this.http.get(this.endpoint + "/posts" + '?categories=' + category + '&per_page=100').pipe(map(res=>{
-    const data = res as Array<Object>;
-    return data;
-  }));
-  return this.categoryPostsObservable;
-}
+  getAllPosts() {
+    //Please limit the per page number to how many you need for
+    this.allPostObservable = this.http.get(this.endpoint + "/posts?per_page=100").pipe(map(res => {
+      const data = res as Array<Object>;
+      return data;
+    }));
+    return this.allPostObservable;
+  }
 
-getPostsByTag(tag:number){
-  this.tagPostsObservable = this.http.get(this.endpoint  + "/posts" + '?tags=' + tag).pipe(map(res=>{
-    const data = res as Array<Object>;
-    return data;
-  }));
-  return this.tagPostsObservable;
-}
+  getPostsByCategory(category: number) {
+    this.categoryPostsObservable = this.http.get(this.endpoint + "/posts" + '?categories=' + category + '&per_page=50').pipe(map(res => {
+      const data = res as Array<Object>;
+      return data;
+    }));
+    return this.categoryPostsObservable;
+  }
+
+  getPostsByTag(tag: number) {
+    this.tagPostsObservable = this.http.get(this.endpoint + "/posts" + '?tags=' + tag).pipe(map(res => {
+      const data = res as Array<Object>;
+      return data;
+    }));
+    return this.tagPostsObservable;
+  }
+
+// The Below functions are used only for getting the Home page posts so the categories shown in the home page alone is called and limited to 3 posts.//
+
+  getParentingPosts() {
+    this.http.get(this.endpoint + "/posts" + '?categories=' + '708' + '&per_page=3').pipe(map(res => {
+      const data = res as Array<Object>;
+      return data;
+    })).subscribe((data) => {
+      this.parentingPosts = data;
+    })
+  }
+
+  getPopularPosts() {
+    this.http.get(this.endpoint + "/posts" + '?categories=' + '52' + '&per_page=3').pipe(map(res => {
+      const data = res as Array<Object>;
+      return data;
+    })).subscribe((data) => {
+      this.popularPosts = data;
+    })
+  }
+
+  getHistoryPosts() {
+    this.http.get(this.endpoint + "/posts" + '?categories=' + '709' + '&per_page=3').pipe(map(res => {
+      const data = res as Array<Object>;
+      return data;
+    })).subscribe((data) => {
+      this.historyPosts = data;
+    })
+  }
+
+  //------------------------------------------------------------------------------------------------//
+
 }

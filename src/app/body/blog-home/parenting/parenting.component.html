@@ -3,7 +3,7 @@
 
     <div class="section-title listpostsbycats">
         <h3>
-        <span><b>Parenting</b> &nbsp;</span>
+        <span><b> Parenting</b> &nbsp;</span>    
         <a class="d-block pull-right morefromcategory" routerLink="parenting">
         More &nbsp; <i class="fa fa-angle-right"></i> 
         </a>
@@ -12,33 +12,31 @@
     </div>
 
    <div class="row pt-4">
-    <div class="col-lg-4 col-md-4 col-sm-4" [id]="allPosts[0]">
-    
-        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', allPosts[0].slug]"[ngStyle]="{'background-image': 'url(' + allPosts[0].yoast_head_json.og_image[0].url + ')'}"></a>
+    <div class="col-lg-4 col-md-4 col-sm-4" [id]="wpService.parentingPosts[0]">
+        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', wpService.parentingPosts[0].slug]"[ngStyle]="{'background-image': 'url(' + wpService.parentingPosts[0].yoast_head_json.og_image[0].url + ')'}"></a>
         <div class="card-block">
-        <h2 class="card-title text"><a [routerLink]="['/blog', allPosts[0].slug]">{{allPosts[0].yoast_head_json.title}}</a></h2>
-        <span class="card-text d-block text" [innerHtml]="allPosts[0].excerpt.rendered"></span>
-      
+        <h2 class="card-title text"><a [routerLink]="['/blog', wpService.parentingPosts[0].slug]">{{wpService.parentingPosts[0].yoast_head_json.title}}</a></h2>
+        <span class="card-text d-block text" [innerHtml]="wpService.parentingPosts[0].excerpt.rendered"></span>
         </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4" [id]="allPosts[1]">
+    <div class="col-lg-4 col-md-4 col-sm-4" [id]="wpService.parentingPosts[1]">
     
         <div class="card post highlighted">
-            <a class="thumbimage" [routerLink]="['/blog', allPosts[1].slug]"[ngStyle]="{'background-image': 'url(' + allPosts[1].yoast_head_json.og_image[0].url + ')'}"></a>
+            <a class="thumbimage" [routerLink]="['/blog', wpService.parentingPosts[1].slug]"[ngStyle]="{'background-image': 'url(' + wpService.parentingPosts[1].yoast_head_json.og_image[0].url + ')'}"></a>
         <div class="card-block">
-        <h2 class="card-title text"><a [routerLink]="['/blog', allPosts[1].slug]">{{allPosts[1].yoast_head_json.title}}</a></h2>
-        <span class="card-text d-block text" [innerHtml]="allPosts[1].excerpt.rendered"></span>
+        <h2 class="card-title text"><a [routerLink]="['/blog', wpService.parentingPosts[1].slug]">{{wpService.parentingPosts[1].yoast_head_json.title}}</a></h2>
+        <span class="card-text d-block text" [innerHtml]="wpService.parentingPosts[1].excerpt.rendered"></span>
       
         </div>
         </div>
     </div>
-    <div class="col-lg-4 col-md-4 col-sm-4" [id]="allPosts[2]">
+    <div class="col-lg-4 col-md-4 col-sm-4" [id]="wpService.parentingPosts[2]">
     
-        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', allPosts[2].slug]"[ngStyle]="{'background-image': 'url(' + allPosts[2].yoast_head_json.og_image[0].url + ')'}"></a>
+        <div class="card post highlighted"><a class="thumbimage" [routerLink]="['/blog', wpService.parentingPosts[2].slug]"[ngStyle]="{'background-image': 'url(' + wpService.parentingPosts[2].yoast_head_json.og_image[0].url + ')'}"></a>
         <div class="card-block">
-        <h2 class="card-title text"><a [routerLink]="['/blog', allPosts[2].slug]">{{allPosts[2].yoast_head_json.title}}</a></h2>
-        <span class="card-text d-block text" [innerHtml]="allPosts[2].excerpt.rendered"></span>
+        <h2 class="card-title text"><a [routerLink]="['/blog', wpService.parentingPosts[2].slug]">{{wpService.parentingPosts[2].yoast_head_json.title}}</a></h2>
+        <span class="card-text d-block text" [innerHtml]="wpService.parentingPosts[2].excerpt.rendered"></span>
       
         </div>
     </div>

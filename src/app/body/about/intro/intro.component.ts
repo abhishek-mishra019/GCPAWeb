@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class IntroComponent implements OnInit {
 
   content={
-    video:'https://youtu.be/EmWtKzUzWZQ',
-    para:'GCP Awards is the world’s first and only child prodigy initiative that recognizes Top 100 Child Prodigies around the globe each year from various verticals. A platform for all kids up to age 15 to showcase their talent and uniqueness to the global audience and get recognized as Top 100 child prodigies, and they also get featured in Global Child Prodigy Annual Book every year. GCP Awards aims to acknowledge prodigies from various categories such as arts, music, dance, writing, modeling, acting, science, and sports, etc.provide them global exposure to excel in their respective domains.'
+    video:'https://youtu.be/jML1SsBPf8o',
+    para:'Global Child Prodigy Awards (GCP Awards) is world’s first and only child prodigy initiative to recognize, appreciate, and reward Top 100 Child Prodigies across the globe annually, and celebrate young talents from myriad backgrounds showing core competency in their area of interests such as Painting, Modeling, Writing, Paleontology, Fitness, Martial Arts, Intelligence, Singing, Music, Entrepreneurship, Sports and many more. These trailblazers are felicitated at the Global Child Prodigy Award Ceremony in presence of some of the most prominent leaders across the globe. Their inspirational tales are also featured in the Global Child Prodigy Annual Book every year, circulated worldwide.'
   }
   constructor() { }
 

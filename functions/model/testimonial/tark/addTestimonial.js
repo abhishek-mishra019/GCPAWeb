@@ -3,7 +3,7 @@
 /* eslint-disable eol-last */
 /* eslint-disable indent */
 /* eslint-disable max-len */
-const { addTestimonial } = require("../lib");
+const { addNewTestimonial } = require("../lib");
 const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 
@@ -19,7 +19,7 @@ exports.addTestimonial = function(request, response) {
 
     getRawData().then((doc) => {
         const uid = "T" + (doc[0].NumberOfTestimonials + 1);
-        addTestimonial(uid, name, testimonial, imageUrl, achievement).then(() => {
+        addNewTestimonial(uid, name, testimonial, imageUrl, achievement).then(() => {
             const result = { data: "Testimonial Addded Successfully" };
             console.log("Testimonial Addded Successfully");
 

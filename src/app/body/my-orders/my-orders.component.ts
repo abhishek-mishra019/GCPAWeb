@@ -11,6 +11,7 @@ import { OrderServiceService } from 'src/app/services/order/order-service.servic
 export class MyOrdersComponent implements OnInit {
   orders:Order[]
   dataReady:boolean = false;
+  noOrders:boolean = true;
   userUid:string;
   constructor(private authService:AuthServiceService, public orderService: OrderServiceService) { }
 
@@ -25,6 +26,7 @@ export class MyOrdersComponent implements OnInit {
     this.orderService.getOrdersByUid(this.userUid).subscribe((data)=>{
       this.orders = data;
       this.dataReady = true;
+      this.noOrders = false;
     });
   }
 }

@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const {getRawData} = require("../lib");
 
-exports.getRawData = function(request, response) {
+exports.getRawDatas = function(request, response) {
   let status = 200;
 
   getRawData().then((data) => {

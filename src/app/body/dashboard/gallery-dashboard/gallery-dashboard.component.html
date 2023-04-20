@@ -25,7 +25,7 @@
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-										<button type="button" class="btn btn-primary gcpabutton" (click)="submit()">Save changes</button>
+										<button type="button" data-bs-dismiss="modal" class="btn btn-primary gcpabutton" (click)="submit()">Save changes</button>
 									</div>
 								</div>
 							</div>
@@ -34,7 +34,7 @@
         </div>
         <div class="container mt-3 py-3 px-2">
             <div class="row text-center text-nowrap">
-                <ng-container *ngFor="let photo of galleryService.gallery">
+                <ng-container *ngFor="let photo of galleryService.neatGallery">
                     <a [href]="photo.ImageUrl" (mouseenter)="photo.Hovering=true" (mouseleave)="photo.Hovering=false">
                         <img [src]="photo.ImageUrl" width="200" height="200" src="../../../assets/gallery/" [ngClass]="{'img-fluid rounded':true,'darken shadow':photo.Hovering}" alt="">
                     </a>

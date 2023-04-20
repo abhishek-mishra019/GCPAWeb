@@ -4,7 +4,9 @@ import { map, Observable } from 'rxjs';
 import { Ecommerce } from 'src/app/Interfaces/Ecommerce';
 import { RawData } from 'src/app/Interfaces/RawData';
 import { Register } from 'src/app/Interfaces/RegistrationInterface';
+import { Support } from 'src/app/Interfaces/SupportInterfaces';
 import { UserFetched } from 'src/app/Interfaces/UserInterface';
+import { User } from 'src/app/Interfaces/UserInterface';
 import { AuthServiceService } from '../auth-service/auth-service.service';
 
 @Injectable({
@@ -17,6 +19,7 @@ export class DataTableServiceService {
   public userDataObservable: Observable<UserFetched[]>;
   public registrationDataObservable: Observable<Register[]>;
   public productDataObservable: Observable<Ecommerce[]>;
+  public supportDataObservable: Observable<Support[]>;
 
 
 
@@ -32,8 +35,16 @@ export class DataTableServiceService {
     return this.registrationsDataObservable
   }
 
+  getSupportData(useruid: any){
+    const callable = this.functions.httpsCallable("support/getSupportList");
+    this.supportDataObservable = callable({UserUid: useruid }).pipe(map(res=>{
+      const data = res.data as Support[];
+      return data;
+    }));
+    return this.supportDataObservable
+  }
+
   getRawData(){
-    
     const callable = this.functions.httpsCallable("rawDatas/getRawData");
     this.rawDataObservable=callable({}).pipe(map(res=>{
       const data = res.data as RawData[];
@@ -51,7 +62,7 @@ export class DataTableServiceService {
     return this.userDataObservable
   }
 
-  getRegistrationsData(){
+   getRegistrationsData(){
     
     const callable = this.functions.httpsCallable("registrations/getAllRegistrations");
     this.registrationDataObservable=callable({}).pipe(map(res=>{
