@@ -42,6 +42,17 @@ exports.setRazorDetails = function(Uid, order) {
    return Promise.resolve(p1);
 };
 
+//  /**
+//   * Description
+//   * @param {any} Uid
+//   * @param {any} order
+//   * @return {any}
+//   */
+//  exports.getRazorDetails = function(Uid, order) {
+//     const p1 = db.collection("Registrations").doc(Uid).get().then((doc));
+//    return Promise.resolve(p1);
+// };
+
  /**
   * Description
   * @param {any} Id

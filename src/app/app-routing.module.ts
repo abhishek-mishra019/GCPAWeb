@@ -49,6 +49,7 @@ import { FaqComponent } from './body/faq/faq.component';
 import { SupportDetailsAdminComponent } from './body/dashboard/support-admin/support-details-admin/support-details-admin.component';
 import { GCPA2022Component } from './body/gcpa2022/gcpa2022.component';
 import { GCPA2020Component } from './body/gcpa2020/gcpa2020.component';
+import { BetaV1Component } from './body/Registration/beta-v1/beta-v1.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -62,7 +63,9 @@ const routes: Routes = [
   {path:'contact',component:ContactComponent},
   // {path:'LoginPage', component: LoginPageComponent},
   {path:'Registration', component: RegistrationComponent},
-  {path:'yourRegistrations', component: NumberOfRegistrationsComponent},
+  {path:'Registration/BetaV1', component: BetaV1Component},
+  {path:'Registration/BetaV1/:accessId', component: RegistrationComponent},
+  {path:'MyRegistrations', component: NumberOfRegistrationsComponent},
   {path:'payment/:registrationId', component: PaymentComponent},
   {path:'paymentStatus/:orderId/:paymentId/:signature/:id', component: PaymentStatusComponent},
   {path:'OrderStatus/:orderId/:paymentId/:signature/:id', component: EcommercePaymentStatusComponent},
@@ -110,7 +113,6 @@ const routes: Routes = [
   {path:'myOrders', component:MyOrdersComponent},
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'faq', component:FaqComponent},
-  
 ];
 
 @NgModule({

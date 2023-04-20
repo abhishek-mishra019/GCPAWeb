@@ -33,6 +33,18 @@ const createActivity = function(sendor, message, date, time, ticketId) {
     });
 };
 
+const removeCharRecursive = function(str, X) {
+    if (str.length == 0) {
+        return "";
+    }
+    if (str.charAt(0) == X) {
+        return removeCharRecursive(
+            str.substring(1), X);
+    }
+    return str.charAt(0) +
+        removeCharRecursive(
+            str.substring(1), X);
+};
 
 exports.createNewSupport = function(request, response) {
     const support = request.body.data;
@@ -50,19 +62,6 @@ exports.createNewSupport = function(request, response) {
     getRawData().then((doc) => {
         const key = Name.slice(3) + time.toString();
         let ticketId = Buffer.from(key).toString("base64");
-        // eslint-disable-next-line require-jsdoc
-        function removeCharRecursive(str, X) {
-            if (str.length == 0) {
-                return "";
-            }
-            if (str.charAt(0) == X) {
-                return removeCharRecursive(
-                    str.substring(1), X);
-            }
-            return str.charAt(0) +
-                removeCharRecursive(
-                    str.substring(1), X);
-        }
         ticketId = removeCharRecursive(ticketId, "=");
         createSupport(UserUid, Name, SupportType, Message, ContactEmail, ticketId, date, time, state, assignedTo).then(() => {
            const result = { data: "Support created Successfully" };

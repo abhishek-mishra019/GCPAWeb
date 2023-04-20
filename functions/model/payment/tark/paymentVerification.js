@@ -35,7 +35,7 @@ exports.paymentVerification = function(request, response) {
             if (type == "Ecommerce") {
                 setEcommercePaymentStatus(id);
             } else {
-                setPaymentStatus(orderId, id);
+                setPaymentStatus(id);
             }
             return response.status(200).send(result);
         } else {

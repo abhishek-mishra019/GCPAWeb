@@ -1,30 +1,16 @@
 <app-login-page></app-login-page>
-
-<div class="back mt-5 pt-5 pb-3" *ngIf="authService.loggedInUser.Admin">
-    <div class="row container mx-auto"> 
-        <div class="container col-md-7 px-5">
-        <h1 class="text-left mb-3 ">APPLICATION FORM 
-            <!-- <mat-icon  style="color: black !important;"aria-hidden="false" id="info">info</mat-icon>  -->
-        </h1>
-            <div style="font-size: 12px;">
-                <p >
-                    <b>To be eligible for consideration by the selection committee of the GCPA for successful
-                        participation, the participant must fulfill the following conditions:
-                    </b>
-                </p>
-                <ol>
-                    <b> 1.</b> The participant must be under the <b>age of 15 </b> at the time of application. <br>
-                    <b> 2. </b> A one-time application fee of <b> USD $15 or INR 1300 (incl. government taxes) or Euro €17 </b> is
-                        applicable at the time of application to avoid spam entry. <br>
-                    <b> 3.</b>  One participant can apply for <b>one category </b> ; if you aren't sure, please choose the category
-                        <b>"Others"</b>.
-                </ol>
-            </div>
+ <!-- *ngIf="authService.loggedInUser.Admin || openForm" -->
+<div class="back mt-5 pt-5 pb-3">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h1 class="text-left mb-3">APPLICATION FORM
+                <!-- <mat-icon  style="color: black !important;"aria-hidden="false" id="info">info</mat-icon>  -->
+            </h1>
         </div>
-        <div class="col-md-5">
-
+        <div class="col-2">
         </div>
-    </div>    
+    </div>
     <div class="row container mx-auto pt-2">
         <div class="container col-md-7 px-5">
             <form #form="ngForm">
@@ -46,32 +32,36 @@
                     </div>
                 </div>
                 <div class="my-3">
-                    <input type="checkbox" required (change)="accepted()"> <span> &nbsp;I am at least 13 years old and I agree
-                        to the <a routerLink="/terms_condi">Terms & Conditions</a> and <a
+                    <input type="checkbox" required (change)="accepted()"> <span> &nbsp;I am at least 13 years old and I
+                        agree
+                        to the <a routerLink="/terms-conditions">Terms & Conditions</a> and <a
                             routerLink="/privacy-policy">Privacy Policy</a> of Global Child Prodigy Awards.<span
                             class="text-danger">*</span></span>
                 </div>
                 <div class="mb-4">
-                    <input type="checkbox" required (change)="emailUpdates()"> <span> &nbsp;I would like to Recieve regular
+                    <input type="checkbox" required (change)="emailUpdates()"> <span> &nbsp;I would like to Recieve
+                        regular
                         updates and notifications via email.</span>
                 </div>
+                <app-loader *ngIf="registerService.showLoader"></app-loader>
                 <re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required
-                    [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+                    [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)">
+                </re-captcha>
                 <div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)" class="invalid-feedback">
                     <div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3 " [disabled]="registerService.disableSubmit || emailupdate == false || termsAndCond == false"
+                <button type="submit" class="btn btn-primary mt-3 "
+                    [disabled]="registerService.disableSubmit || emailupdate == false || termsAndCond == false"
                     (click)="send(form,$event)">Proceed to Apply
                 </button>
             </form>
             <small class="text-danger" *ngIf="registerService.fillAll">
                 Please fill all required fields
             </small>
-
             <div class="pt-5">
-
                 <p>
-                    If you are facing any issue while registration please raise a <a routerLink="/supportPage">support ticket</a> 
+                    If you are facing any issue while registration please raise a <a routerLink="/supportPage">support
+                        ticket</a>
                 </p>
             </div>
         </div>
@@ -82,7 +72,7 @@
     </div>
 </div>
 
-<div class="text-center p-5 mt-5">
+<!-- <div class="text-center p-5 mt-5" *ngIf="!openForm">
     <h1>Currently we are not accepting the profiles.
         For any queries please reach out to info@gcpawards.com</h1>
-</div>
+</div> -->

@@ -75,12 +75,18 @@ h1 {
 
 .containeri {
     width: 100%;
-    background: #E9ECEF;
+    background: #FFFFFF;
     margin: 0 auto;
     margin-top: 50px;
     border-radius: 10px;
     position: relative;
-    box-shadow: #292739 0 10px 20px;
+    box-shadow: #807d94 0px 0px 2px;
+    border: none;
+  }
+
+  .supportImage {
+    /* border-radius: 50%; */
+    border: 1px solid #3a384c;
   }
   
   .header {

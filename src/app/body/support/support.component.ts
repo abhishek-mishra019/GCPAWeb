@@ -7,9 +7,8 @@ import { SupportServiceService } from 'src/app/services/support/support-service.
 import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { PopupHandlerService } from 'src/app/services/popup-handler-service/popup-handler.service';
 import { ToolsService } from 'src/app/services/tool/tools.service';
-import { SupportPopupComponent } from './support-popup/support-popup.component';
 import { DataTableServiceService } from 'src/app/services/dataTable/data-table-service.service';
-import { data } from 'jquery';
+import { SupportPopupComponent } from './support-popup/support-popup.component';
 
 @Component({
   selector: 'app-support',
@@ -28,14 +27,16 @@ export class SupportComponent implements OnInit {
   displayColoumnsSupport:string[];
   messageSent='';
   supportData: Support[];
+  userReady: boolean = false;
 
-@ViewChild(SupportPopupComponent) supportPopup:any;
+  @ViewChild(SupportPopupComponent) supportPopup:any;
 
   constructor(public dataTableService: DataTableServiceService, public supportService:SupportServiceService,public authService:AuthServiceService, public popupService:PopupHandlerService, public activityService:ActivityServiceService, public dateService:ToolsService,public router:Router) { }
 
   ngOnInit(): void {
     this.authService.afauth.user.subscribe({
       next:(user)=>{
+        this.userReady = true;
         if (!user) {
           this.popupService.loginPopup=true;
         }else{
@@ -46,6 +47,7 @@ export class SupportComponent implements OnInit {
         console.error(error);
       },
       complete:()=>{
+        this.userReady = true;
         console.log('User fetched');
       }
     })

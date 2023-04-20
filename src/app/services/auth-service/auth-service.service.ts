@@ -5,18 +5,18 @@ import { User, UserFetched } from 'src/app/Interfaces/UserInterface';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { PopupHandlerService } from '../popup-handler-service/popup-handler.service';
 import { CookieService } from 'ngx-cookie-service';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
-  user!: User;
+  user: User;
   userReady:boolean=false;
   currentReceipt:string = ""
   loggedInUser:UserFetched;
   invalidSignin=false;
+  userDataReady: boolean = false;
 
   constructor(private cookieService: CookieService,public afauth: AngularFireAuth,public functions: AngularFireFunctions, private popupService:PopupHandlerService) { }
   
@@ -34,12 +34,12 @@ export class AuthServiceService {
   }
 
   getUser(uid:string) {
-    
     const callable = this.functions.httpsCallable('users/getUser');
     callable({ uid: uid}).subscribe({
       next: (data) => {
         this.loggedInUser=data.data;
         console.log("Successful");
+        this.userDataReady = true;
       },
       error: (error) => {
         console.error("Error", error);

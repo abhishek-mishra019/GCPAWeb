@@ -4,7 +4,6 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 const { registerUser, getApplicant, updateApplicant, addFile } = require("../lib");
-const { getRawData } = require("../../raw-data/lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
 const { mailer } = require("../../mailer/lib");
 
@@ -56,50 +55,48 @@ exports.registerNewUser = function(request, response) {
     const numberOfFiles = 0;
     let result;
     const status = 200;
-    getRawData().then((doc) => {
-        const date = new Date().getDate();
-        const time = new Date().getMilliseconds();
-        const keyName = firstName.slice(0, 3);
-        const key = keyName + date.toString() + time.toString();
-        let uid = Buffer.from(key).toString("base64");
+    const date = new Date().getDate();
+    const time = new Date().getMilliseconds();
+    const keyName = firstName.slice(0, 3);
+    const key = keyName + date.toString() + time.toString();
+    let uid = Buffer.from(key).toString("base64");
 
-        // eslint-disable-next-line require-jsdoc
-        function removeCharRecursive(str, X) {
-            if (str.length == 0) {
-                return "";
-            }
-            if (str.charAt(0) == X) {
-                return removeCharRecursive(
-                    str.substring(1), X);
-            }
-            return str.charAt(0) +
-                removeCharRecursive(
-                    str.substring(1), X);
+    // eslint-disable-next-line require-jsdoc
+    function removeCharRecursive(str, X) {
+        if (str.length == 0) {
+            return "";
         }
-        uid = removeCharRecursive(uid, "=");
-        console.log(uid);
+        if (str.charAt(0) == X) {
+            return removeCharRecursive(
+                str.substring(1), X);
+        }
+        return str.charAt(0) +
+            removeCharRecursive(
+                str.substring(1), X);
+    }
+    uid = removeCharRecursive(uid, "=");
+    console.log(uid);
 
-        registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates, state, gender, relationship, howHeard).then(() => {
-            result = { data: uid };
-            console.log("Applicant Registered Successfully");
-            // adding file code
-            if (photo.FileUrl) {
-                addFiles(uid, photo).then(() => {
-                    if (profile.FileUrl) {
-                        addFiles(uid, profile);
-                    }
-                });
-            }
+    registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates, state, gender, relationship, howHeard).then(() => {
+        result = { data: uid };
+        console.log("Applicant Registered Successfully");
+        // adding file code
+        if (photo.FileUrl) {
+            addFiles(uid, photo).then(() => {
+                if (profile.FileUrl) {
+                    addFiles(uid, profile);
+                }
+            });
+        }
 
-            // end
-            updateData("registration").then(() => console.log("Registration Raw Data Updated"));
-            mailer(userUid, "Payment_Pending", uid);
-            return response.status(status).send(result);
-        }).catch((error) => {
-            result = { data: error };
-            console.error("Error Registering applicant", error);
-            return response.status(status).send(result);
-        });
+        // end
+        updateData("registration").then(() => console.log("Registration Raw Data Updated"));
+        mailer(userUid, "Payment_Pending", uid);
+        return response.status(status).send(result);
+    }).catch((error) => {
+        result = { data: error };
+        console.error("Error Registering applicant", error);
+        return response.status(status).send(result);
     });
 };
 

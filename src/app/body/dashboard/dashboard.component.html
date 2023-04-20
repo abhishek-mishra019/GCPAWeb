@@ -1,8 +1,6 @@
-<app-support-popup></app-support-popup>
-
+<app-support-popup [contactEmail]="authService.user.email" [name]="authService.user.displayName"></app-support-popup>
 <div class="back mt-5 pt-5 pb-5" style="min-height: 100vh;">
-
-       <div class="row">
+    <div class="row">
         <div class="col-md-2">
             <div class="wrapper d-flex">
                 <div class="sidebar">
@@ -39,7 +37,7 @@
             </div>
         </div>
         <div class="col-md-10">
-    <h1 class="text-center pt-3">Admin Dashboard</h1>
+            <h1 class="text-center pt-3">Admin Dashboard</h1>
 
             <app-users-dashboard *ngIf="userDataComponent"></app-users-dashboard>
             <app-registration-dashboard *ngIf="registrationDataComponent"></app-registration-dashboard>

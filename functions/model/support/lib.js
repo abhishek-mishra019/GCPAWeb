@@ -23,10 +23,10 @@ exports.createSupport = function(userUid, name, supportType, message, contactEma
     return Promise.resolve(supportData);
 };
 
-exports.updateSupport = function(ticketId, State, AssignedTo) {
+exports.updateSupport = function(ticketId, state, assignedTo) {
     const supporUpdatetData = db.collection("Support").doc(ticketId).update({
-        State: State,
-        AssignedTo: AssignedTo,
+        State: state,
+        AssignedTo: assignedTo,
     });
     return Promise.resolve(supporUpdatetData);
 };

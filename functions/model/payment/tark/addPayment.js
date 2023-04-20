@@ -27,7 +27,7 @@ exports.addPayment = function(request, response) {
                 let options;
 
                 if (isIndian) {
-                    const amount = 1300; // For India INR
+                    const amount = 1250; // For India INR
                     options = {
                         amount: parseInt(amount * 100), // amount in the smallest currency unit
                         currency: "INR",
@@ -48,6 +48,8 @@ exports.addPayment = function(request, response) {
                     console.log(err);
                     return response.status(500).send(result);
                 }
+
+                order.amount_due = order.amount;
 
                 setRazorDetails(Uid, order);
                 // Test credentials

@@ -31,9 +31,10 @@ export class SupportDetailsAdminComponent implements OnInit {
     this.activities=this.activityService.activities
   }
 
-  updateSupportTicket(ticketId:string, State:any, AssignedTo:any){
+  updateSupportTicket(ticketId:string, State:string, AssignedTo:string){
+    console.log(State);
     const callable = this.functions.httpsCallable('support/updateSupport');
-    callable({ticketId:ticketId, State:State, AssignedTo: AssignedTo}).subscribe({
+    callable({ticketId:ticketId, state:State, assignedTo: AssignedTo}).subscribe({
       next: (data) => {
         alert("Support ticket updated successfully");
       },

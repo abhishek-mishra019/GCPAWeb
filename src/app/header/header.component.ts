@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
   }
 
   loadyourRegistrations(){
-    this.router.navigate(['/yourRegistrations']);
+    this.router.navigate(['/MyRegistrations']);
   }
 
   loadDashboardPage(){

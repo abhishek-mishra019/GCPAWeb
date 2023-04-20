@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Support } from 'src/app/Interfaces/SupportInterfaces';
 import { SupportServiceService } from 'src/app/services/support/support-service.service';
 import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
@@ -12,21 +12,22 @@ import { ToolsService } from 'src/app/services/tool/tools.service';
 })
 export class SupportPopupComponent implements OnInit {
 
-showSupportPopup=false;
-  name=''
-  contactEmail=''
-  supportType='Select Request Type from below'
-  message=''
+  showSupportPopup: boolean =false;
+  dataReady: boolean = false;
+  @Input('name') name: string;
+  @Input('contactEmail') contactEmail: string;
+  supportType:string ='Select Request Type from below'
+  message:string;
   support:Support={UserUid:"",Name:"",SupportType:"",Message:"",ContactEmail:"",TicketId:"", NumberOfActivity:0,Date:"", Time:"",Show:false, State:"", AssignedTo:""}
   
   constructor(public dateService:ToolsService, public supportService:SupportServiceService, public authService:AuthServiceService,public popupService:PopupHandlerService) { }
 
   ngOnInit(): void {
-    this.contactEmail=this.authService.loggedInUser.Email
-    
+    console.log("ngoninit check");
+    this.dataReady = true 
   }
 
-  isFormEmpty(Name:any, contactEmail:any, message:any, supportType:any){
+  isFormEmpty(Name:string, contactEmail:string, message:string, supportType:string){
     if(Name == "" || contactEmail == "" || message == ""){
       alert("Kindly fill all the fields !!")
       return false;

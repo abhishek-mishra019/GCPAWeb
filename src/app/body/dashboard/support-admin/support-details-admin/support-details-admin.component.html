@@ -32,13 +32,15 @@
         <div class="row pt-5 text-center">
             <div class="col-md-2"></div>
             <div class="col-md-4 fs-5">
-                <select class="form-select  form-control-sm mt-2 bg-light" [(ngModel)]="supportService.support.State" id="State" required [ngModelOptions]="{standalone: true}">
-                    <option value = "New"> New </option>
-                    <option value="InProgress"> InProgress </option>
-                    <option value="Resolved">Resolved </option>
+                <label for="Status">Status</label>
+                <select class="form-select  form-control-sm mt-2 bg-light" [(ngModel)]="supportService.support.State" id="Status" required [ngModelOptions]="{standalone: true}">
+                    <option value = "New">New</option>
+                    <option value="InProgress">InProgress</option>
+                    <option value="Resolved">Resolved</option>
                 </select>
             </div>
             <div class="col-md-4 fs-5">
+                <label for="AssignedTo">AssignedTo</label>
                 <select class="form-select  form-control-sm mt-2 bg-light" [(ngModel)]="supportService.support.AssignedTo" id="AssignedTo" required [ngModelOptions]="{standalone: true}">
                     <option value="GCP L1"> GCP L1 </option>
                     <option value="GCP L2"> GCP L2 </option>
@@ -48,7 +50,7 @@
             <div class="col-md-2"></div>
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                <button class="btn btn-outline-secondary m-2" (click)="updateSupportTicket(supportService.support.TicketId,State,AssignedTo)" type="button">Update support Ticket</button>
+                <button class="btn btn-outline-secondary m-2" (click)="updateSupportTicket(supportService.support.TicketId,supportService.support.State,supportService.support.AssignedTo)" type="button">Update support Ticket</button>
             </div>
             <div class="col-md-2"></div>
         </div>

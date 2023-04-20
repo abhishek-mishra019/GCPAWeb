@@ -22,14 +22,14 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-2">
-                            <h6 class="mb-0 pt-2">Opened By: </h6>
+                            <h6 class="mb-0 pt-2">Opened By:</h6>
                         </div>
                         <div class="col-sm-3 mb text-secondary">
                             <input type="text" class="form-control" [(ngModel)]="supportService.support.Name"
                                 disabled />
                         </div>
                         <div class="col-sm-2">
-                            <h6 class="mb-0 pt-2"> Opened </h6>
+                            <h6 class="mb-0 pt-2">Opened</h6>
                         </div>
                         <div class="col-sm-5 text-secondary">
                             <input type="text" class="form-control" readonly="readonly"
@@ -39,14 +39,14 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-sm-2">
-                            <h6 class="mb-0 pt-2">State </h6>
+                            <h6 class="mb-0 pt-2">Status</h6>
                         </div>
                         <div class="col-sm-3 mb text-secondary">
                             <input type="text" class="form-control" [(ngModel)]="supportService.support.State"
                                 disabled />
                         </div>
                         <div class="col-sm-2">
-                            <h6 class="mb-0 pt-2"> Assigned To </h6>
+                            <h6 class="mb-0 pt-2">Assigned To</h6>
                         </div>
                         <div class="col-sm-5 text-secondary">
                             <input type="text" class="form-control" [(ngModel)]="supportService.support.AssignedTo"
@@ -65,39 +65,18 @@
                     </div>
 
                     <div class="row pt-5 mt-4 text-center">
-                        <div class="col-md-2"></div>
-                        <!-- <div class="card col-md-8 border-3" style="border-color: #ef3789;">
-                            <div class="card-title fs-6 pt-1">
-                                <b>Support Chat</b>
-                            </div>
-                            <div class="card-body">
-                                <ng-container *ngFor="let activity of activityService.activities">
-
-                                    <div
-                                        [ngClass]="{'border rounded col-8': true, 'text-end':activity.Sendor==='user','text-start':activity.Sendor==='admin'}">
-                                        {{activity.Message}}</div>
-
-                                </ng-container>
-
-                                <div class="input-group mt-3">
-                                    <input type="text" class="form-control" placeholder="Type Your Message Here"
-                                        aria-describedby="button-addon2" [ngModelOptions]="{standalone: true}"
-                                        [(ngModel)]="messageSent">
-                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-                                        (click)="sendMessage(supportService.support.TicketId)">Send Message</button>
-                                </div>
-                            </div>
-                        </div> -->
-                        <div class=" col-md-8 ">
+                        <div class="col-1"></div>
+                        <div class="col-md-10 col-10">
                             <div class="card-title">
-                               <h2> <b>Support Chat</b></h2>
+                                <h2> <b>Support Chat</b></h2>
                             </div>
-                            <div class="containeri">
+                            <div class="containeri P-1">
                                 <div class="chatbox">
                                     <div *ngFor="let activity of activityService.activities">
                                         <div *ngIf="activity.Sendor=='user'">
-                                            <div class="chat chatReverse" >
-                                                <img src="{{authService.user.photoURL}}" onerror= "this.src = '../../assets/defaultavatar.jpg'" alt="">
+                                            <div class="chat chatReverse">
+                                                <img src="{{authService.user.photoURL}}"
+                                                    onerror="this.src = '../../assets/defaultavatar.jpg'" alt="">
                                                 <p class="msg">
                                                     {{activity.Message}}
                                                 </p>
@@ -105,7 +84,7 @@
                                         </div>
                                         <div *ngIf="activity.Sendor=='admin'">
                                             <div class="chat">
-                                                <img src="" alt="">
+                                                <img src="../../../../assets/gcpa_logo.jpeg" alt="" class="supportImage rounded-circle"/>
                                                 <p class="msg">
                                                     {{activity.Message}}
                                                 </p>
@@ -116,14 +95,16 @@
                                         <input type="text" class="form-control" placeholder="Type Your Message Here"
                                             aria-describedby="button-addon2" [ngModelOptions]="{standalone: true}"
                                             [(ngModel)]="messageSent">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
-                                            (click)="sendMessage(supportService.support.TicketId)"> <mat-icon aria-hidden="false" id="send">send</mat-icon></button>
+                                        <button class="btn btn-outline-secondary text-center" type="button" id="button-addon2"
+                                            (click)="sendMessage(supportService.support.TicketId)">
+                                            <mat-icon class="align-middle" aria-hidden="false" id="send">send</mat-icon>
+                                        </button>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-1"></div>
                         </div>
-                        </div>
-                        <div class="col-md-2"></div>
                     </div>
                 </div>
             </div>
         </div>
-</div>

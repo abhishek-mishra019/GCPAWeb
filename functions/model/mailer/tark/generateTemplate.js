@@ -38,10 +38,12 @@
      if (templateName == "PaymentPending.html") {
         mailSubject="Payment Pending - GCPA";
         data = data.replace("$Name$", applicantName);
+        data = data.replace("$Name$", applicantName);
         // data = data.replace("$Name1$", applicantName);
         data = data.replace("$Applicationid$", applicationId);
         data = data.replace("$ApplicationLink$", "https://www.gcpawards.com/payment/" + applicationId); // applicationId
      } else if (templateName == "PaymentSuccess.html") {
+        data = data.replace("$Name$", applicantName);
         data = data.replace("$Name$", applicantName);
         // data = data.replace("$Name1$", applicantName);
         data = data.replace("$ApplicationId$", applicationId);
@@ -49,9 +51,11 @@
         mailSubject="Payment Successful - GCPA";
      } else if (templateName == "selected.html") {
         data = data.replace("$Name$", applicantName);
+        data = data.replace("$Name$", applicantName);
         mailSubject="Congratulations on the Global Child Prodigy Award";
         data = data.replace("$applicationLink$", "https://www.gcpawards.com/"); // applicationId
     } else if (templateName == "rejected.html") {
+        data = data.replace("$Name$", applicantName);
         data = data.replace("$Name$", applicantName);
         mailSubject="Application Status - GCPA";
     } else if (templateName == "contact.html") {
@@ -63,6 +67,7 @@
       mailSubject = "New Contact Request";
     } else if (templateName == "regSuccess.html") {
       data = data.replace("$Name$", applicantName);
+      data = data.replace("$Name$", applicantName);
       // data = data.replace("$Name1$", applicantName);
       data = data.replace("$ApplicationId$", applicationId);
       data = data.replace("$ApplicationLink$", "https://www.gcpawards.com/registrationDetail/"+ applicationId); // applicationId
@@ -70,11 +75,13 @@
     } else if (templateName == "supportTicket.html") {
       mailSubject = "Request Received - GCPA";
       data = data.replace("$Name$", applicantName);
+      data = data.replace("$Name$", applicantName);
       data = data.replace("$Status$", applicationId.Status);
       data = data.replace("$RequestId$", applicationId.Id);
       data = data.replace("$ApplicationLink$", "https://gcpawards.com/supportDetails/" + applicationId.Id);
     } else if (templateName == "newMessage.html") {
       mailSubject = "New Message on you request - GCPA";
+      data = data.replace("$Name$", applicantName);
       data = data.replace("$Name$", applicantName);
       data = data.replace("$Status$", applicationId.Status);
       data = data.replace("$RequestId$", applicationId.Id);

@@ -39,6 +39,8 @@ exports.addEcommercePayment = function(request, response) {
                         return response.status(500).send(result);
                     }
 
+                    order.amount_due = order.amount;
+
                     setEcommerceRazorDetails(id, order);
                     // Test credentials
                     order.key = razorpayKeys.key_id;

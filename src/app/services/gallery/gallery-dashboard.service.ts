@@ -10,6 +10,8 @@ import { UpdateRegistrationService } from '../update-registration/update-registr
 })
 export class GalleryDashboardService {
   gallery:Photo[]=[]
+  neatGalleryImageUrl: string[] = []
+  neatGallery: Photo[] = []
 
   gallaryData: Observable<Photo[]>
   imageUrls: string[] =[];
@@ -44,10 +46,13 @@ export class GalleryDashboardService {
       next: (data) => {
         data.forEach(element => {
           this.gallery.push(element);
-          console.log(element.ImageUrl);
+
+          if(!this.neatGalleryImageUrl.includes(element.ImageUrl)) {
+            this.neatGalleryImageUrl.push(element.ImageUrl);
+            this.neatGallery.push(element);
+          }
           this.imageUrls.push(element.ImageUrl);   
         });
-        console.log(this.imageUrls);
       },
       error: (error) => {
         console.error(error);

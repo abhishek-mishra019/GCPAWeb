@@ -9,13 +9,13 @@ const { updateSupport } = require("../lib");
 exports.updateSupport = function(request, response) {
     const ticketId = request.body.data.ticketId;
     console.log("TICKETID: "+ ticketId);
-    const State = request.body.data.State;
-    console.log("TICKETID: "+ State);
-    const AssignedTo = request.body.data.AssignedTo;
-    console.log("TICKETID: "+ AssignedTo);
+    const state = request.body.data.state;
+    console.log("TICKETID: "+ state);
+    const assignedTo = request.body.data.assignedTo;
+    console.log("TICKETID: "+ assignedTo);
 
     let result;
-    updateSupport(ticketId, State, AssignedTo).then(() => {
+    updateSupport(ticketId, state, assignedTo).then(() => {
         result = { data: "Support Ticket Updated successfully" };
         return response.status(200).send(result);
     }).catch((error) => {

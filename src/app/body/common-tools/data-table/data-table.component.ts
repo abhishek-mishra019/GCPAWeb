@@ -23,14 +23,14 @@ export class DataTableComponent implements OnInit, AfterViewInit {
   dataSource: DataTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns:string[] = [];
+  displayedColumns: string[] = [];
 
   constructor(private router: Router) {
     this.dataSource = new DataTableDataSource();
   }
 
   ngOnInit(): void {
-    if(this.dataForTable != undefined) {
+    if (this.dataForTable != undefined) {
       this.dataSource.data = this.dataForTable;
       this.displayedColumns = this.displayColoumns;
     }
@@ -42,11 +42,11 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     this.table.dataSource = this.dataSource;
   }
 
-  pay(Uid: any){
+  pay(Uid: any) {
     this.router.navigate(['payment/', Uid]);
   }
-  openRegistrationDetail(Uid:string){
-this.router.navigate(['/registrationDetail',Uid])
+  openRegistrationDetail(Uid: string) {
+    this.router.navigate(['/registrationDetail', Uid])
   }
 
 }

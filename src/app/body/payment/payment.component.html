@@ -1,68 +1,90 @@
+<app-login-page></app-login-page>
+
 <div class="p-5 mt-5 back" style="min-height:85vh ;">
     <div class="row pt-2 px-0 text-center">
-        <h1>Submit Form Application</h1> 
-        <h6 class="pt-2">All of your details are recorded successfully. Proceed with the application fees to complete the application.</h6>
+        <h1>Submit Form Application</h1>
+        <h6 class="pt-2">All of your details are recorded successfully. Proceed with the application fees to complete
+            the application.</h6>
     </div>
-<div class="row mt-1 px-5">
-    <div class="center py-5 mt-5 col-md-6">
-        <div class="row content">
-            <table style="background-color: rgb(243,250,250); " class="my-3">
-                <tr>
-                    <td class="px-4 pt-3">
-                        <p><b>Application Id :</b></p>
-                    </td>
-                    <td class="pt-3">
-                        <p>{{applicant.Uid}}</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="px-4"> <p><b>Participant's Name :</b></p></td>
-                    <td> <p>{{applicant.FirstName}} {{applicant.LastName}}</p></td>
-                </tr>
-                <tr>
-                    <td class="px-4"><p><b>Email :</b></p></td>
-                    <td>  <p>{{authService.user.email}}</p></td>
-                </tr>
-                <tr>
-                    <td class="px-4">  <p><b>Phone :</b></p></td>
-                    <td><p>{{applicant.Number}}</p></td>
-                </tr>
-                <tr>
-                    <td class="px-4">  <p><b>Application Fee(Incl. Tax) :</b></p></td>
-                    <td>
-                        <p *ngIf="isIndian">₹1300</p>
-                        <p *ngIf="!isIndian">$15 USD</p>
-                    </td>
-                </tr>
-        </table>
-      
-        <div class="row p-2" *ngIf="!paymentComplete" style="text-align: center;">
-            <div class="col">
-                <button class="btn btn-success" [disabled]="disablePayNow" (click)="setOrderWithRazor()">Pay & Submit Application</button>
-                
-                <p class="pt-3 pb-0 mb-0" *ngIf="disablePayNow">
-                   Please don't refresh payment is in process
-                </p>
-                <img class="pt-0 mt-0" src="../../../assets/gif/Bars-1s-200px.gif" alt="" height="100px" *ngIf="disablePayNow">
+    <div class="row mt-1 px-5">
+        <div class="center py-5 mt-5 col-md-6">
+            <div class="row content">
+                <table style="background-color: rgb(243,250,250); " class="my-3">
+                    <tr *ngIf="!showLoader">
+                        <td class="px-4 pt-3">
+                            <p><b>Application Id :</b></p>
+                        </td>
+                        <td class="pt-3">
+                            <p>{{applicant.Uid}}</p>
+                        </td>
+                    </tr>
+                    <tr *ngIf="!showLoader">
+                        <td class="px-4">
+                            <p><b>Participant's Name :</b></p>
+                        </td>
+                        <td>
+                            <p>{{applicant.FirstName}} {{applicant.LastName}}</p>
+                        </td>
+                    </tr>
+                    <tr *ngIf="!showLoader">
+                        <td class="px-4">
+                            <p><b>Email :</b></p>
+                        </td>
+                        <td>
+                            <p>{{authService.user.email}}</p>
+                        </td>
+                    </tr>
+                    <tr *ngIf="!showLoader">
+                        <td class="px-4">
+                            <p><b>Phone :</b></p>
+                        </td>
+                        <td>
+                            <p>{{applicant.Number}}</p>
+                        </td>
+                    </tr>
+                    <tr *ngIf="!showLoader">
+                        <td class="px-4">
+                            <p><b>Application Fee(Incl. Tax) :</b></p>
+                        </td>
+                        <td>
+                            <p *ngIf="isIndian">₹1250</p>
+                            <p *ngIf="!isIndian">$15 USD</p>
+                        </td>
+                    </tr>
+                    <tr *ngIf="showLoader">
+                        <td>
+                            <app-loader></app-loader>
+                            <!-- <div class="text-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div> -->
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="row p-2" *ngIf="!paymentComplete" style="text-align: center;">
+                    <div class="col">
+                        <button class="btn btn-success" [disabled]="disablePayNow" (click)="setOrderWithRazor()">Pay &
+                            Submit Application</button>
+                        <p class="pt-3 pb-0 mb-0" *ngIf="disablePayNow">
+                            Please don't refresh payment is in process
+                        </p>
+                        <img class="pt-0 mt-0" src="../../../assets/gif/Bars-1s-200px.gif" alt="" height="100px"
+                            *ngIf="disablePayNow">
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="col-md-6 container-fluid">
-    <img class="img-fluid" src="../../../assets/happy.png " alt=" ">
-</div>
-<div class="row p-2" *ngIf="paymentComplete" style="text-align: center;">
-    <div class="col">
-        <h1>Payment Already Done!</h1>
-    </div>
-</div>
-<ng-template *ngIf="showLoader">
-    <div class="text-center">
-        <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+        <div class="col-md-6 container-fluid">
+            <img class="img-fluid" src="../../../assets/happy.png " alt=" ">
         </div>
+        <div class="row p-2" *ngIf="paymentComplete" style="text-align: center;">
+            <div class="col">
+                <h1>Payment Already Done!</h1>
+            </div>
+        </div>
+
     </div>
-</ng-template>
-</div>
 
 </div>
