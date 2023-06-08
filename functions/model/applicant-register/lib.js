@@ -6,6 +6,11 @@
 
 const { db } = require("../application/lib");
 
+exports.generateBase64String = function(temp) {
+  return Buffer.from(temp).toString("base64");
+};
+
+
 exports.registerUser = function(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo, profile, social, userUid, numberOfFiles, emailUpdates, state, gender, relationship, howHeard) {
     const registerData = db.collection("Registrations").doc(uid).set({
         Uid: uid,

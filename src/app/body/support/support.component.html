@@ -4,7 +4,7 @@
     <div class="text-center pt-5 mb-3">
         <button type="submit" class="btn btn-outline-dark" (click)="showNewSupport()">Raise New Ticket</button>
     </div>
-        <div *ngIf="supportService.supports.length" class="row">
+        <div *ngIf="!supportService.showLoader && supportService.supports.length" class="row">
             <div class="col table table-responsive table-hover">
                 <div *ngIf="supportData.length else loader">
                     <app-support-data-table [dataForTable]="supportData " [displayColoumns]="displayColoumnsSupport "
@@ -16,6 +16,10 @@
                 </ng-template>
             </div>
         </div>
+        <ng-container *ngIf="supportService.showLoader">
+            <app-loader></app-loader>
+        </ng-container>
+        
         <!-- <ng-container *ngFor="let support of supportService.supports;let indexOfelement=index;">
             <div class="container">
                 <div class="row pt-3">

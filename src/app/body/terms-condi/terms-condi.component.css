@@ -48,7 +48,7 @@ h6 {
     font-family: 'Amaranth', sans-serif!important;
 }
 
-.terms {
+.terms, p {
     color: #555555!important;
     text-align: justify;
     font-weight: 400;

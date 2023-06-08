@@ -1,11 +1,8 @@
-<div>
-    
+<div *ngIf="userReady">
     <h5 class="fw-bold"><span><div class="badge bg-primary text-wrap">2</div></span> Address & Contact Information </h5>
     <div class="row pt-4 pb-4">
         <h5 class=" ">Phone Number<span class="text-danger ">*</span></h5>
-
         <div class="col-md-5">
-            
             <select name="countryCode" class="form-select" [(ngModel)]="telephoneCode">
                     <option data-countryCode="DZ" value="213">Algeria (+213)</option>
                     <option data-countryCode="AD" value="376">Andorra (+376)</option>
@@ -233,7 +230,7 @@
     <div class="row pb-4 ">
         <div class="col-md-12 ">           
                     <h5 class=" ">Email Address<span class="text-danger ">*</span></h5>
-                    <input type="email" class="form-control" [(ngModel)]="email" name="email">
+                    <input type="email" class="form-control" [(ngModel)]="email" name="email" readonly>
                     <small  class="text-danger py-3" *ngIf="registerService.invalidEmail" >
                         Invalid Email
                     </small>

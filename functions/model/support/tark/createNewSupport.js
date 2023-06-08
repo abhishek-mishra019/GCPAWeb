@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const { createSupport } = require("../lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
-const { getRawData } = require("../../raw-data/lib");
+// const { getRawData } = require("../../raw-data/lib");
 const { generateTemplate } = require("../../mailer/tark/generateTemplate");
 const { sendMail } = require("../../mail/mail");
 
@@ -59,28 +59,27 @@ exports.createNewSupport = function(request, response) {
     const assignedTo = support.assignedTo;
 
     const status = 200;
-    getRawData().then((doc) => {
-        const key = Name.slice(3) + time.toString();
-        let ticketId = Buffer.from(key).toString("base64");
-        ticketId = removeCharRecursive(ticketId, "=");
-        createSupport(UserUid, Name, SupportType, Message, ContactEmail, ticketId, date, time, state, assignedTo).then(() => {
-           const result = { data: "Support created Successfully" };
-            console.log("Support created Successfully");
-            updateData("support").then(() => {
-                console.log("User Raw Data Updated.");
-            });
-            createActivity("user", Message, date, time, ticketId);
-            const data = {};
-            data.Id = ticketId;
-            data.Status = "Raised";
-            generateTemplate("Support_New", Name, data ).then((message)=>{
-                sendMail(ContactEmail, message[0], message[1]);
-            });
-            return response.status(status).send(result);
-        }).catch((error) => {
-          const result = { data: error };
-            console.error("Error Creating Support", error);
-            return response.status(status).send(result);
+    const key = Name.slice(3) + time.toString();
+    let ticketId = Buffer.from(key).toString("base64");
+    ticketId = removeCharRecursive(ticketId, "=");
+    console.log("creating support ticket");
+    createSupport(UserUid, Name, SupportType, Message, ContactEmail, ticketId, date, time, state, assignedTo).then(() => {
+        const result = { data: "Support created Successfully" };
+        console.log("Support created Successfully");
+        updateData("support").then(() => {
+            console.log("User Raw Data Updated.");
         });
+        createActivity("user", Message, date, time, ticketId);
+        const data = {};
+        data.Id = ticketId;
+        data.Status = "Raised";
+        generateTemplate("Support_New", Name, data ).then((message)=>{
+            sendMail(ContactEmail, message[0], message[1]);
+        });
+        return response.status(status).send(result);
+    }).catch((error) => {
+        const result = { data: error };
+        console.error("Error Creating Support", error);
+        return response.status(status).send(result);
     });
 };

@@ -29,6 +29,7 @@ const { newsroom } = require("./model/newsroom/newsroom");
 const { gallery } = require("./model/gallery/gallery");
 const { payment } = require("./model/payment/payment");
 const { ecommerce } = require("./model/ecommerce/products");
+const { onCreateRegistration } = require("./model/scheduler/scheduler");
 
 exports.users = users;
 exports.registrations = registrations;
@@ -41,3 +42,4 @@ exports.testimonials = testimonials;
 exports.newsroom = newsroom;
 exports.gallery = gallery;
 exports.ecommerce = ecommerce;
+exports.onCreateRegistration = onCreateRegistration;

@@ -13,28 +13,20 @@ export class SupportServiceService {
   supports: Support[] = [];
   supportDetail: Support;
   support: Support;
+  showLoader: boolean = false;
 
   constructor(public functions: AngularFireFunctions, public authService: AuthServiceService) { }
 
   createNewSupport(support: Support) {
     const callable = this.functions.httpsCallable('support/createNewSupport');
     support.UserUid = this.authService.user.uid;
-    callable({ userUid: support.UserUid, name: support.Name, supportType: support.SupportType, message: support.Message, contactEmail: support.ContactEmail, date: support.Date, time: support.Time, state: support.State, assignedTo: support.AssignedTo }).subscribe({
-      next: (data) => {
-        console.log("Support added");
-      },
-      error: (error) => {
-        console.error("Error", error);
-      },
-      complete: () => {
-        this.getSupportList();
-      }
-    });
+    return callable({ userUid: support.UserUid, name: support.Name, supportType: support.SupportType, message: support.Message, contactEmail: support.ContactEmail, date: support.Date, time: support.Time, state: support.State, assignedTo: support.AssignedTo });
   }
 
   getSupportList() {
     this.authService.afauth.user.subscribe({
       next: (user) => {
+        this.showLoader = true;
         this.authService.setCurrentUser(user as User);
         const useruid = this.authService.user.uid;
         const callable = this.functions.httpsCallable("support/getSupportList");
@@ -49,6 +41,7 @@ export class SupportServiceService {
             console.error(error);
           },
           complete: () => {
+            this.showLoader = false;
             console.info('Getting Support List Successfull')
           }
         });

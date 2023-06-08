@@ -16,13 +16,13 @@ export class StartSericeService {
     private newsService: NewsServiceService,
     private wpService: WpServiceService) { }
     StartApplication(){
-    this.galleryService.getphoto(0,20);
-    this.testimonialService.getTestimonial();
-    this.partnerService.getPartners();
-    this.newsService.getnews();
-    // this.wpService.getAllPosts();
-    this.wpService.getParentingPosts();
-    this.wpService.getPopularPosts();
-    this.wpService.getHistoryPosts();
-  }
+      this.galleryService.getphoto(0,20);
+      this.testimonialService.getTestimonial();
+      this.partnerService.getPartners();
+      this.newsService.getnews();
+      // this.wpService.getAllPosts();
+      this.wpService.getParentingPosts();
+      this.wpService.getPopularPosts();
+      this.wpService.getHistoryPosts();
+    }
 }

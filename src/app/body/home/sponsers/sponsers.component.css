@@ -15,28 +15,29 @@ h1 {
 
 @media (min-width: 576px) {
     .img {
-        max-width: 200px;
+        max-width: 150px;
     }
 }
 
 @media (min-width: 768px) {
     .img {
-        max-width: 70px;
+        max-width: 50px;
     }
 }
 
 @media (min-width: 992px) {
     .img {
-        max-width: 100px;
+        max-width: 80px;
     }
 }
 
 @media (max-width: 1200px) {
     .img {
-        max-width: 140px;
+        max-width: 100px;
     }
 }
 
 .content-image {
-    width: 91%;
+    width: 105px;
+    height: 100px;
 }
