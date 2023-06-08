@@ -30,3 +30,27 @@ const { generateTemplate } = require("./tark/generateTemplate");
     });
     return Promise.resolve(promise);
 };
+
+ /**
+  * Description
+  * @param {any} uid
+  * @param {any} applicantName
+  * @param {any} mailType
+  * @param {any} applicationId
+  * @return {any}
+  */
+ exports.mailerAN = function(uid, applicantName, mailType, applicationId) {
+    const promise = getUser(uid, "").then((data) => {
+        const p1 = generateTemplate(mailType, applicantName, applicationId).then((message)=>{
+            sendMail(data.Email, message[0], message[1]);
+        }).catch((error)=>{
+            console.error(error);
+        return error;
+        });
+        Promise.resolve(p1);
+    }).catch((error) => {
+        console.error(error);
+        return error;
+    });
+    return Promise.resolve(promise);
+};

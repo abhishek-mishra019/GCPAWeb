@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { RegisterServiceService } from 'src/app/services/register-service/register-service.service';
 import { CountryComponent } from './country/country.component';
@@ -13,13 +13,14 @@ export class AddressContactComponent implements OnInit {
   address=''
   zip=''
   number=''
-  email=''
+  @Input('email') email='';
   school=''
   country=''
   state =''
   telephoneCode=''
 
-
+  userReady: boolean = false;
+  showLoader: boolean = false;
   
   addCountry(newCountry: string) {
     this.country=newCountry;
@@ -31,7 +32,7 @@ export class AddressContactComponent implements OnInit {
   constructor(public registerService:RegisterServiceService, public authService:AuthServiceService) { }
   
   ngOnInit(): void {
-    this.email=this.authService.loggedInUser.Email
+    // this.email=this.authService.loggedInUser.Email
+    this.userReady = true;
   }
-
 }

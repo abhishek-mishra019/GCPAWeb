@@ -4,7 +4,7 @@
 /* eslint-disable indent */
 /* eslint-disable max-len */
 const { db } = require("../application/lib");
-const { mailer } = require("../mailer/lib");
+const { mailerAN } = require("../mailer/lib");
 
 const base62 = {
     charset: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -69,19 +69,17 @@ exports.setRazorDetails = function(Uid, order) {
 exports.setPaymentStatus = function(id) {
     let data;
 
-    const p1 = db.collection("Registrations").doc(id).get().then((doc)=>{
+    db.collection("Registrations").doc(id).get().then((doc)=>{
         data = doc.data();
         data.RazorPayOrderDetails.amount_paid = data.RazorPayOrderDetails.amount_due;
         data.RazorPayOrderDetails.amount_due = 0;
         data.RazorPayOrderDetails.status = "paid";
-    });
-    Promise.resolve(p1).then(()=>{
         const promise = db.collection("Registrations").doc(id).update({
             PaymentStatus: "Complete",
             RazorPayOrderDetails: data.RazorPayOrderDetails,
         });
-        mailer(data.UserUid, "Payment_Complete", id);
-        mailer(data.UserUid, "Registration_Complete", id);
+        mailerAN(data.UserUid, data.FirstName, "Payment_Complete", id);
+        mailerAN(data.UserUid, data.FirstName, "Registration_Complete", id);
         return Promise.resolve(promise);
     });
 };

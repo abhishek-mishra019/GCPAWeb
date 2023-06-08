@@ -6,33 +6,34 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closePopup()"></button>
             </div>
             <div class="modal-body">
-                <ng-container *ngIf="dataReady; else loader">
-                    <form class="content-padding text-center">
-                        <div class="form-group mb-2 text-center">
-                            <input type="text" name="name" class="form-control bg-light" placeholder="Name" required [ngModelOptions]="{standalone: true}" [(ngModel)]="name" required>
-                        </div>
-                        <div class="form-group mb-2">
-                            <input type="email" required name="email" class="form-control bg-light" placeholder="Email Id" required [ngModelOptions]="{standalone: true}" [(ngModel)]="contactEmail" required>
-                        </div>
-                        <div class="form-group mb-2">
-                            <select class="form-select  form-control-sm mt-2 bg-light" [(ngModel)]="supportType" id="supportType" required [ngModelOptions]="{standalone: true}">
-                                <option selected> Select Request Type from below</option>
-                                <option value="Registration">Registration</option>
-                                <option value="Website">Payment Related Issues</option>
-                                <option value="Website">Others</option>
-                            </select>
-                        </div>
-                        <div class="form-group mb-2">
-                            <textarea style="min-height: 100px;" name="message" required class="form-control bg-light" placeholder="Support Description" required [ngModelOptions]="{standalone: true}" [(ngModel)]="message" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary"  data-bs-dismiss="modal" name="send" type="submit" (click)="submit()">Submit Request</button>
-                        </div>
-                    </form>
+                <ng-container *ngIf="!showLoader && !ticketSuccess">
+                    <div class="form-group mb-2 text-center">
+                        <input type="text" name="name" class="form-control bg-light" placeholder="Name" required [ngModelOptions]="{standalone: true}" [(ngModel)]="name" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="email" required name="email" class="form-control bg-light" placeholder="Email Id" required [ngModelOptions]="{standalone: true}" [(ngModel)]="contactEmail" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <select class="form-select  form-control-sm mt-2 bg-light" [(ngModel)]="supportType" id="supportType" required [ngModelOptions]="{standalone: true}">
+                            <option selected> Select Request Type from below</option>
+                            <option value="Registration">Registration</option>
+                            <option value="Payment">Payment Related Issues</option>
+                            <option value="Website">Others</option>
+                        </select>
+                    </div>
+                    <div class="form-group mb-2">
+                        <textarea style="min-height: 100px;" name="message" required class="form-control bg-light" placeholder="Support Description" required [ngModelOptions]="{standalone: true}" [(ngModel)]="message" required></textarea>
+                    </div>
+                    <ng-container *ngIf="showLoader">
+                        <app-loader></app-loader>
+                    </ng-container>
+                    <div class="form-group">
+                        <button class="btn btn-primary"  data-bs-dismiss="modal" [disabled]="showLoader" (click)="submit()">Submit Request</button>
+                    </div>
                 </ng-container>
-                <ng-template #loader>
-                    <app-loader></app-loader>
-                </ng-template>
+                <ng-container *ngIf="ticketSuccess">
+                    Your request has been acknowledged. We will contact you as soon as possible via email and the portal.
+                </ng-container>
             </div>
         </div>
     </div>

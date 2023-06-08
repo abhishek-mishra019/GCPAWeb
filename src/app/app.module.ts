@@ -138,6 +138,7 @@ import { Section6Component } from './body/home/testimonials/section6/section6.co
 import { GCPA2022Component } from './body/gcpa2022/gcpa2022.component';
 import { GCPA2020Component } from './body/gcpa2020/gcpa2020.component';
 import { BetaV1Component } from './body/Registration/beta-v1/beta-v1.component';
+import { WhatsappComponent } from './body/whatsapp/whatsapp.component';
 
 @NgModule({
   declarations: [
@@ -215,7 +216,7 @@ import { BetaV1Component } from './body/Registration/beta-v1/beta-v1.component';
     ProductsComponent,
     BlogComponent,
     EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent, PrivacyPolicyComponent, FaqComponent, SupportAdminComponent, SupportDetailsAdminComponent, 
-    SupportDataTableComponent, StatesComponent, Section5Component, Section6Component, GCPA2022Component, GCPA2020Component, BetaV1Component,
+    SupportDataTableComponent, StatesComponent, Section5Component, Section6Component, GCPA2022Component, GCPA2020Component, BetaV1Component, WhatsappComponent,
   ],
   imports: [
     NgSelectModule,

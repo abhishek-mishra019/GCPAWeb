@@ -11,7 +11,7 @@ exports.getRegistrations = function(request, response) {
 
     getUsersRegistrations(useruid).then((registerData) => {
         if (registerData) {
-           const result = { data: { status: "OK", data: registerData } };
+            const result = { data: { status: "OK", data: registerData } };
             return response.status(status).send(result);
         }
     }).catch((err) => {

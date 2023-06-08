@@ -3,11 +3,15 @@
     <h1>Application Confirmation</h1>
   </div>
   <div *ngIf="paymentStatus == 'Failed'">
-    <h1>Payment Failed</h1>
+    <h1>OOPS, Your payment failed !!!</h1>
+    <h1>Sometimes payment verification takes time with your bank.</h1>
+    <p>Please wait for 25 minutes before making new payment.</p>
+    <p>If you have cancelled the payment, please retry with below button.</p>
     <button (click)="retry()" class="btn btn-primary">Retry</button>
   </div>
   <div *ngIf="paymentStatus == 'Waiting'">
-    <h1>Please Wait</h1>
+    <h1>Please wait we are verifying your payment with the bank.</h1>
+    <app-loader></app-loader>
   </div>
   <div *ngIf="paymentStatus == 'Complete'" class="email-wrapper" cellpadding="0" cellspacing="0" role="presentation">
     <div class="clean-body u_body" style="margin: 0;padding: 0;color: #000000">

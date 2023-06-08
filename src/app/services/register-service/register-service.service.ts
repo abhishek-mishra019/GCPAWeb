@@ -5,9 +5,7 @@ import { FileData } from 'src/app/Interfaces/FileInterface';
 import { AuthServiceService } from '../auth-service/auth-service.service';
 import { UpdateRegistrationService } from '../update-registration/update-registration.service';
 import { map } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { data } from 'jquery';
-import { app } from 'firebase-admin';
+import { Router } from '@angular/router';
 
 
 @Injectable({

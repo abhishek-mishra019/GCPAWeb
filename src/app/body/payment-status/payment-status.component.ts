@@ -41,6 +41,24 @@ export class PaymentStatusComponent implements OnInit {
         this.paymentStatus = "Complete";
       },
       error:(error)=>{
+        // this.paymentStatus = "Failed";
+        this.paymentVerification2();
+        console.log(error);
+      },
+      complete:()=>{
+        console.log("PaymentSuccess")
+      }
+    })
+  }
+
+  paymentVerification2() {
+    const callable = this.functions.httpsCallable("payment/paymentVerification2");
+    callable({OrderId: this.orderId, Id: this.registrationId}).subscribe({ 
+      next:(data:any)=>{
+        console.log(data);
+        this.paymentStatus = "Complete";
+      },
+      error:(error)=>{
         this.paymentStatus = "Failed";
         console.log(error);
       },

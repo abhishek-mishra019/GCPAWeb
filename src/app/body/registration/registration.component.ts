@@ -36,6 +36,7 @@ export class RegistrationComponent implements OnInit {
   // infoVisible:boolean = false;
   accessId: string = "";
   openForm: boolean = false;
+  email: string;
 
 
   constructor(public registerService: RegisterServiceService, public router: Router, public authService: AuthServiceService, public popupService: PopupHandlerService, public fileUploadService: FileUploadService, public updateRegistration: UpdateRegistrationService, private route: ActivatedRoute) {
@@ -53,6 +54,9 @@ export class RegistrationComponent implements OnInit {
       next: (user) => {
         if (!user) {
           this.popupService.loginPopup = true;
+        }
+        if(user && user.email) {
+          this.email = user.email;
         }
         // this.popup.popupEnable()
       },
@@ -113,10 +117,15 @@ export class RegistrationComponent implements OnInit {
       this.registerService.invalidEmail = true;
       this.registerService.fillAll = true;
     }
-    else if (!this.validNumber) {
-      this.registerService.invalidNumber = true;
-      this.registerService.fillAll = true;
-    }
+    // else if(this.number != null || this.number != '') {
+    //   this.registerService.invalidNumber = false;
+    //   this.registerService.fillAll = false;
+    // }
+    // else if (!this.validNumber) {
+    //   // disabling phone number validation for time being
+    //   this.registerService.invalidNumber = false;
+    //   this.registerService.fillAll = false;
+    // }
     else {
       if (form.invalid) {
         for (const control of Object.keys(form.controls)) {

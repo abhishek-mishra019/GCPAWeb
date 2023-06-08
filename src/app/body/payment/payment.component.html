@@ -68,10 +68,13 @@
                         <button class="btn btn-success" [disabled]="disablePayNow" (click)="setOrderWithRazor()">Pay &
                             Submit Application</button>
                         <p class="pt-3 pb-0 mb-0" *ngIf="disablePayNow">
-                            Please don't refresh payment is in process
+                            Please wait while your payment is in process
                         </p>
                         <img class="pt-0 mt-0" src="../../../assets/gif/Bars-1s-200px.gif" alt="" height="100px"
                             *ngIf="disablePayNow">
+                        <p class="pt-3 pb-0 mb-0" *ngIf="orderStatus">
+                            We have already recieved payment for the registration.
+                        </p>
                     </div>
                 </div>
             </div>

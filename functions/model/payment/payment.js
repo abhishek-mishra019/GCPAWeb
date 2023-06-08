@@ -9,9 +9,15 @@ const { fastify, functions, cors, requestHandler } = require("../application/lib
 const { addPayment } = require("./tark/addPayment");
 const { paymentVerification } = require("./tark/paymentVerification");
 const { addEcommercePayment } = require("./tark/addEcommercePayment");
+// const { getBase64TokenVerification2 } = require("./tark/getBase64TokenVerification2");
+const { paymentVerification2 } = require("./tark/paymentVerification2");
 
 fastify.post("/paymentVerification", (req, res) => {
     paymentVerification(req, res);
+});
+
+fastify.post("/paymentVerification2", (req, res) => {
+    paymentVerification2(req, res);
 });
 
 fastify.post("/addPayment", (req, res) => {

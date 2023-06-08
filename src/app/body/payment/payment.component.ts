@@ -24,6 +24,9 @@ export class PaymentComponent implements OnInit {
   infoPacket: any
   formData: any
 
+  orderId: string;
+  orderStatus: boolean = false;
+
   loader: boolean = false
   disablePayNow = false;
 
@@ -54,14 +57,14 @@ export class PaymentComponent implements OnInit {
       const orderId = res.razorpay_order_id;
       const signature = res.razorpay_signature;
       this.zone.run(() => {
-        this.router.navigate(["paymentStatus", orderId, paymentId, signature, this.registrationId]);
+        this.router.navigate(["paymentStatus", this.orderId, paymentId, signature, this.registrationId]);
       })
     },
     modal: {
       ondismiss: (() => {
         this.zone.run(() => {
           // add current page routing if payment fails
-          this.router.navigate(["paymentStatus", "f", "f", "f", this.registrationId]);
+          this.router.navigate(["paymentStatus", this.orderId, "f", "f", this.registrationId]);
         })
       }),
 
@@ -134,22 +137,28 @@ export class PaymentComponent implements OnInit {
     const callable = this.functions.httpsCallable('payment/addPayment');
     callable({ RegistrationId: this.applicant.Uid, IsIndian: this.isIndian }).subscribe({
       next: (result) => {
-        this.authService.currentReceipt = result.receipt;
-        this.options.order_id = result.id;
-        this.options.amount = result.amount;
-        this.options.key = result.key;
-        this.options.prefill.name = this.applicant.FirstName;
-        this.options.prefill.contact = this.applicant.Number;
-        this.options.prefill.email = this.authService.user.email;
+        if(result == "Already paid") {
+          this.orderStatus = true;
+        } else {
+          this.authService.currentReceipt = result.receipt;
+          this.options.order_id = result.id;
+          this.options.amount = result.amount;
+          this.options.key = result.key;
+          this.options.prefill.name = this.applicant.FirstName;
+          this.options.prefill.contact = this.applicant.Number;
+          this.options.prefill.email = this.authService.user.email;
+
+          this.orderId = result.id;
+        }
       },
       error: (error) => {
         console.log(error);
       },
       complete: () => {
         this.disablePayNow = false
-        this.initPay()
+        if(!this.orderStatus)
+          this.initPay()
       }
     })
   }
-
 }

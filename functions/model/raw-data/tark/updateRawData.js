@@ -11,7 +11,7 @@ exports.updateData = function(updateType) {
     let result;
     const promise = getRawData().then((doc) => {
         if (doc == undefined) {
-            result = { data: { status: "Note doesn't exist" } };
+            result = { data: { status: "Raw data doesn't exist" } };
             console.log(status, " || ", result);
         } else {
             if (updateType == "user") {
