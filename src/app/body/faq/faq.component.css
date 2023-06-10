@@ -1,3 +1,27 @@
-h2 {
-    color: #ef3789!important;
-}
+
+  .heading:hover {
+    cursor: pointer;
+    background-image: 
+    linear-gradient(to right, #ef3789, #619ED4); 
+    background-clip: text;
+    -webkit-text-fill-color: transparent;  
+  animation: rainbow-animation 20s linear infinite;
+  }
+
+  /* .faq-answer {
+    height: 0;
+    padding: 0 10px;
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+  }
+  
+  .faq.open .faq-answer  {
+    height: auto;
+    padding: 10px;
+  } */
+
+  @keyframes rainbow-animation {
+      to {
+          background-position: 4500vh;
+      }
+  }
