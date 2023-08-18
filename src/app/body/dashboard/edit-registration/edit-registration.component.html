@@ -138,6 +138,7 @@
                         <h4 class="fw-bold">Category Selection<span class="text-danger">*</span></h4>
                         <div class="row">
                             <div class="col-md-12">
+                                <!-- ng select is not required basic bootstrap multi select will work -->
                                 <ng-select [(ngModel)]="registerService.registration.Category" [ngModelOptions]="{standalone: true}">
                                     <ng-option *ngFor="let item of categories_list" [value]="item" >{{registerService.registration.Category}}</ng-option>
                                  </ng-select>
