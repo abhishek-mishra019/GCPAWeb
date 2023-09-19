@@ -41,3 +41,7 @@ p {
     font-size: 18px;
     line-height: 32px;
 }
+
+.icon:hover{
+    color: #014c8c;
+  }

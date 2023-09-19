@@ -6,6 +6,7 @@
     
     h2 ,.gcpatext{
         color: #ef3789;
+        font-weight: bold;
     } 
     
     .modal{
@@ -16,13 +17,19 @@
         float: right;
     }
 
+    #btnClose:hover{
+        border: 2px solid #8282fe;
+        background-color: #cdcdfe;
+        
+    }
+
     /* .gcpabutton{
         background-color: #5095cf!important;
     } */
 
     .back{
         background-color: rgba(0, 0, 0, 0.274) 
-           }
+    }
 
 .card, .modal-content{
     border-radius: 20px !important;

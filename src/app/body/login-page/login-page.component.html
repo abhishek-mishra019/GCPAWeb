@@ -5,10 +5,10 @@
 			<div class="modal-content">
 				<div class="card m-0">
 					<div class="card-body" *ngIf="login">
-						<div class="p-4 ">
+						<div class="p-2 ">
 							<div class="text-center">
-								<button type="button" class="btn-close" (click)="closePopup()"></button>
-								<h2 class="pb-2">Log In</h2>
+								<button type="button" id="btnClose" class="btn-close" (click)="closePopup()"></button>
+								<h2 class="pb-2 ">Log In</h2>
 							</div>
 							<div class="d-grid">
 								<a class="btn my-4 borderr" (click)="loginWithGoogle()"> <span
