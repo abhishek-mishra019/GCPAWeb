@@ -11,8 +11,8 @@ exports.generateBase64String = function(temp) {
 };
 
 
-exports.registerUser = function(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo, profile, social, userUid, numberOfFiles, emailUpdates, state, gender, relationship, howHeard) {
-    const registerData = db.collection("Registrations").doc(uid).set({
+exports.registerUser = function(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo, profile, social, userUid, numberOfFiles, emailUpdates, state, gender, relationship, howHeard, CreatedAt, CreatedOn) {
+  const registerData = db.collection("Registrations").doc(uid).set({
         Uid: uid,
         Prefix: prefix,
         Dob: dob,
@@ -42,6 +42,12 @@ exports.registerUser = function(uid, prefix, dob, firstName, lastName, gaurdFirs
         GaurdianOrganizationType: "",
         GaurdianOrganization: "",
         HowHeard: howHeard,
+        CreatedAt: CreatedAt,
+        CreatedOn: CreatedOn,
+        CreatedBy: "User",
+        Rating: 0,
+        Comments: "",
+        ShortlistStatus: "Pending",
     });
     return Promise.resolve(registerData);
 };
@@ -76,8 +82,38 @@ exports.addFile = function(uid, file, fileUid) {
     return Promise.resolve(addfile);
 };
 
-exports.getAllRegistrations = function() {
-    const query = db.collection("Registrations");
+exports.getAllRegistrations = function(FilterCategories, FilterCountry, FilterState, FilterStartDate, FilterEndDate, FilterGender, FilterPaymentStatus, FilterRating, FilterGreaterOrLesser) {
+    let query = db.collection("Registrations");
+    if (FilterCategories != "") {
+        query = query.where("Category", "==", FilterCategories);
+    }
+    if (FilterCountry != "") {
+      query = query.where("Country", "==", FilterCountry);
+    }
+    if (FilterState != "") {
+      query = query.where("State", "==", FilterState);
+    }
+    if (FilterStartDate != "" && FilterEndDate != "") {
+      console.log(FilterStartDate, FilterEndDate);
+      query = query.where("CreatedOn", ">=", FilterStartDate );
+      query = query.where("CreatedOn", "<=", FilterEndDate );
+    }
+    if (FilterGender != "") {
+      query = query.where("Gender", "==", FilterGender);
+    }
+    if (FilterPaymentStatus != "") {
+      query = query.where("PaymentStatus", "==", FilterPaymentStatus);
+    }
+    if (FilterRating != "" && FilterGreaterOrLesser!= "") {
+      console.log(FilterGreaterOrLesser, FilterRating);
+      // if (FilterGreaterOrLesser == ">=") {
+      //    query = query.where("Rating", ">=", parseInt(FilterRating));
+      // } else {
+      //   query = query.where("Rating", "<=", parseInt(FilterRating));
+      // }
+      query = query.where("Rating", ">", 6);
+    }
+
     const promise = query.get().then((doc) => {
       const data = [];
       doc.forEach((element) => {

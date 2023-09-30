@@ -28,7 +28,9 @@ exports.updateRegistrationById = function(request, response) {
     const Designation = user.Designation;
     const OrgType = user.OrgType;
     const Organization = user.Organization;
-
+    const ShortlistStatus = user.ShortlistStatus;
+    const Comments = user.Comments;
+    const Rating = user.Rating;
     const social = user.social;
 
 
@@ -53,6 +55,9 @@ exports.updateRegistrationById = function(request, response) {
         GaurdianDesignation: Designation,
         GaurdianOrganizationType: OrgType,
         GaurdianOrganization: Organization,
+        ShortlistStatus: ShortlistStatus,
+        Comments: Comments,
+        Rating: Rating,
 
     };
 
