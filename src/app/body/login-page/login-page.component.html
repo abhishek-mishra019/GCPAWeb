@@ -4,173 +4,231 @@
 		<div class=" modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="card m-0">
-					<div class="card-body" *ngIf="login">
-						<div class="p-2 ">
-							<div class="text-center">
-								<button type="button" id="btnClose" class="btn-close" (click)="closePopup()"></button>
-								<h2 class="pb-2 ">Log In</h2>
-							</div>
-							<div class="d-grid">
-								<a class="btn my-4 borderr" (click)="loginWithGoogle()"> <span
-										class="d-flex justify-content-center align-items-center">
-										<img class="me-2" src="assets/images/icons/search.svg" width="16"
-											alt="Image Description">
-										<span>Continue with Google</span>
-									</span>
-								</a>
-							</div>
-							<!-- <div class="login-separater text-center mb-4 "> <span class="bg-light">OR SIGN IN WITH EMAIL</span>
-										<hr/>
-									</div> -->
-							<div class="row">
-								<div class="col-5">
-									<hr>
-								</div>
-								<div class="col-2" style="text-align: center;">Or</div>
-								<div class="col-5">
-									<hr>
-								</div>
-							</div>
-							<div class="form-body">
-								<form class="row g-3">
-									<div class="col-12">
-										<label for="inputEmailAddress" class="form-label">Email Address</label>
-										<input type="email" class="form-control" id="inputEmailAddress"
-											placeholder="Email Address" [(ngModel)]="emailLogin" name="elogin">
+					<ng-container [ngSwitch]="currentMode">
+						<ng-container *ngSwitchCase="'loginOrSignUp'">
+							<div class="card-body" *ngIf="login">
+								<div class="p-2 ">
+									<div class="text-center">
+										<button type="button" id="btnClose" class="btn-close" (click)="closePopup()"></button>
+										<h2 class="pb-2 ">Log In</h2>
 									</div>
-									<div class="col-12">
-										<label for="inputChoosePassword" class="form-label">Enter Password</label>
-										<div class="input-group" id="show_hide_password">
-											<input type="password" class="form-control border-end-0"
-												id="inputChoosePassword" placeholder="Enter Password"
-												[(ngModel)]="passwordLogin" name="plogin">
+									<div class="d-grid">
+										<a class="btn my-4 borderr" (click)="loginWithGoogle()"> <span
+												class="d-flex justify-content-center align-items-center">
+												<img class="me-2" src="assets/images/icons/search.svg" width="16"
+													alt="Image Description">
+												<span>Continue with Google</span>
+											</span>
+										</a>
+									</div>
+									<!-- <div class="login-separater text-center mb-4 "> <span class="bg-light">OR SIGN IN WITH EMAIL</span>
+												<hr/>
+											</div> -->
+									<div class="row">
+										<div class="col-5">
+											<hr>
 										</div>
-										<small *ngIf="authService.invalidSignin" class="text-danger">
-											Incorrect Email or Password. Please try again.
-										</small>
-									</div>
-									<div class="col-md-6">
-										<div class="form-check form-switch">
-											<input class="form-check-input gcpabutton" type="checkbox"
-												id="flexSwitchCheckChecked" checked>
-											<label class="form-check-label " for="flexSwitchCheckChecked">Remember
-												Me</label>
+										<div class="col-2" style="text-align: center;">Or</div>
+										<div class="col-5">
+											<hr>
 										</div>
 									</div>
-
-
-									<!-- <div class="col-md-6 text-end">	<a href="JavaScript:;" >Forgot Password ?</a> -->
-									<!-- </div> -->
-									<div class="col-12">
+									<div class="form-body">
+										<form class="row g-3">
+											<div class="col-12">
+												<label for="inputEmailAddress" class="form-label">Email Address</label>
+												<input type="email" class="form-control" id="inputEmailAddress"
+													placeholder="Email Address" [(ngModel)]="emailLogin" name="elogin">
+											</div>
+											<div class="col-12">
+												<label for="inputChoosePassword" class="form-label">Enter Password</label>
+												<div class="input-group" id="show_hide_password">
+													<input type="password" class="form-control border-end-0"
+														id="inputChoosePassword" placeholder="Enter Password"
+														[(ngModel)]="passwordLogin" name="plogin">
+												</div>
+												<small *ngIf="authService.invalidSignin" class="text-danger">
+													Incorrect Email or Password. Please try again.
+												</small>
+											</div>
+											<div class="col-md-6">
+												<div class="form-check form-switch">
+													<input class="form-check-input gcpabutton" type="checkbox"
+														id="flexSwitchCheckChecked" checked>
+													<label class="form-check-label " for="flexSwitchCheckChecked">Remember
+														Me</label>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<p style="text-align: end;"><a href="JavaScript:;"
+													(click)="changeMode('forgotPassword')">Forgot Password?</a>
+												</p>
+											</div>
+		
+		
+											<!-- <div class="col-md-6 text-end">	<a href="JavaScript:;" >Forgot Password ?</a> -->
+											<!-- </div> -->
+											<div class="col-12">
+												<div class="d-grid">
+													<button type="submit" class="btn gcpabutton"
+														style="background-color: #000093 !important; color: white"
+														(click)="signIn()"><i class="bx bxs-lock-open"></i>Log In</button>
+												</div>
+											</div>
+											<p style="text-align: center;">Don't have an account yet? <a href="JavaScript:;"
+													(click)="changeToSignup()">Sign Up here</a>
+											</p>
+										</form>
+									</div>
+								</div>
+							</div>
+		
+		
+							<!-- sign up popup -->
+							<div class="card-body" *ngIf="signup">
+								<div class="p-4 rounded">
+									<div class="text-center">
+										<button type="button" class="btn-close" (click)="closePopup()"></button>
+										<h2 class="pb-2">Sign Up</h2>
+		
+		
+									</div>
+									<div class="d-grid">
+										<a class="btn my-4 borderr shadow-sm" href="#" (click)="loginWithGoogle()"
+											style="background-color:white ;"> <span
+												class="d-flex justify-content-center align-items-center">
+												<img class="me-2" src="assets/images/icons/search.svg" width="16"
+													alt="Image Description">
+												<span>Sign Up with Google</span>
+											</span>
+										</a>
+									</div>
+									<!-- <div class="login-separater text-center mb-4 "> <span class="bg-light">OR SIGN UP WITH EMAIL</span>
+														<hr/>
+													</div> -->
+									<div class="row">
+										<div class="col-5">
+											<hr>
+										</div>
+										<div class="col-2" style="text-align: center;">Or</div>
+										<div class="col-5">
+											<hr>
+										</div>
+									</div>
+									<div class="form-body">
+										<form class="row g-3">
+											<div class="col-12">
+												<label for="inputEmailAddress" class="form-label">Email Address</label>
+												<input type="email" class="form-control" id="inputEmailAddress"
+													placeholder="Email Address" [(ngModel)]="emailSignup" name="emailsignup">
+												<small *ngIf="invalidEmail" class="text-danger">
+													Invalid Email
+												</small>
+											</div>
+											<div class="col-12">
+												<label for="inputChoosePassword" class="form-label">Enter Password</label>
+												<div class="input-group" id="show_hide_password">
+													<input type="password" class="form-control border-end-0"
+														id="inputChoosePassword" placeholder="Enter Password"
+														[(ngModel)]="passwordSignup" name="psignup">
+												</div>
+												<small *ngIf="passwordInValid" class="text-danger">
+													Must be atleast 6 characters long.
+												</small>
+											</div>
+											<div class="col-12">
+												<label for="inputConfirmPassword" class="form-label">Confirm Password</label>
+												<div class="input-group" id="show_hide_password">
+													<input type="password" class="form-control border-end-0"
+														id="inputConfirmPassword" placeholder="Enter Password"
+														[(ngModel)]="confirm" name="pcon">
+												</div>
+												<small *ngIf="passwordsDoNotMatch" class="text-danger">
+													Passwords do not match.
+												</small>
+											</div>
+											<div class="col-md-6">
+												<div class="form-check form-switch">
+													<input class="form-check-input gcpabutton" type="checkbox"
+														id="flexSwitchCheckChecked" checked>
+													<label class="form-check-label " for="flexSwitchCheckChecked">Remember
+														Me</label>
+												</div>
+											
+											</div>
+		
+											<re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token"
+												required
+												[class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+											<div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"
+												class="invalid-feedback">
+												<div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
+											</div>
+		
+											<div class="col-12">
+												<div class="d-grid">
+													<button type="submit" class="btn btn-primary"
+														style="background-color: #000093 !important; color: white"
+														(click)="signUp()"><i class="bx bxs-lock-open"></i>Sign Up</button>
+												</div>
+											</div>
+											<p style="text-align: center;">Already have an account? <a href="JavaScript:;"
+													(click)="changeToLogin()">Log In here</a>
+											</p>
+										</form>
+									</div>
+								</div>
+							</div>
+						</ng-container>
+						<ng-container *ngSwitchCase="'forgotPassword'">
+							<div class="card-body" *ngIf="login">
+								<div class="p-2 ">
+									<div class="text-center">
+										<button type="button" id="btnClose" class="btn-close" (click)="closePopup()"></button>
+										<h2 class="pb-2 ">Trouble with Logging in?</h2>
+									</div>
+									<!-- <div class="login-separater text-center mb-4 "> <span class="bg-light">OR SIGN IN WITH EMAIL</span>
+												<hr/>
+											</div> -->
+									<div class="form-body" *ngIf="!passwordResetLinkSent">
+										<form class="row g-3">
+											<div class="col-12">
+												<label for="inputEmailAddress" class="form-label">Email Address</label>
+												<input type="email" class="form-control" id="inputEmailAddress"
+													placeholder="Enter Email Address" [(ngModel)]="passwordResetEmail" name="elogin">
+												<small *ngIf="invalidEmail" class="text-danger">
+													Invalid Email. Please try again.
+												</small>
+											</div>
+												
+											<!-- <div class="col-md-6 text-end">	<a href="JavaScript:;" >Forgot Password ?</a> -->
+											<!-- </div> -->
+											<div class="col-12">
+												<div class="d-grid">
+													<button type="submit" class="btn gcpabutton"
+														style="background-color: #000093 !important; color: white"
+														(click)="sendResetLink()"><i class="bx bxs-lock-open"></i>Send Email</button>
+												</div>
+											</div>
+											<p style="text-align: center;">Remembered your password? <a href="JavaScript:;"
+													(click)="changeMode('loginOrSignUp')">Go Back</a>
+											</p>
+										</form>
+									</div>
+									<div class="col-12" *ngIf="passwordResetLinkSent">
+										<p style="text-align: center;">A password reset link has been sent to your email.
 										<div class="d-grid">
 											<button type="submit" class="btn gcpabutton"
 												style="background-color: #000093 !important; color: white"
-												(click)="signIn()"><i class="bx bxs-lock-open"></i>Log In</button>
+												(click)="sendLinkCompleted()"><i class="bx bxs-lock-open"></i>Go back</button>
 										</div>
 									</div>
-									<p style="text-align: center;">Don't have an account yet? <a href="JavaScript:;"
-											(click)="changeToSignup()">Sign Up here</a>
-									</p>
-								</form>
-							</div>
-						</div>
-					</div>
 
-
-					<!-- sign up popup -->
-					<div class="card-body" *ngIf="signup">
-						<div class="p-4 rounded">
-							<div class="text-center">
-								<button type="button" class="btn-close" (click)="closePopup()"></button>
-								<h2 class="pb-2">Sign Up</h2>
-
-
-							</div>
-							<div class="d-grid">
-								<a class="btn my-4 borderr shadow-sm" href="#" (click)="loginWithGoogle()"
-									style="background-color:white ;"> <span
-										class="d-flex justify-content-center align-items-center">
-										<img class="me-2" src="assets/images/icons/search.svg" width="16"
-											alt="Image Description">
-										<span>Sign Up with Google</span>
-									</span>
-								</a>
-							</div>
-							<!-- <div class="login-separater text-center mb-4 "> <span class="bg-light">OR SIGN UP WITH EMAIL</span>
-												<hr/>
-											</div> -->
-							<div class="row">
-								<div class="col-5">
-									<hr>
-								</div>
-								<div class="col-2" style="text-align: center;">Or</div>
-								<div class="col-5">
-									<hr>
 								</div>
 							</div>
-							<div class="form-body">
-								<form class="row g-3">
-									<div class="col-12">
-										<label for="inputEmailAddress" class="form-label">Email Address</label>
-										<input type="email" class="form-control" id="inputEmailAddress"
-											placeholder="Email Address" [(ngModel)]="emailSignup" name="emailsignup">
-										<small *ngIf="invalidEmail" class="text-danger">
-											Invalid Email
-										</small>
-									</div>
-									<div class="col-12">
-										<label for="inputChoosePassword" class="form-label">Enter Password</label>
-										<div class="input-group" id="show_hide_password">
-											<input type="password" class="form-control border-end-0"
-												id="inputChoosePassword" placeholder="Enter Password"
-												[(ngModel)]="passwordSignup" name="psignup">
-										</div>
-										<small *ngIf="passwordInValid" class="text-danger">
-											Must be atleast 6 characters long.
-										</small>
-									</div>
-									<div class="col-12">
-										<label for="inputConfirmPassword" class="form-label">Confirm Password</label>
-										<div class="input-group" id="show_hide_password">
-											<input type="password" class="form-control border-end-0"
-												id="inputConfirmPassword" placeholder="Enter Password"
-												[(ngModel)]="confirm" name="pcon">
-										</div>
-										<small *ngIf="passwordsDoNotMatch" class="text-danger">
-											Passwords do not match.
-										</small>
-									</div>
-									<div class="col-md-6">
-										<div class="form-check form-switch">
-											<input class="form-check-input gcpabutton" type="checkbox"
-												id="flexSwitchCheckChecked" checked>
-											<label class="form-check-label " for="flexSwitchCheckChecked">Remember
-												Me</label>
-										</div>
-									</div>
-
-									<re-captcha id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token"
-										required
-										[class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
-									<div *ngIf="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"
-										class="invalid-feedback">
-										<div *ngIf="recaptcha.errors?.['required']">This field is required.</div>
-									</div>
-
-									<div class="col-12">
-										<div class="d-grid">
-											<button type="submit" class="btn btn-primary"
-												style="background-color: #000093 !important; color: white"
-												(click)="signUp()"><i class="bx bxs-lock-open"></i>Sign Up</button>
-										</div>
-									</div>
-									<p style="text-align: center;">Already have an account? <a href="JavaScript:;"
-											(click)="changeToLogin()">Log In here</a>
-									</p>
-								</form>
-							</div>
-						</div>
-					</div>
+						</ng-container>
+					</ng-container>
+					
 				</div>
 			</div>
 		</div>

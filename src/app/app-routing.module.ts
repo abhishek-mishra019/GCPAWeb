@@ -51,6 +51,7 @@ import { GCPA2022Component } from './body/gcpa2022/gcpa2022.component';
 import { GCPA2020Component } from './body/gcpa2020/gcpa2020.component';
 import { BetaV1Component } from './body/Registration/beta-v1/beta-v1.component';
 import { UpdateAllRegistrationsComponent } from './body/update-all-registrations/update-all-registrations.component';
+import { ResetPasswordComponent } from './body/login-page/reset-password/reset-password.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -115,6 +116,16 @@ const routes: Routes = [
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'faq', component:FaqComponent},
   {path:'updateAllReg', component:UpdateAllRegistrationsComponent }
+  {
+    path: 'auth',
+    children: [
+      {
+        path: 'resetPass',
+        component: ResetPasswordComponent,
+        data: { title: 'Reset Password' }
+      }
+    ]
+  },
 ];
 
 @NgModule({

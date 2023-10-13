@@ -17,6 +17,9 @@ passwordsDoNotMatch=false;
 passwordInValid=false;
 invalidEmail=false;
 token: string|undefined;
+currentMode: string =  "loginOrSignUp"
+passwordResetEmail="";
+passwordResetLinkSent: boolean = false;
 
 confirm="";
   constructor(public authService: AuthServiceService, public popupService:PopupHandlerService) { this.token = undefined; }
@@ -41,9 +44,35 @@ showLoginPopup=true;
     this.login=true;
     this.signup=false;
   }
+  changeMode(mode: string){
+    this.currentMode=mode
+    this.invalidEmail=false;
+    this.passwordInValid=false;
+  }
 
   closePopup(){
+    this.currentMode="loginOrSignUp";
     this.popupService.loginPopup=false;
+  }
+
+  sendLinkCompleted(){
+    this.changeMode('loginOrSignUp');
+    this.passwordResetEmail="";
+    this.passwordResetLinkSent=false;
+    this.invalidEmail=false;
+  }
+  sendResetLink(){
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.passwordResetEmail)){
+      this.authService.forgotPassword(this.passwordResetEmail).then(() => {
+        this.passwordResetEmail='';
+        this.passwordResetLinkSent=true;
+      }).catch((error) => {
+        console.log(error);
+      });
+    }
+    else{
+      this.invalidEmail = true;
+    }
   }
 
   signIn(){
