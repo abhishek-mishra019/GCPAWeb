@@ -139,3 +139,13 @@ exports.getAllRegistrations = function(FilterCategories, FilterCountry, FilterSt
     });
     return Promise.resolve(promise);
   };
+
+  exports.updateAllRegistrations = function(updateJson) {
+   const query = db.collection("Registrations");
+    const promise = query.get().then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+          doc.ref.update(updateJson);
+      });
+  });
+  return Promise.resolve(promise);
+  };

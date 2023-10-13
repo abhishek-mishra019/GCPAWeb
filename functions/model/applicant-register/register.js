@@ -12,6 +12,7 @@ const {getAllRegistrations} = require("./tark/getAllRegistrations");
 const {updateRegistrationById} = require("./tark/updateRegistrationById");
 const {addExtraFiles}= require("./tark/addExtraFiles");
 const {getExtraFiles}= require("./tark/getExtraFiles");
+const {updateAllRegistration} = require("./tark/updateAllRegistration");
 
 
 fastify.post("/registerNewUser", (req, res) => {
@@ -46,6 +47,12 @@ fastify.post("/updateRegistrationById", (req, res) => {
   console.log("updating Registration");
   updateRegistrationById(req, res);
 });
+
+fastify.post("/updateAllRegistration", (req, res) => {
+  console.log("updating All Registrations Registration");
+  updateAllRegistration(req, res);
+});
+
 
 exports.registrations = functions.https.onRequest((req, res) => {
   cors(req, res, () => {
