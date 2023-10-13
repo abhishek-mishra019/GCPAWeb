@@ -80,6 +80,15 @@ export class AuthServiceService {
     }
   }
 
+  async forgotPassword(email: string){
+    await this.afauth.sendPasswordResetEmail(email);
+  }
+  async verifyPasswordResetActionCode(actionCode: string){
+    await this.afauth.verifyPasswordResetCode(actionCode);
+  }
+  async confirmPasswordReset(actionCode: string, newPassword: string){
+    await this.afauth.confirmPasswordReset(actionCode, newPassword);
+  }
 
   // async createUser(email: string, password: string, username: string) {
   //   await this.afauth.createUserWithEmailAndPassword(email, password);
