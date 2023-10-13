@@ -95,7 +95,7 @@ export class RegisterServiceService {
   updateRegistrationById(uid = "") {
     const callable = this.functions.httpsCallable('registrations/updateRegistrationById');
     console.log("get registration using uid");
-    callable({ uid: this.registration.Uid, prefix: this.registration.Prefix, dob: this.registration.Dob, firstName: this.registration.FirstName, lastName: this.registration.LastName, gaurdFirst: this.registration.GaurdFirst, gaurdLast: this.registration.GaurdLast, address: this.registration.Address, zip: this.registration.Zip, number: this.registration.Number, email: this.registration.Email, school: this.registration.School, country: this.registration.Country, category: this.registration.Category, achievement: this.registration.Achievement, social: this.registration.Social, userUid: this.registration.UserUid, Designation: this.registration.GaurdianDesignation, Organization: this.registration.GaurdianOrganization, OrgType: this.registration.GaurdianOrganizationType }).subscribe({
+    callable({ uid: this.registration.Uid, prefix: this.registration.Prefix, dob: this.registration.Dob, firstName: this.registration.FirstName, lastName: this.registration.LastName, gaurdFirst: this.registration.GaurdFirst, gaurdLast: this.registration.GaurdLast, address: this.registration.Address, zip: this.registration.Zip, number: this.registration.Number, email: this.registration.Email, school: this.registration.School, country: this.registration.Country, category: this.registration.Category, achievement: this.registration.Achievement, social: this.registration.Social, userUid: this.registration.UserUid, Designation: this.registration.GaurdianDesignation, Organization: this.registration.GaurdianOrganization, OrgType: this.registration.GaurdianOrganizationType, Rating: this.registration.Rating, Comments: this.registration.Comments, ShortlistStatus: this.registration.ShortlistStatus }).subscribe({
       next: () => {
         console.log("Registration updated");
       },
@@ -105,6 +105,7 @@ export class RegisterServiceService {
       complete: () => {
         this.getRegistrationById(uid);
         console.info('Successful')
+        alert("Updated Successfully");
       }
     });
   }

@@ -1,8 +1,96 @@
-<div class="back pt-3 pb-5">
+<div class="pt-3 pb-5">
     <h1 class="text-center pt-3">Registrations</h1>
-    <div class="container">
-        <ng-container *ngIf="showRegistrations">
-            <app-registration-data-table [dataForTable]="registrationData " [displayColoumns]="displayColoumnsRegistration " [pageSize]=" '5' "> </app-registration-data-table>
-        </ng-container>
-    </div>
+    <!-- Large modal -->
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" style="margin-left:10px; margin-right:5px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Filter
+    </button>
+    <button type="button" (click)="clearFilter()" class="btn btn-primary">Clear Filter</button>
+
+    <!-- Modal -->
+        <div class="modal fade" #myModal id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false"
+        aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Filter</h5>
+                        <button type="button" #closebutton id="closeModalButton" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <h5 class="">Category </h5>
+                            <div class="">
+                                <select [(ngModel)]="filterCategories" class="form-select">
+                                    <option *ngFor="let item of categories_list" [value]="item">{{item}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <h5 class="">Country</h5>
+                            <app-country (newItemEvent)="addCountry($event)"></app-country>
+                        </div>
+
+                        <div class="row p-2">
+                            <h5 class="">State</h5>
+                            <input type="text" class="form-control" placeholder="state" [(ngModel)]="filterState" />
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-6">
+                                <h5>Start Date</h5>
+                                <input type="date" class="form-control" placeholder="state"
+                                    [(ngModel)]="filterStartDate" />
+                            </div>
+                            <div class="col-6">
+                                <h5>End Date</h5>
+                                <input type="date" class="form-control" placeholder="state"
+                                    [(ngModel)]="filterEndDate" />
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-6">
+                                <h5>Gender</h5>
+                                <select [(ngModel)]="filterGender" class="form-select" name="" id="">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <h5>Payment Status</h5>
+                                <select [(ngModel)]="filterPaymentStatus" class="form-select" name="" id="">
+                                    <option value="false">false</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row p-2">
+                            <h5>Rating - Greater than or less than</h5>
+                            <div class="col-6">
+                                <select [(ngModel)]="filterGender" class="form-select"
+                                    [(ngModel)]="filterGreaterOrLesser" name="" id="">
+                                    <option value=">=">Greater than or Equal to</option>
+                                    <option value="<=">Less than or Equal to</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <input type="number" class="form-control" [(ngModel)]="filterRating" />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" (click)="filter()" class="btn btn-primary">Filter</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+<h2 class="text-center" *ngIf="!showRegistrations">Loading....<br>Please Wait</h2>
+<div class="px-5">
+    <ng-container *ngIf="showRegistrations">
+        <app-registration-data-table [dataForTable]="registrationData " [displayColoumns]="displayColoumnsRegistration "
+            [pageSize]="25"> </app-registration-data-table>
+    </ng-container>
 </div>

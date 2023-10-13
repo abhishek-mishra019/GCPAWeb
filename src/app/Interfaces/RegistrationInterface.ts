@@ -28,4 +28,10 @@ export interface Register {
     GaurdianDesignation:string;
     GaurdianOrganizationType:string;
     GaurdianOrganization: string;
+    CreatedAt: string;
+    CreatedOn: string;
+    CreatedBy: string;
+    Rating: string;
+    Comments: string;
+    ShortlistStatus: string;
 }

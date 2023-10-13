@@ -76,8 +76,13 @@ exports.registerNewUser = function(request, response) {
     }
     uid = removeCharRecursive(uid, "=");
     console.log(uid);
-
-    registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates, state, gender, relationship, howHeard).then(() => {
+    const dated = new Date();
+    const currentDay= String(dated.getDate()).padStart(2, "0");
+    const currentMonth = String(dated.getMonth()+1).padStart(2, "0");
+    const currentYear = String(dated.getFullYear());
+    const CreatedOn = currentYear+ "-"+currentMonth+"-"+currentDay;
+    const CreatedAt = dated.getHours()+":"+dated.getMinutes()+":"+ dated.getSeconds();
+    registerUser(uid, prefix, dob, firstName, lastName, gaurdFirst, gaurdLast, address, zip, number, email, school, country, category, achievement, photo.FileUrl, profile.FileUrl, social, userUid, numberOfFiles, emailUpdates, state, gender, relationship, howHeard, CreatedAt, CreatedOn).then(() => {
         result = { data: uid };
         console.log("Applicant Registered Successfully");
         // adding file code

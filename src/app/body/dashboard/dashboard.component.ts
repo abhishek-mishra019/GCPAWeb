@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   showRawData=false;
   showUserData=false;
   showRegistrationData=false;
+  sidebarVisible = true;
   constructor(public dataTableService: DataTableServiceService, private router: Router,public authService:AuthServiceService, public popupService: PopupHandlerService) { }
 
 userDataComponent=false;
@@ -81,6 +82,7 @@ supportComponent=false;
   }
   displayRegistrationData(){
     // this.router.navigate(['registrationDashboard'])
+    this.sidebarVisible = false;
     this.userDataComponent=false;
   this.registrationDataComponent=true;
   this.partnersDataComponent=false;

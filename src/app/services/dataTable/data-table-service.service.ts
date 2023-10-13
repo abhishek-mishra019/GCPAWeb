@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
-import { map, Observable } from 'rxjs';
+import { filter, map, Observable } from 'rxjs';
 import { Ecommerce } from 'src/app/Interfaces/Ecommerce';
 import { RawData } from 'src/app/Interfaces/RawData';
 import { Register } from 'src/app/Interfaces/RegistrationInterface';
@@ -62,10 +62,14 @@ export class DataTableServiceService {
     return this.userDataObservable
   }
 
-   getRegistrationsData(){
+   getRegistrationsData( filterCategories:string, filterCountry:string , filterState:string , filterStartDate:string , 
+    filterEndDate:string , filterGender:string , filterPaymentStatus:string , filterRating:string , filterGreaterOrLesser:string){
     
     const callable = this.functions.httpsCallable("registrations/getAllRegistrations");
-    this.registrationDataObservable=callable({}).pipe(map(res=>{
+    this.registrationDataObservable=callable({FilterCategories:filterCategories, FilterCountry:filterCountry, FilterState: filterState,
+       FilterStartDate: filterStartDate, FilterEndDate:filterEndDate, FilterGender:filterGender, FilterPaymentStatus:filterPaymentStatus, FilterRating:filterRating, 
+      FilterGreaterOrLesser:filterGreaterOrLesser 
+    }).pipe(map(res=>{
       const data = res.data as Register[];
       return data;
     }));
