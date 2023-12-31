@@ -96,7 +96,7 @@ exports.registerNewUser = function(request, response) {
 
         // end
         updateData("registration").then(() => console.log("Registration Raw Data Updated"));
-        mailerAN(userUid, firstName, "Payment_Pending", uid);
+      //  mailerAN(userUid, firstName, "Payment_Pending", uid);
         return response.status(status).send(result);
     }).catch((error) => {
         result = { data: error };
