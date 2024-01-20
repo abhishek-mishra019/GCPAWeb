@@ -96,6 +96,7 @@ exports.registerNewUser = function(request, response) {
 
         // end
         updateData("registration").then(() => console.log("Registration Raw Data Updated"));
+
         // disabled due to new requirment will be discussed further.
         // mailerAN(userUid, firstName, "Payment_Pending", uid);
         return response.status(status).send(result);
