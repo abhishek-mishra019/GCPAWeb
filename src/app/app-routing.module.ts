@@ -115,7 +115,7 @@ const routes: Routes = [
   {path:'myOrders', component:MyOrdersComponent},
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'faq', component:FaqComponent},
-  {path:'updateAllReg', component:UpdateAllRegistrationsComponent }
+  {path:'updateAllReg', component:UpdateAllRegistrationsComponent },
   {
     path: 'auth',
     children: [

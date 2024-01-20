@@ -1,10 +1,10 @@
-<app-support-popup [contactEmail]="authService.user.email" [name]="authService.user.displayName"></app-support-popup>
+<!-- <app-support-popup [contactEmail]="authService.user.email" [name]="authService.user.displayName"></app-support-popup> -->
 <div class=" mt-5 pt-5 pb-5" style="min-height: 100vh;">
     <div class="row">
         <div class="col-2" *ngIf="sidebarVisible">
             <div class="wrapper d-flex">
                 <div class="sidebar">
-                    <ul class="pr-2">
+                    <ul class="pr-2" *ngIf="authService.userDataReady; else loader">
                         <li (click)="displayUserData()" [ngStyle]="{'background': userDataComponent ? '#ef3789' : '#4F94CF' }" *ngIf="userData.Permissions.Users">
                             <a class="" >Users</a>
                         </li>
@@ -33,12 +33,14 @@
                             <a class="" >Support</a>
                         </li>
                     </ul>
+                    <ng-template #loader>
+                        <app-loader></app-loader>
+                    </ng-template>
                 </div>
             </div>
         </div>
         <div class="col">
             <h1 class="text-center pt-3">Admin Dashboard</h1>
-
             <app-users-dashboard *ngIf="userDataComponent"></app-users-dashboard>
             <app-registration-dashboard *ngIf="registrationDataComponent"></app-registration-dashboard>
             <app-sponsors-partners *ngIf="partnersDataComponent"></app-sponsors-partners>
@@ -50,5 +52,6 @@
             <app-support-admin *ngIf="supportComponent"></app-support-admin>
         </div>
     </div>
+    
 
 </div>

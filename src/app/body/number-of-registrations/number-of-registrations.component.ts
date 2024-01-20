@@ -22,20 +22,18 @@ export class NumberOfRegistrationsComponent implements OnInit {
   noData: boolean = false;
 
   
-  ngOnInit(){
+  ngOnInit() {
     if (!this.authService.user) {
       this.router.navigate([''])
+    } else {
+      this.authService.afauth.user.subscribe((data) => {
+        this.getRegistrationData();
+      });
     }
-    else
-    {
-    this.authService.afauth.user.subscribe((data) => {
-      this.getRegistrationData();
-    });
-  }
   }
 
   getRegistrationData() {
-    this.dataTableService.getRegistrations().subscribe((data) => {
+    this.dataTableService.registrationsDataObservable.subscribe((data) => {
       if(data.length) {
         this.registrationsData = data;
         this.displayColoumns = ['Uid', 'FirstName','LastName','Dob', 'Payment'];
@@ -45,7 +43,7 @@ export class NumberOfRegistrationsComponent implements OnInit {
         this.showLoader = false;
         this.noData = true;
       }
-    }); 
+    });
   }
 
   

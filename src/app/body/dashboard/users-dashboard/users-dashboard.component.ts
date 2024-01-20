@@ -12,7 +12,6 @@ import { PopupHandlerService } from 'src/app/services/popup-handler-service/popu
 })
 export class UsersDashboardComponent implements OnInit {
 
-
   userData:UserFetched[]=[]
   displayColoumnsUser:string[];
   showUserData=false;

@@ -1,10 +1,11 @@
 <div class="back mt-5 pt-5 pb-5">
     <h1 class="text-center pt-3">Users</h1>
     <div class="container">
-        <ng-container>
-            <div class="container " *ngIf="showUserData ">
-                <app-user-data-table [dataForTable]="userData " [displayColoumns]="displayColoumnsUser " [pageSize]=" '5' "> </app-user-data-table>
-            </div>
-        </ng-container>
+        <div class="container " *ngIf="showUserData; else loader">
+            <app-user-data-table [dataForTable]="userData " [displayColoumns]="displayColoumnsUser " [pageSize]=" '5' "> </app-user-data-table>
+        </div>
+        <ng-template #loader>
+            <app-loader></app-loader>
+        </ng-template>
     </div>
 </div>
