@@ -23,7 +23,9 @@ export class AppComponent {
   
   ngOnInit(): void {
   }
-  
+  copyprevent(){
+    return false;
+  }
 
   /** Add Google Analytics Script Dynamically */
   addGAScript() {

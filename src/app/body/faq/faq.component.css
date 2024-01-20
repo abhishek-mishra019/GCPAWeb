@@ -7,7 +7,16 @@
     -webkit-text-fill-color: transparent;  
   animation: rainbow-animation 20s linear infinite;
   }
+  .accordion-button:focus {
+    outline: none ;
+    box-shadow: none;
 
+  }
+  .accordion-body{
+    padding-left: 5%;
+    justify-content: left;
+    text-align: left;
+  }
   /* .faq-answer {
     height: 0;
     padding: 0 10px;

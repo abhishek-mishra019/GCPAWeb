@@ -69,6 +69,9 @@ export class RegistrationDashboardComponent implements OnInit {
   addCountry(country: string) {
     this.filterCountry = country;
   }
+  addState(state: string) {
+    this.filterState = state;
+  }
 
   clearFilter() {
     this.filterCategories = ""; 

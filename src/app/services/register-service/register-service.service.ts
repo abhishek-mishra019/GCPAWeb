@@ -27,6 +27,13 @@ export class RegisterServiceService {
 
   constructor(public functions: AngularFireFunctions, public updateRegistration: UpdateRegistrationService, public authService: AuthServiceService, public router: Router) { }
 
+  validatePhoneNumber(input_str: any) 
+{
+    var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+
+    return re.test(input_str);
+}
+
   register(uid: string, prefix: string, dob: string, firstName: string, lastName: string, gaurdFirst: string, gaurdLast: string, address: string, zip: string, number: string, email: string, school: string, country: string, state: string = '', category: string, achievement: string, photo: FileData, profile: FileData, social: string, userUid: string, emailupdate: boolean, gender: string, relationship: string, howHeard: string) {
     let registrationId: any;
     this.disableSubmit = true;

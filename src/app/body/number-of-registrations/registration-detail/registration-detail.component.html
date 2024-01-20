@@ -391,7 +391,7 @@
 								<div class="col-sm-9 text-secondary">
 									<textarea type="text" class="form-control"
 										[(ngModel)]="this.registerService.registration.Achievement" rows="4"
-										disabled></textarea>
+										[disabled]="this.registerService.registration.Uid==this.authService.loggedInUser.Uid"></textarea>
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -401,16 +401,21 @@
 								<div class="col-sm-9 text-secondary">
 									<textarea type="text" class="form-control"
 										[(ngModel)]="this.registerService.registration.Social" rows="4"
-										disabled></textarea>
+										[disabled]="this.registerService.registration.Uid==this.authService.loggedInUser.Uid" ></textarea>
 								</div>
+							</div>
+							<div class="text-center">
+
+								<button class="btn btn-primary btn-center" (click)="editRegistration()">Update</button>
 							</div>
 						</div>
 					</div>
-					*For any updates in your profile, please raise a <a href="https://support.gcpawards.com/support/tickets/new"> support ticket</a>
+					*For any updates in your profile, please raise a <a href="https://support.gcpawards.com/support/tickets/new" target="_blank"> support ticket</a>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<!-- <button class="btn" data-bs-toggle="modal" data-bs-target="#Modal"> -->
 	<!-- add -->
 	<!-- <mat-icon fontSet="material-icons-outlined" class="align-middle">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FileData, FileUpload } from 'src/app/Interfaces/FileInterface';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { ExtraFilesServiceService } from 'src/app/services/extraFiles/extra-files-service.service';
 import { FileUploadService } from 'src/app/services/file-upload-service/file-upload-service.service';
 import { RegisterServiceService } from 'src/app/services/register-service/register-service.service';
@@ -41,7 +42,7 @@ export class RegistrationDetailComponent implements OnInit {
 
   showClose = false;
 
-  constructor(private route: ActivatedRoute, public registerService: RegisterServiceService, public router: Router, public uploadService: FileUploadService, public extraFilesService: ExtraFilesServiceService, private toolService: ToolsService) { }
+  constructor(private route: ActivatedRoute, public registerService: RegisterServiceService,public authService: AuthServiceService, public router: Router, public uploadService: FileUploadService, public extraFilesService: ExtraFilesServiceService, private toolService: ToolsService) { }
 
   ngOnInit(): void {
     this.uid = this.route.snapshot.params['uid']
@@ -197,5 +198,8 @@ export class RegistrationDetailComponent implements OnInit {
 
   close() {
     this.showClose = false;
+  }
+  editRegistration(){
+    this.registerService.updateRegistrationById(this.uid);
   }
 }

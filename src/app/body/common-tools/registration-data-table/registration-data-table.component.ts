@@ -16,7 +16,7 @@ export class RegistrationDataTableComponent implements OnInit,AfterViewInit {
 
   @Input('dataForTable') dataForTable: Register[];  
   @Input('displayColoumns') displayColoumns: string[];
-  @Input('pageSize') pageSize: number;
+   pageSize: number = 50;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

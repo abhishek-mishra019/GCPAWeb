@@ -79,19 +79,19 @@ export class DashboardComponent implements OnInit {
     this.ordersDataComponent = false;
     this.supportComponent = false;
   }
-
-  displayRegistrationData() {
-    // this.router.navigate(['registrationDashboard'])
+  displayRegistrationData(){
     this.sidebarVisible = false;
-    this.userDataComponent = false;
-    this.registrationDataComponent = true;
-    this.partnersDataComponent = false;
-    this.newsroomDataComponent = false;
-    this.testimonialsDataComponent = false;
-    this.galleryDataComponent = false;
+    this.userDataComponent=false;
+    this.registrationDataComponent=true;
+    this.partnersDataComponent=false;
+    this.newsroomDataComponent=false;
+    this.testimonialsDataComponent=false;
+    this.galleryDataComponent=false;
     this.ordersDataComponent = false;
-    this.ecommerceDataComponent = false;
-    this.supportComponent = false;
+    this.ecommerceDataComponent=false;
+    this.supportComponent=false;
+    this.router.navigate(['registrationDashboard'])
+ 
   }
 
   partnersSponsors() {
