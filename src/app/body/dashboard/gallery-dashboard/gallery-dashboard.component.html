@@ -33,7 +33,7 @@
             <!--  -->
         </div>
         <div class="container mt-3 py-3 px-2">
-            <div class="row text-center text-nowrap">
+            <div class="row text-center text-nowrap" *ngIf="galleryService.neatGalleryReady">
                 <ng-container *ngFor="let photo of galleryService.neatGallery">
                     <a [href]="photo.ImageUrl" (mouseenter)="photo.Hovering=true" (mouseleave)="photo.Hovering=false">
                         <img [src]="photo.ImageUrl" width="200" height="200" src="../../../assets/gallery/" [ngClass]="{'img-fluid rounded':true,'darken shadow':photo.Hovering}" alt="">
@@ -61,6 +61,9 @@
                         </div>
                     </div>
                 </ng-container>
+                <ng-template #loader>
+                    <app-loader></app-loader>
+                </ng-template>
             </div>
         </div>
     </div>

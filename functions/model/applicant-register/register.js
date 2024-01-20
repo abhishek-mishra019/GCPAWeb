@@ -12,7 +12,7 @@ const {getAllRegistrations} = require("./tark/getAllRegistrations");
 const {updateRegistrationById} = require("./tark/updateRegistrationById");
 const {addExtraFiles}= require("./tark/addExtraFiles");
 const {getExtraFiles}= require("./tark/getExtraFiles");
-const {updateAllRegistration} = require("./tark/updateAllRegistration");
+const {updateAllRegistration} = require("./tark/updateAllRegistraton");
 
 
 fastify.post("/registerNewUser", (req, res) => {

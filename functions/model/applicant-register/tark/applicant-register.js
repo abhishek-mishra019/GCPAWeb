@@ -5,7 +5,7 @@
 /* eslint-disable max-len */
 const { registerUser, getApplicant, updateApplicant, addFile } = require("../lib");
 const { updateData } = require("../../raw-data/tark/updateRawData");
-const { mailerAN } = require("../../mailer/lib");
+// const { mailerAN } = require("../../mailer/lib");
 
 const addFiles = function(uid, file) {
     const promise = getApplicant(uid).then((doc) => {
@@ -96,7 +96,9 @@ exports.registerNewUser = function(request, response) {
 
         // end
         updateData("registration").then(() => console.log("Registration Raw Data Updated"));
-      //  mailerAN(userUid, firstName, "Payment_Pending", uid);
+
+        // disabled due to new requirment will be discussed further.
+        // mailerAN(userUid, firstName, "Payment_Pending", uid);
         return response.status(status).send(result);
     }).catch((error) => {
         result = { data: error };

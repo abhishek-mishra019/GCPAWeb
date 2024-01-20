@@ -6,7 +6,6 @@
 
 const { updateApplicant } = require("../lib");
 
-
 exports.updateRegistrationById = function(request, response) {
     const user = request.body.data;
 
@@ -58,7 +57,6 @@ exports.updateRegistrationById = function(request, response) {
         ShortlistStatus: ShortlistStatus,
         Comments: Comments,
         Rating: Rating,
-
     };
 
     updateApplicant(inputJson, uid).then(() => {

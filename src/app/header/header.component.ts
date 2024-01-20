@@ -6,6 +6,7 @@ import { AuthServiceService } from '../services/auth-service/auth-service.servic
 import { PopupHandlerService } from '../services/popup-handler-service/popup-handler.service';
 import { environment } from '../../environments/environment'
 import { StartSericeService } from '../services/start-serice.service';
+import { DataTableServiceService } from '../services/dataTable/data-table-service.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   admin:boolean=false;
   useEmulator=false;
   
-  constructor(private router: Router, public authService:AuthServiceService, private popup:PopupHandlerService, public functions: AngularFireFunctions, public startService: StartSericeService) { }
+  constructor(private dataTableService: DataTableServiceService, private router: Router, public authService:AuthServiceService, private popup:PopupHandlerService, public functions: AngularFireFunctions, public startService: StartSericeService) { }
   
   ngOnInit(): void {
     this.useEmulator=environment.useEmulators;
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
         if (user) {
           this.authService.getUser(user.uid);
           this.loggedIn=true;
+          this.dataTableService.getRegistrations();
         }
         // this.popup.popupEnable()
       },

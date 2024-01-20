@@ -15,169 +15,171 @@ import { PopupHandlerService } from 'src/app/services/popup-handler-service/popu
 })
 export class DashboardComponent implements OnInit {
 
-  rawData:RawData[]=[]
-  displayColoumns:string[];
-  userData:UserFetched;
-  displayColoumnsUser:string[];
-  registrationData:Register[];
-  displayColoumnsRegistration:string[];
-  showRawData=false;
-  showUserData=false;
-  showRegistrationData=false;
+  rawData: RawData[] = []
+  displayColoumns: string[];
+  userData: UserFetched;
+  displayColoumnsUser: string[];
+  registrationData: Register[];
+  displayColoumnsRegistration: string[];
+  showRawData = false;
+  showUserData = false;
+  showRegistrationData = false;
   sidebarVisible = true;
-  constructor(public dataTableService: DataTableServiceService, private router: Router,public authService:AuthServiceService, public popupService: PopupHandlerService) { }
+  userDataReady = false;
 
-userDataComponent=false;
-registrationDataComponent=false;
-partnersDataComponent=false;
-newsroomDataComponent=false;
-testimonialsDataComponent=false;
-galleryDataComponent=false;
-ecommerceDataComponent=false;
-ordersDataComponent = false;
-supportComponent=false;
+  constructor(public dataTableService: DataTableServiceService, private router: Router, public authService: AuthServiceService, public popupService: PopupHandlerService) { }
+
+  userDataComponent = false;
+  registrationDataComponent = false;
+  partnersDataComponent = false;
+  newsroomDataComponent = false;
+  testimonialsDataComponent = false;
+  galleryDataComponent = false;
+  ecommerceDataComponent = false;
+  ordersDataComponent = false;
+  supportComponent = false;
 
   ngOnInit(): void {
-    if (this.authService.user) {
+    if (!this.authService.user) {
+      this.router.navigate([''])
+    } else {
       this.userData = this.authService.loggedInUser;
-      
-      if (this.authService.loggedInUser.Admin===false) {
+      if (this.authService.loggedInUser.Admin === false) {
         this.router.navigate([''])
       }
+      this.userDataReady = true;
     }
-    else{
-    // this.popupService.loginPopup=true
-    this.router.navigate([''])
-    }
-
     this.getRawData()
-    
   }
+
   getRawData() {
     this.dataTableService.getRawData().subscribe((data) => {
-      if(data.length) {
+      if (data.length) {
         this.rawData = data;
         this.displayColoumns = ['NumberOfUsers', 'NumberOfRegistrations', 'NumberOfSupport'];
-      } 
-    }); 
+      }
+    });
   }
-  
 
-  displayrawData(){
-    this.showUserData=false;
-    this.showRegistrationData=false;
-    this.showRawData=true;
+  displayrawData() {
+    this.showUserData = false;
+    this.showRegistrationData = false;
+    this.showRawData = true;
   }
-  displayUserData(){
-  //  this.router.navigate(['usersDashboard'])
-  this.userDataComponent=true;
-  this.registrationDataComponent=false;
-  this.partnersDataComponent=false;
-  this.newsroomDataComponent=false;
-  this.testimonialsDataComponent=false;
-  this.galleryDataComponent=false;
-  this.ecommerceDataComponent=false;
-  this.ordersDataComponent = false;
-  this.supportComponent=false; 
+
+  displayUserData() {
+    //  this.router.navigate(['usersDashboard'])
+    this.userDataComponent = true;
+    this.registrationDataComponent = false;
+    this.partnersDataComponent = false;
+    this.newsroomDataComponent = false;
+    this.testimonialsDataComponent = false;
+    this.galleryDataComponent = false;
+    this.ecommerceDataComponent = false;
+    this.ordersDataComponent = false;
+    this.supportComponent = false;
   }
-  displayRegistrationData(){
+
+  displayRegistrationData() {
     // this.router.navigate(['registrationDashboard'])
     this.sidebarVisible = false;
-    this.userDataComponent=false;
-  this.registrationDataComponent=true;
-  this.partnersDataComponent=false;
-  this.newsroomDataComponent=false;
-  this.testimonialsDataComponent=false;
-  this.galleryDataComponent=false;
-  this.ordersDataComponent = false;
-  this.ecommerceDataComponent=false;
-  this.supportComponent=false;
+    this.userDataComponent = false;
+    this.registrationDataComponent = true;
+    this.partnersDataComponent = false;
+    this.newsroomDataComponent = false;
+    this.testimonialsDataComponent = false;
+    this.galleryDataComponent = false;
+    this.ordersDataComponent = false;
+    this.ecommerceDataComponent = false;
+    this.supportComponent = false;
   }
 
-  partnersSponsors(){
+  partnersSponsors() {
     // this.router.navigate(['sponsorspartners']);
-    this.userDataComponent=false;
-  this.registrationDataComponent=false;
-  this.partnersDataComponent=true;
-  this.newsroomDataComponent=false;
-  this.testimonialsDataComponent=false;
-  this.galleryDataComponent=false;
-  this.ordersDataComponent = false;
-  this.ecommerceDataComponent=false;
-  this.supportComponent=false;
-}
-  testimonials(){
+    this.userDataComponent = false;
+    this.registrationDataComponent = false;
+    this.partnersDataComponent = true;
+    this.newsroomDataComponent = false;
+    this.testimonialsDataComponent = false;
+    this.galleryDataComponent = false;
+    this.ordersDataComponent = false;
+    this.ecommerceDataComponent = false;
+    this.supportComponent = false;
+  }
+
+  testimonials() {
     // this.router.navigate(['testimonialsDashboard']);
-    this.userDataComponent=false;
-  this.registrationDataComponent=false;
-  this.partnersDataComponent=false;
-  this.newsroomDataComponent=false;
-  this.testimonialsDataComponent=true;
-  this.galleryDataComponent=false;
-  this.ordersDataComponent = false;
-  this.ecommerceDataComponent=false;
-  this.supportComponent=false;
+    this.userDataComponent = false;
+    this.registrationDataComponent = false;
+    this.partnersDataComponent = false;
+    this.newsroomDataComponent = false;
+    this.testimonialsDataComponent = true;
+    this.galleryDataComponent = false;
+    this.ordersDataComponent = false;
+    this.ecommerceDataComponent = false;
+    this.supportComponent = false;
   }
-  newsroom(){
+
+  newsroom() {
     // this.router.navigate(['newsroomDashboard']);
-    this.userDataComponent=false;
-  this.registrationDataComponent=false;
-  this.partnersDataComponent=false;
-  this.newsroomDataComponent=true;
-  this.testimonialsDataComponent=false;
-  this.galleryDataComponent=false;
-  this.ordersDataComponent = false;
-  this.ecommerceDataComponent=false;
-  this.supportComponent=false;
+    this.userDataComponent = false;
+    this.registrationDataComponent = false;
+    this.partnersDataComponent = false;
+    this.newsroomDataComponent = true;
+    this.testimonialsDataComponent = false;
+    this.galleryDataComponent = false;
+    this.ordersDataComponent = false;
+    this.ecommerceDataComponent = false;
+    this.supportComponent = false;
   }
-  gallery(){
+
+  gallery() {
     // this.router.navigate(['galleryDashboard']);
-    this.userDataComponent=false;
-  this.registrationDataComponent=false;
-  this.partnersDataComponent=false;
-  this.newsroomDataComponent=false;
-  this.testimonialsDataComponent=false;
-  this.ordersDataComponent = false;
-  this.galleryDataComponent=true;
-  this.ecommerceDataComponent=false;
-  this.supportComponent=false;
+    this.userDataComponent = false;
+    this.registrationDataComponent = false;
+    this.partnersDataComponent = false;
+    this.newsroomDataComponent = false;
+    this.testimonialsDataComponent = false;
+    this.ordersDataComponent = false;
+    this.galleryDataComponent = true;
+    this.ecommerceDataComponent = false;
+    this.supportComponent = false;
   }
-  ecommerce(){
+
+  ecommerce() {
     // this.router.navigate(['ecommerceDashboard']);
-    this.userDataComponent=false;
-  this.registrationDataComponent=false;
-  this.partnersDataComponent=false;
-  this.newsroomDataComponent=false;
-  this.testimonialsDataComponent=false;
-  this.ordersDataComponent = false;
-  this.galleryDataComponent=false;
-  this.supportComponent=false;
-  this.ecommerceDataComponent=true;
+    this.userDataComponent = false;
+    this.registrationDataComponent = false;
+    this.partnersDataComponent = false;
+    this.newsroomDataComponent = false;
+    this.testimonialsDataComponent = false;
+    this.ordersDataComponent = false;
+    this.galleryDataComponent = false;
+    this.supportComponent = false;
+    this.ecommerceDataComponent = true;
   }
 
-  orders(){
-    this.userDataComponent=false;
-  this.registrationDataComponent=false;
-  this.partnersDataComponent=false;
-  this.newsroomDataComponent=false;
-  this.testimonialsDataComponent=false;
-  this.ordersDataComponent = true;
-  this.galleryDataComponent=false;
-  this.ecommerceDataComponent=false;
-  this.supportComponent=false;
-
+  orders() {
+    this.userDataComponent = false;
+    this.registrationDataComponent = false;
+    this.partnersDataComponent = false;
+    this.newsroomDataComponent = false;
+    this.testimonialsDataComponent = false;
+    this.ordersDataComponent = true;
+    this.galleryDataComponent = false;
+    this.ecommerceDataComponent = false;
+    this.supportComponent = false;
   }
 
-  support(){
-    this.userDataComponent=false;
-  this.registrationDataComponent=false;
-  this.partnersDataComponent=false;
-  this.newsroomDataComponent=false;
-  this.testimonialsDataComponent=false;
-  this.ordersDataComponent = false;
-  this.galleryDataComponent=false;
-  this.ecommerceDataComponent=false;
-  this.supportComponent=true;
+  support() {
+    this.userDataComponent = false;
+    this.registrationDataComponent = false;
+    this.partnersDataComponent = false;
+    this.newsroomDataComponent = false;
+    this.testimonialsDataComponent = false;
+    this.ordersDataComponent = false;
+    this.galleryDataComponent = false;
+    this.ecommerceDataComponent = false;
+    this.supportComponent = true;
   }
 }
-

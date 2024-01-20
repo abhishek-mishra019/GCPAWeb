@@ -12,6 +12,7 @@ export class GalleryDashboardService {
   gallery:Photo[]=[]
   neatGalleryImageUrl: string[] = []
   neatGallery: Photo[] = []
+  neatGalleryReady: boolean = false;
 
   gallaryData: Observable<Photo[]>
   imageUrls: string[] =[];
@@ -53,6 +54,7 @@ export class GalleryDashboardService {
           }
           this.imageUrls.push(element.ImageUrl);   
         });
+        this.neatGalleryReady = true;
       },
       error: (error) => {
         console.error(error);

@@ -2,7 +2,6 @@
     <h1 class="text-center pt-3">My Applications</h1>
     
     <ng-container *ngIf="!showLoader; else loader" >
-
         <ng-container *ngIf="!noData;else noRegistrations">
             <div class="container">
                 <app-data-table [dataForTable]="registrationsData" [displayColoumns]="displayColoumns" [pageSize]="'5'"> </app-data-table>
@@ -14,7 +13,6 @@
                 You have no Registrations to Display. Please Register.
             </div>
         </ng-template>
-
     </ng-container>
     
     <ng-template #loader>
