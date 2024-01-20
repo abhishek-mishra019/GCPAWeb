@@ -52,6 +52,8 @@ import { GCPA2020Component } from './body/gcpa2020/gcpa2020.component';
 import { BetaV1Component } from './body/Registration/beta-v1/beta-v1.component';
 import { UpdateAllRegistrationsComponent } from './body/update-all-registrations/update-all-registrations.component';
 import { ResetPasswordComponent } from './body/login-page/reset-password/reset-password.component';
+import { DocumentVerificationComponent } from './body/document-verification/document-verification.component';
+
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -116,6 +118,7 @@ const routes: Routes = [
   {path:'privacy-policy', component:PrivacyPolicyComponent},
   {path:'faq', component:FaqComponent},
   {path:'updateAllReg', component:UpdateAllRegistrationsComponent },
+  {path: 'documentVerification', component:DocumentVerificationComponent},
   {
     path: 'auth',
     children: [
@@ -129,7 +132,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 

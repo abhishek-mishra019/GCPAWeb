@@ -31,9 +31,9 @@
                             <app-country (newItemEvent)="addCountry($event)"></app-country>
                         </div>
 
-                        <div class="row p-2">
+                        <div class="row p-2" *ngIf="filterCountry=='India'">
                             <h5 class="">State</h5>
-                            <input type="text" class="form-control" placeholder="state" [(ngModel)]="filterState" />
+                            <app-states (newItemEvent)="addState($event)"></app-states>
                         </div>
                         <div class="row p-2">
                             <div class="col-6">
@@ -58,8 +58,8 @@
                             <div class="col-6">
                                 <h5>Payment Status</h5>
                                 <select [(ngModel)]="filterPaymentStatus" class="form-select" name="" id="">
-                                    <option value="false">false</option>
-                                    <option value="Completed">Completed</option>
+                                    <option value="false">False</option>
+                                    <option value="Complete">Complete</option>
                                 </select>
                             </div>
                         </div>
@@ -90,7 +90,6 @@
 <h2 class="text-center" *ngIf="!showRegistrations">Loading....<br>Please Wait</h2>
 <div class="px-5">
     <ng-container *ngIf="showRegistrations">
-        <app-registration-data-table [dataForTable]="registrationData " [displayColoumns]="displayColoumnsRegistration "
-            [pageSize]="25"> </app-registration-data-table>
+        <app-registration-data-table [dataForTable]="registrationData " [displayColoumns]="displayColoumnsRegistration "> </app-registration-data-table>
     </ng-container>
 </div>

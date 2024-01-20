@@ -3,25 +3,42 @@
     <a>
         <p class="mainp">The journey so far in pictures</p>
     </a>
-    <div class="container mt-6 py-6 px-4 back" *ngIf="galleryService.gallery.length>0 ; else loader">
-        <div class="row text-center">
-            <ng-container *ngFor="let photo of galleryService.gallery">
-                <div [ngClass]="{'col-md-3 px-3 py-3 my-auto':true}" (mouseenter)="photo.Hovering=true" (mouseleave)="photo.Hovering=false">
-                    <img [src]="photo.ImageUrl" (click)="open(photo.ImageUrl)" data-bs-toggle="modal" data-bs-target="#exampleModal" [ngClass]="{'img-fluid rounded':true,'darken shadow':photo.Hovering}" alt="">
-                </div>
-            </ng-container>
+    <div class="gallery-lightbox-container mt-6 py-6 px-4 back" *ngIf="galleryService.gallery.length>0 ; else loader" id="gallery">
+        <div class="gallery" >
+            <div class="thumbs">
+                <a *ngFor="let photo of galleryService.gallery; let i = index">
+                    <img [src]="photo.ImageUrl" alt="" (click)="onPreviewImage(i)" class="gallery-img">
+                </a>
+            </div>
+        </div> 
+        <div *ngIf="showMask" class="lightbox" animation2>
+            <span class="count">{{currentIndex+1}}/{{galleryService.gallery.length}}</span>
+            <button *ngIf="previewImage" class="close-btn" (click)="onClosePreview()">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <button *ngIf="controls" class="btn-lightbox-carousel btn-prev" (click)="prev()">
+                <span class="material-symbols-outlined icon-lightbox-carousel">arrow_back_ios</span>
+            </button>
+            <button *ngIf="controls" class="btn-lightbox-carousel btn-next" (click)="next()">
+                <span class="material-symbols-outlined icon-lightbox-carousel">arrow_forward_ios</span>
+            </button>
+            <div *ngIf="previewImage" [@animation]="{value: 'visible'}" (@animation.done)="onAnimationEnd($event)" class="lightbox-img">
+                 <img [src]="currentLightboxImage.ImageUrl" alt="">
+            </div>
+        </div>
 
-         <app-carousel></app-carousel>
-            <app-img-popup [ImageUrl]="modalImg"></app-img-popup>
             <ng-container *ngIf="rawDataService.rawData != undefined">
                 <div *ngIf="gallery.length != rawDataService.rawData[0].NumberOfGalleryPics">
                     <button class="btn btn-primary text-center" (click)="showMore()">Show More...</button>
                 </div>
             </ng-container>
-        </div>
     </div>
-
-    <ng-template #loader>
-        <app-loader></app-loader>
-    </ng-template>
 </div>
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>
+
+    
+
+
+

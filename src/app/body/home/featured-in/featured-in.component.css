@@ -12,9 +12,29 @@ h1 {
     margin-top: 6px;
     font-weight: 600!important;
 }
-
-img {
-    vertical-align: middle;
-    border-style: none;
-    max-width: 200px;
+ng-template{
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
+
+
+/* img.align-self-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    max-height: 100%;
+  } */
+  
+/* Your existing styles */
+
+
+  img {
+    display: inline;
+    vertical-align: middle;
+    max-width: 200px;
+    max-height: 200px;
+    margin: auto;
+  }
+  

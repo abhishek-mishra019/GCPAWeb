@@ -141,6 +141,8 @@ import { BetaV1Component } from './body/Registration/beta-v1/beta-v1.component';
 import { WhatsappComponent } from './body/whatsapp/whatsapp.component';
 import { UpdateAllRegistrationsComponent } from './body/update-all-registrations/update-all-registrations.component';
 import { ResetPasswordComponent } from './body/login-page/reset-password/reset-password.component';
+import { DocumentVerificationComponent } from './body/document-verification/document-verification.component';
+
 
 @NgModule({
   declarations: [
@@ -219,7 +221,7 @@ import { ResetPasswordComponent } from './body/login-page/reset-password/reset-p
     ResetPasswordComponent,
     BlogComponent,
     EcommercePaymentStatusComponent, BlogHomeComponent, BlogHeaderComponent, BlogFooterComponent, GcpaBookComponent, ParentingComponent, PodcastComponent, PopularComponent, ProdigyHistoryComponent, ProdigyTalksComponent, TopCategoriesComponent, VideoBlogsComponent, ParentingPageComponent, ProdigyHistoryPageComponent, PopularPageComponent, AllStoriesPageComponent, OrdersComponent, OrderDataTableComponent, MyOrdersComponent, CategoryComponentComponent, AmpRedirectComponent, TagComponent, ImgPopupComponent, CarouselComponent, PrivacyPolicyComponent, FaqComponent, SupportAdminComponent, SupportDetailsAdminComponent, 
-    SupportDataTableComponent, StatesComponent, Section5Component, Section6Component, GCPA2022Component, GCPA2020Component, BetaV1Component, WhatsappComponent, UpdateAllRegistrationsComponent,
+    SupportDataTableComponent, StatesComponent, Section5Component, Section6Component, GCPA2022Component, GCPA2020Component, BetaV1Component, WhatsappComponent, UpdateAllRegistrationsComponent, DocumentVerificationComponent,
   ],
   imports: [
     NgSelectModule,

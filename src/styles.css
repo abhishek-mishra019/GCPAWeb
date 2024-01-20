@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Amaranth&display=swap');
 
-
  * {
     font-family: 'Nunito Sans',sans-serif;
  }
@@ -25,5 +24,3 @@ h1 {
     max-width: 100% !important;
     vertical-align: bottom;
   }
-
-
