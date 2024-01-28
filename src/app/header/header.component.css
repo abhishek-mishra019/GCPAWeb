@@ -3,6 +3,9 @@
     padding: 0.3rem 1rem!important;
     box-shadow: 0 0 10px rgb(0 0 0 / 15%);
 }
+*{
+    z-index: 1;
+}
 .nav-item{
     color: black;
     font-family: 'Nunito Sans', sans-serif;
