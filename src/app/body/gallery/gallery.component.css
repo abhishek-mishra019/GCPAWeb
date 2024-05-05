@@ -44,9 +44,14 @@ img.gallery-img:hover {
   width: 100vw;
   max-width: 100%;
   background-color: rgba(0, 0, 0, 0.85);
-  z-index: 2;
+  z-index: 3;
 }
-
+.lightbox-img img {
+  width: 100%;
+  height: 100vh;
+  border-radius: 5px;
+  z-index: 0 ;
+}
 .count{
   display: flex;
   align-items: center;
@@ -73,7 +78,6 @@ img.gallery-img:hover {
   cursor: pointer;
   width: 7%;
   height: 10%;
-  z-index: 2;
 }
 
 .close-btn span{
@@ -93,7 +97,6 @@ img.gallery-img:hover {
   cursor: pointer;
   width: 15%;
   height: 15%;
-  z-index: 2;
 }
 
 .btn-lightbox-carousel span{
@@ -117,12 +120,7 @@ img.gallery-img:hover {
 .icon-lightbox-carousel:active{
   opacity: 0.5;
 }
-.lightbox-img img {
-  width: 100%;
-  height: 100vh;
-  border-radius: 5px;
-  z-index: 0 ;
-}
+
 
 @media screen and (max-width:1024px) {
   .gallery-lightbox-container .gallery{
@@ -133,7 +131,6 @@ img.gallery-img:hover {
   .gallery-img{
     width: 100%;
     height: 100%;
-    z-index: 2;
   }
   
 }
@@ -145,9 +142,6 @@ img.gallery-img:hover {
   }
   .gallery-img{
     max-width: 100%;
-  }
-  .lightbox{
-    z-index: 2;
   }
   
 }
